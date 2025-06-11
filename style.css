@@ -1,0 +1,108 @@
+html {
+    background: #0046ff08;
+}
+
+body {
+    direction: rtl;
+    font-family: sans-serif;
+    line-height: 1.7;
+    background: white;
+    max-width: 50em;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b b {
+    color: #0046ff;
+}
+
+img {
+    max-width: 25em;
+    margin: 0 auto;
+    display: block;
+}
+
+span.subq {
+    font-size: 20px;
+    color: #2a73f0;
+    font-weight: bold;
+    padding-left: 14px;
+}
+
+html.dark {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.answer {
+    background: #0046ff0f;
+    margin: 2em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    list-style: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .answer {
+        margin: 2em 0;
+        padding: 0.5em 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    p,
+    li,
+    img,
+    ul,
+    ol {
+        margin-left: auto;
+        padding-left: 0;
+        overflow-x: auto;
+    }
+
+    ul {
+        padding-right: .5em;
+    }
+
+    body {
+        padding: 0.4em;
+    }
+}
+
+
+.answer {
+    position: relative;
+}
+
+.answer button {
+    border: none;
+    border-radius: 10px;
+    padding: 6px 1em;
+    color: #0044ff73;
+    cursor: pointer;
+    background: none;
+    display: block;
+    position: absolute;
+    font-size: xx-small;
+    top: 0;
+    left: 0;
+    margin: 1em;
+}
+
+
+
+.answer button:hover {
+    background: #ff909037;
+    color: red;
+}
