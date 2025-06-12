@@ -55,3 +55,4 @@
 	- $\gamma \in (V\cup  \Sigma  \setminus \{S\})^+$
 	- $\displaystyle A\in V$
 
+

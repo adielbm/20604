@@ -689,4 +689,11 @@ ___
 	- **תשובה:** לא נכון. $L$ היא רגולרית בעזרת הביטוי הרגולרי $a(a\cup b)^*a$.
 
 
+# דף נוסחאות
 
+דף שאני מכין לעצמי למבחן, אולי יעזור לאחרים. מידי פעם מעדכן. 
+
+<iframe src="cheatsheet/cheatsheet.pdf" width="100%" height="1200" style="border:none;">
+  This browser does not support PDFs. Please download the file:
+  <a href="cheatsheet/cheatsheet.pdf">Download PDF</a>.
+</iframe>
