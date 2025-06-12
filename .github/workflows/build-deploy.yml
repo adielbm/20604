@@ -35,6 +35,7 @@ jobs:
           mkdir public
           cp index.html public/
           cp style.css public/
+          cp cheatsheet/cheatsheet.pdf public/
           cp script.js public/
           cp -R images public/
 
