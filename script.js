@@ -1,6 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    // change the id of all h2 heads to be as {parent-h1-id}-{original-h2-id}.
+    const h2headings = document.querySelectorAll("h2[id]");
+    h2headings.forEach(h => {
+        // Find the closest previous sibling h1[id]
+        let prev = h.previousElementSibling;
+        let parentH1 = null;
+        while (prev) {
+            if (prev.tagName === "H1" && prev.id) {
+                parentH1 = prev;
+                break;
+            }
+            prev = prev.previousElementSibling;
+        }
+        if (parentH1) {
+            h.id = `${parentH1.id}-${h.id}`;
+        }
+    });
+
+    // Make h1 and h2 headings with id link to themselves
+    document.querySelectorAll("h1[id], h2[id]").forEach(h => {
+        const a = document.createElement("a");
+        a.href = "#" + h.id;
+        a.textContent = h.textContent;
+        a.style.textDecoration = "none";
+        a.style.color = "inherit";
+        h.textContent = "";
+        h.appendChild(a);
+    });
+
     const headings = document.querySelectorAll("h1[id]");
     if (headings.length === 0) return;
+
 
     const tocContainer = document.querySelector("#toc")
     const list = document.createElement("ul");
@@ -15,6 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     tocContainer.appendChild(list);
 
+
+    // // go through all stuff like "<p>ראו [[#מועד 2024b-94]] שאלה 4.</p>" and make them links.
+    // // Replace spaces in the id with "-"
+    // document.querySelectorAll('p').forEach(p => {
+    //     p.innerHTML = p.innerHTML.replace(/\[\[#(.*?)\]\]/g, (_, id) => {
+    //         const idWithDash = id.replace(/\s+/g, '-');
+    //         const encodedId = encodeURIComponent(idWithDash);
+    //         return `<a href="#${encodedId}">${idWithDash}</a>`;
+    //     });
+    // });
 
     document.querySelectorAll('li').forEach(li => {
         const firstEl = li.firstElementChild;

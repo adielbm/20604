@@ -9,16 +9,16 @@
 - Every NFA can be converted to an equivalent one that has a single accept state.
 - (**regular grammar**) $G=(V,\Sigma,R,S)$. Rules: $A\to aB$, $A\to a$ or $S\to \varepsilon$. ($A,B,S\in V$ and $a\in \Sigma$).
 
-|                    | N-Reg  | Reg | CFL    | TD  | TR     | P   | NP  | NPC    |
-| ------------------ | ------ | --- | ------ | --- | ------ | --- | --- | ------ |
-| $L_{1}\cup L_{2}$  | **no** | ✓   | ✓      | ✓   | ✓      | ✓   | ✓   | **no** |
-| $L_{1}\cap L_{2}$  | **no** | ✓   | **no** | ✓   | ✓      | ✓   | ✓   | **no** |
-| $\overline{L}$     | ✓      | ✓   | **no** | ✓   | **no** | ✓   | $?$ | $?$    |
-| $L_{1}\cdot L_{2}$ | **no** | ✓   | ✓      | ✓   | ✓      | ✓   | ✓   | **no** |
-| $L^*$              | **no** | ✓   | ✓      | ✓   | ✓      | ✓   | ✓   | **no** |
-| $L^\mathcal{R}$    |        | ✓   | ✓      | ✓   | ✓      | ✓   |     |        |
-| $L\cap R$          |        | ✓   | ✓      | ✓   | ✓      | ✓   |     |        |
-| $L_1\setminus L_2$ |        | ✓   | **no** | ✓   | **no** | ✓   | $?$ |        |
+|                    | N-Reg  | Reg | CFL                                                                                  | TD  | TR     | P                                               | NP  | NPC    |
+| ------------------ | ------ | --- | ------------------------------------------------------------------------------------ | --- | ------ | ----------------------------------------------- | --- | ------ |
+| $L_{1}\cup L_{2}$  | **no** | ✓   | ✓                                                                                    | ✓   | ✓      | ✓ ($M$ accept if either $M_1$ or $M_2$ accepts) | ✓   | **no** |
+| $L_{1}\cap L_{2}$  | **no** | ✓   | **no** ($L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$)                          | ✓   | ✓      | ✓ ($M$ accept if both $M_1$ and $M_2$ accepts)  | ✓   | **no** |
+| $\overline{L}$     | ✓      | ✓   | **no** (closure contradicts intersection non-closure (via De Morgan))                | ✓   | **no** | ✓                                               | $?$ | $?$    |
+| $L_{1}\cdot L_{2}$ | **no** | ✓   | ✓                                                                                    | ✓   | ✓      | ✓                                               | ✓   | **no** |
+| $L^*$              | **no** | ✓   | ✓                                                                                    | ✓   | ✓      | ✓                                               | ✓   | **no** |
+| $L^\mathcal{R}$    |        | ✓   | ✓                                                                                    | ✓   | ✓      | ✓                                               |     |        |
+| $L\cap R$          |        | ✓   | ✓                                                                                    | ✓   | ✓      | ✓                                               |     |        |
+| $L_1\setminus L_2$ |        | ✓   | **no** ($L_1=\Sigma^*$,$L_{2}\in \textsf{CFL}$, $\overline{L_{2}}\in \textsf{NCFL}$) | ✓   | **no** | ✓                                               | $?$ |        |
 
 
 
