@@ -589,7 +589,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 			- מ"ט זו מכריעה את $\text{E}_{\text{TM}}$, כי אם $L(M)=\emptyset$ אז $q_\text{accept}$ הוא useless state, ואם $L(M)\ne\emptyset$ אז $q_\text{accept}$ אינו useless state.
 			- אבל $\text{E}_{\text{TM}}$ אינה ניתנת להכרעה לפי משפט 5.2. סתירה.
 		- מסקנה: $\text{USELESS}_{\text{TM}}$ אינה ניתנת להכרעה.
-- ב. הוכיחו שלא קיימת רדוקציית מיפוי מ- $A_{\text{TM}}$ ל- $E_{\text{TM}}$.
+- ב. הוכיחו שלא קיימת רדוקציית מיפוי מ- $A_{\text{TM}}$ ל- $E_{\text{TM}}$. (תרגיל 5.5 בספר)
 	- רמז: הוכחה בדרך השלילה ותכונות ידועות של $A_{\text{TM}}$ ו- $E_{\text{TM}}$.
 	- **תשובה:** 
 		- נניח בשלילה ש- $A_{\text{TM}} \leq_{\text{m}} E_{\text{TM}}$ בעזרת רדוקציית מיפוי $f$.
@@ -599,7 +599,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 		- כלומר $\overline{A_{\text{TM}}} \leq_{\text{m}} \overline{E_{\text{TM}}}$.
 		- כמו כן ידוע ש- $\overline{A_{\text{TM}}}$ אינה מזוהה -טיורינג (מסקנה 4.23), ו- $\overline{E_{\text{TM}}}$ היא כן מזוהה -טיורינג (תרגיל 4.5 בספר). אבל אם קימת רדוקציית מיפוי מ- $\overline{A_{\text{TM}}}$ ל- $\overline{E_{\text{TM}}}$ נובע ש- $\overline{A_{\text{TM}}}$ מזוהה -טיורינג, (או ש- $\overline{E_{\text{TM}}}$ אינה מזוהה -טיורינג). סתירה.
 		- מסקנה: לא קיימת רדוקציית מיפוי מ- $A_{\text{TM}}$ ל- $E_{\text{TM}}$.
-- ג. ידוע ש- $A\leq_{\text{m}} B$ ובנוסף ידוע ש- $B$ שפת רגולרית. האם בהכרח $A$ שפה רגולרית?
+- ג. ידוע ש- $A\leq_{\text{m}} B$ ובנוסף ידוע ש- $B$ שפת רגולרית. האם בהכרח $A$ שפה רגולרית? (תרגיל 5.4 בספר)
 	- **תשובה:** לא בהכרח. דוגמה נגדית:
 		- השפה $A=\{0^n1^n \mid n \ge 0\}$ אינה רגולרית.
 		- השפה $B=\{ 1 \}$ סופית ולכן רגולרית. 
