@@ -9,9 +9,10 @@
 	- Every inf. rec. lang. has an inf. dec. subset.
 	- (**rec. but undec.**)$A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$
 - (**decidable**) accepts if $w\in L$, rejects if $w\notin L$.
-- $L \text{ is decidable}\iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
-	- $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, every CFL, every finite lang., $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle M\rangle \mid M \text{ is a }\textsf{DFA}{ },L(A)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid G \text{ is a \textsf{CFG} that generates }\varepsilon\}$, 
-- $L\text{ is dec.}\iff( L\text{ is rec. }\land L\text{ is co-rec.})\iff \exists\,\textsf{TM }M\text{ decides }L$. 
+- $L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{DEC.}} }\Leftrightarrow \left(L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{REC.}} }\land L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{co-REC.}} }\right)\Leftrightarrow \exists\,\underset{ \textsf{TM} }{ M }\text{ decides }L$.
+- $\overset{ \textsf{Turing} }{ \tiny{\textsf{DECIDABLE}}} \subset \overset{ \textsf{Turing} }{ \tiny{\textsf{RECOGNIZABLE}} }$.
+- $L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{DECIDABLE}} }\iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
+- $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, every CFL, every finite lang., $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle M\rangle \mid M \text{ is a }\textsf{DFA}{ },L(A)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid G \text{ is a \textsf{CFG} that generates }\varepsilon\}$, 
 - (**decider**) TM that halts on all inputs. 
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. 
 
