@@ -51,26 +51,28 @@
 - If $B\in\text{NP-complete}$ and $C \in \mathrm{NP}$ s.t. $B\leq_{\mathrm{P}} C$, then $C\in\text{NP-complete}$.
 - If $\mathrm{P}=\mathrm{NP}$, then $\forall A\in \mathrm{P}\setminus\{\emptyset,\Sigma^*\},\,A\in \text{NP-complete}$.
 
-# Examples
+# Examples:  $A\leq_{\mathrm{P}} B$ and $f:A\to B$ s.t. $w\in A \iff f(w)\in B$ and $f$ is polytime comp.
 
-- Counterexamples:
-	- $A\leq_{\text{m}} B$ and $B\in\mathsf{REG}$, but, $A\notin\mathsf{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
-	- $L\in \textsf{CFL}$ but $\overline{L}\notin {\textsf{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
-	- $L_1,L_2\in \textsf{CFL}$ but $L_1\cap L_2\notin \textsf{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
-- $A\leq_{\mathrm{P}} B$ and $f:A\to B$ s.t. $w\in A \iff f(w)\in B$ and $f$ is poly-time comp.
-	- $\text{SAT} \leq_{\mathrm{P}} \text{DOUBLE-SAT}$
-		- $f(\phi) = \phi \land (x \lor \neg x)$
-	- $\text{SUBSET-SUM} \leq_{\mathrm{P}} \text{SET-PARTITION}$
-		- $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
-	- $3COLOR \leq_{\mathrm{P}} 3COLOR_{almost}$
-		- $f(\langle G \rangle) = \langle G' \rangle$, where $G'=G\cup K_4$
-	- $\text{VERTEX-COVER} \leq_{\mathrm{P}} \text{WVC}$
-		- $f(\langle G,k\rangle)= (G,w,k)$, $\forall v\in V,w(v)=1$.
-	- $\underset{ \text{length } \geq k }{ \text{SimplePATH} }\leq_{\mathrm{P}}\text{UHAMATH}$
-	- $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} }$
-		- $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
-	- $\text{CLIQUE} \leq_{\mathrm{P}} \text{INDEPENDENT-SET}$     
-	- $\text{SET-COVER}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
-	- $\text{3SAT} \leq_{\mathrm{P}} \text{SET-SPLITTING}$          
-	- $\text{INDEPENDENT-SET}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
-	- $\text{VERTEX-COVER}\leq_{\text{p}}\text{CLIQUE}$           
+
+- $\text{SAT} \leq_{\mathrm{P}} \text{DOUBLE-SAT}$
+	- $f(\phi) = \phi \land (x \lor \neg x)$
+- $\text{SUBSET-SUM} \leq_{\mathrm{P}} \text{SET-PARTITION}$
+	- $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
+- $3COLOR \leq_{\mathrm{P}} 3COLOR_{almost}$
+	- $f(\langle G \rangle) = \langle G' \rangle$, where $G'=G\cup K_4$
+- $\text{VERTEX-COVER} \leq_{\mathrm{P}} \text{WVC}$
+	- $f(\langle G,k\rangle)= (G,w,k)$, $\forall v\in V,w(v)=1$.
+- $\underset{ \text{length } \geq k }{ \text{SimplePATH} }\leq_{\mathrm{P}}\text{UHAMATH}$
+- $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} }$
+	- $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
+- $\text{CLIQUE} \leq_{\mathrm{P}} \text{INDEPENDENT-SET}$     
+- $\text{SET-COVER}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
+- $\text{3SAT} \leq_{\mathrm{P}} \text{SET-SPLITTING}$          
+- $\text{INDEPENDENT-SET}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
+- $\text{VERTEX-COVER}\leq_{\text{p}}\text{CLIQUE}$           
+
+# Counterexamples
+
+- $A\leq_{\text{m}} B$ and $B\in\mathsf{REG}$, but, $A\notin\mathsf{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
+- $L\in \textsf{CFL}$ but $\overline{L}\notin {\textsf{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
+- $L_1,L_2\in \textsf{CFL}$ but $L_1\cap L_2\notin \textsf{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
