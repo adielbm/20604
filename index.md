@@ -7,8 +7,7 @@ title: מודלים חישוביים (20604)
 
 ____
 
-בדף זה יהיו שאלות מהמעט מבחני עבר שהיו בקורס. ותשובות שכתבתי או שמצאתי בכל מיני מקומות. 
-בסוף העמוד יש עוד תרגילים שונים (חלקם מהמצגת של איגור) שחשבתי שהם מעניינים. כמובן יתכנו טעויות אז מוזמנים להעיר או להציע תיקונים ואשתדל לסדר.  <a href="https://github.com/adielBm/20604">https://github.com/adielBm/20604</a>
+בדף זה יהיו שאלות מהמעט מבחני עבר שהיו בקורס ועוד תרגילים שונים, ותשובות שכתבתי או שמצאתי. כהכנה למבחן שיתקיים ב- 24/07/2025. מוזמנים להעיר או להציע תיקונים והוספות שיעזרו לאחרים ואשתדל לסדר. <a href="https://github.com/adielBm/20604">https://github.com/adielBm/20604</a>  <img style="margin: 0; display: inline;" src="https://img.shields.io/github/last-commit/adielbm/20604" /> 
 
 ____
 
@@ -694,7 +693,8 @@ ___
 
 ## עוד שאלות
 
-https://youtube.com/playlist?list=PLUfHxBkkFMSfS0lvlpXPJCUcZOscZ-4E7&si=tih-kAQWqpWFGIef
+
+[https://youtube.com/playlist?list=PLUfHxBkkFMSfS0lvlpXPJCUcZOscZ-4E7](https://youtube.com/playlist?list=PLUfHxBkkFMSfS0lvlpXPJCUcZOscZ-4E7)
 
 
 - בנו DFA שמזהה את השפה מעל הא"ב הבינארי של המילים המכילות אות "1" לפחות פעם אחת, ומכילות אות "0" לכל היותר פעם אחת.
