@@ -858,7 +858,4 @@ ___
 
 דף שאני מכין לעצמי למבחן, אולי יעזור לאחרים. עדיין חלקי.
 
-<iframe src="cheatsheet/cheatsheet.pdf" width="100%" height="1200" style="border:none;">
-  This browser does not support PDFs. Please download the file:
-  <a href="cheatsheet/cheatsheet.pdf">Download PDF</a>.
-</iframe>
+  <a href="cheatsheet/cheatsheet.pdf">https://adielbm.github.io/20604/cheatsheet/cheatsheet.pdf</a>.
