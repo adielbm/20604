@@ -98,7 +98,8 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 			- $q_0 01$
 			- $xq_1 1$
 			- $q_2 x y$
-			- $xq_3 y$ 
+			- $xq_0 y$ 
+			- $x yq_3 \sqcup$  
 			- $xyq_{acc}\sqcup$ 
 
 # מועד 2024b-94
