@@ -9,6 +9,7 @@
 - $L\in {\text{DECIDABLE}} \iff \left(L\in {\text{REC.}} \text{ and } L\in{\text{co-REC.}} \right)$.
 - $L\in {\text{DECIDABLE}}\iff\exists\,\underset{ \textsf{TM} }{ M }\text{ decides }L$.
 - $L\in {\text{DECIDABLE}} \iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
+- $L\in {\text{DECIDABLE}} \iff L^{\mathcal{R}}\in {\text{DECIDABLE}}$.
 - (**decider**) TM that halts on all inputs. 
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. 
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is countable; $\Sigma^*$ is countable (for every finite $\Sigma$); $\{ \text{all languages} \}$ is uncountable; $\{ \text{all infinite binary sequences} \}$ is uncountable.
@@ -17,8 +18,8 @@
 - (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REGULAR}_{\textsf{TM}}=\{ M \text{ is a TM and }L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ M_1,M_2 \text{ are TMs and }L(M_1)=L(M_2)\}$
 - (**recognizable but undecidable**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$
 - (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle M\rangle \mid M \text{ is a }\textsf{DFA}{ },L(A)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid G \text{ is a \textsf{CFG} that generates }\varepsilon\}$, $\mathrm{INFINITE}_{\textsf{DFA}}$, $\mathrm{INFINITE}_{\textsf{PDA}}$
-- (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$, $\{a^p \mid p \text{ is prime}\}$
-- (**CFL but not REGULAR**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$
+- (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$, $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
+- (**CFL but not REGULAR**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$, $L=\{ a^n b^m : n \neq m\}$
 # (5) Mapping Reduction $\leq_{\text{m}}$  
 
 ![[g144.svg|80]]
@@ -86,3 +87,5 @@
 - $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
 - $L_1,L_2\in\text{DECIDABLE}$, and $L_1\subseteq L \subseteq L_2$, but $L\in \text{UNDECIDABLE}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
 - $L_1\in \text{REG}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
+- $L^*\in \text{REG}$, but $L\not\in \text{REG}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
+- $A \not\leq_m \overline{A}:\quad$ $A=A_{TM}\in \text{RECOGNIZABLE}$, $\overline{A}=\overline{A_{TM}}\not\in \text{RECOG.}$
