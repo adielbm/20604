@@ -3,23 +3,22 @@
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{accept}},q_{\text{reject}})$, where $\sqcup\in \Gamma$ (**blank**), $\sqcup\notin \Sigma$, $q_{\text{reject}}\neq q_{\text{accept}}$, and $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
 - (**recognizable**) accepts if $w\in L$, rejects/loops if $w\notin L$. 
 	- $L \text{ is recognizable}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
-	- Some languages are unrecognizable.
 	- $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
-	- Every inf. rec. lang. has an inf. dec. subset.
+- Every inf. recognizable lang. has an inf. dec. subset.
 - (**decidable**) accepts if $w\in L$, rejects if $w\notin L$.
-- $L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{DEC.}} }\Leftrightarrow \left(L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{REC.}} }\land L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{co-REC.}} }\right)\Leftrightarrow \exists\,\underset{ \textsf{TM} }{ M }\text{ decides }L$.
-- $L\in\overset{ \textsf{Turing} }{ \tiny{\textsf{DECIDABLE}} }\iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
+- $L\in {\text{DECIDABLE}} \iff \left(L\in {\text{REC.}} \text{ and } L\in{\text{co-REC.}} \right)$.
+- $L\in {\text{DECIDABLE}}\iff\exists\,\underset{ \textsf{TM} }{ M }\text{ decides }L$.
+- $L\in {\text{DECIDABLE}} \iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
 - (**decider**) TM that halts on all inputs. 
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. 
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is countable; $\Sigma^*$ is countable (for every finite $\Sigma$); $\{ \text{all languages} \}$ is uncountable; $\{ \text{all infinite binary sequences} \}$ is uncountable.
 - $\small\textsf{DFA}\equiv\textsf{NFA}\equiv\textsf{GNFA}\equiv\textsf{REG}\,\subset \,\textsf{NPDA}\equiv\textsf{CFG}\,\subset \,\textsf{DTM}\equiv\textsf{NTM}$
-# $\textsf{FINITE}\subset\textsf{REG}\subset \textsf{CFL} \subset \textsf{CSL} \subset \overset{ \textsf{Turing} }{ \tiny{\textsf{DECIDABLE}}} \subset \overset{ \textsf{Turing} }{ \tiny{\textsf{RECOGNIZABLE}} }$ 
+# $\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{DECIDABLE}} \subset  {\text{RECOGNIZABLE}}$ 
 - (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REGULAR}_{\textsf{TM}}=\{ M \text{ is a TM and }L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ M_1,M_2 \text{ are TMs and }L(M_1)=L(M_2)\}$
-- (**recognizable but undec.**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$
+- (**recognizable but undecidable**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$
 - (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle M\rangle \mid M \text{ is a }\textsf{DFA}{ },L(A)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid G \text{ is a \textsf{CFG} that generates }\varepsilon\}$, $\mathrm{INFINITE}_{\textsf{DFA}}$, $\mathrm{INFINITE}_{\textsf{PDA}}$
-- (**CFL but not REG**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$
-- (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{j^{2}}\mid j\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$
-
+- (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$, $\{a^p \mid p \text{ is prime}\}$
+- (**CFL but not REGULAR**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$
 # (5) Mapping Reduction $\leq_{\text{m}}$  
 
 ![[g144.svg|80]]
@@ -76,14 +75,14 @@
 
 # Counterexamples
 
-- $A\leq_{\text{m}} B$ and $B\in\mathsf{REG}$, but, $A\notin\mathsf{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
-- $L\in \textsf{CFL}$ but $\overline{L}\notin {\textsf{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
-- $L_1,L_2\in \textsf{CFL}$ but $L_1\cap L_2\notin \textsf{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
-- $L_1\in \textsf{CFL}$, $L_2$ is infinite, but $L_1\setminus L_2\notin \textsf{REG}:\quad$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \mid n \ge 0\}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
-- $L_1,L_2\in \textsf{REG}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:\quad$ $L_1=\{ \texttt{a},\texttt{b},\texttt{ab} \}$, $L_2=\{ \texttt{a},\texttt{b},\texttt{ba} \}$.
-- $L_1\in \textsf{REG}$, $L_2\not\in \textsf{REG}$, but, $L_1\cap L_2\in \textsf{REG}$, and $L_1\cup L_2\in \textsf{REG}:\quad$ $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
-- $L_1,L_2,L_3,\dots\in \textsf{REG}$, but, $\bigcup_{i=1}^{\infty} L_i\not\in \textsf{REG}:\quad$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
-- $L_1\cdot L_2\in \textsf{REG}$, but $L_1\not\in \textsf{REG}:\quad$ $L_1=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$, $L_2=\Sigma^*$.
-- $L_2\in\textsf{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \textsf{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
-- $L_1,L_2\in\textsf{DECIDABLE}$, and $L_1\subseteq L \subseteq L_2$, but $L\in \textsf{UNDECIDABLE}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
-- $L_1\in \textsf{REG}$, $L_2\not\in \textsf{CFL}$, but $L_1\cap L_2\in \textsf{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
+- $A\leq_{\text{m}} B$ and $B\in\text{REG}$, but, $A\notin \text{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
+- $L\in \text{CFL}$ but $\overline{L}\notin {\text{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
+- $L_1,L_2\in \text{CFL}$ but $L_1\cap L_2\notin \text{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
+- $L_1\in \text{CFL}$, $L_2$ is infinite, but $L_1\setminus L_2\notin \text{REG}:\quad$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \mid n \ge 0\}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
+- $L_1,L_2\in \text{REG}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:\quad$ $L_1=\{ \texttt{a},\texttt{b},\texttt{ab} \}$, $L_2=\{ \texttt{a},\texttt{b},\texttt{ba} \}$.
+- $L_1\in \text{REG}$, $L_2\not\in \text{REG}$, but, $L_1\cap L_2\in \text{REG}$, and $L_1\cup L_2\in \text{REG}:\quad$ $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1,L_2,L_3,\dots\in \text{REG}$, but, $\bigcup_{i=1}^{\infty} L_i\not\in \text{REG}:\quad$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1\cdot L_2\in \text{REG}$, but $L_1\not\in \text{REG}:\quad$ $L_1=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$, $L_2=\Sigma^*$.
+- $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
+- $L_1,L_2\in\text{DECIDABLE}$, and $L_1\subseteq L \subseteq L_2$, but $L\in \text{UNDECIDABLE}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
+- $L_1\in \text{REG}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
