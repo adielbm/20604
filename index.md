@@ -621,13 +621,20 @@ $\text{SET-PARTITION} = \{\langle x_1, \dots, x_n \rangle | \text{there is a set
 
 # מועד 2025a-a2
 
-https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/7MwVVTAa
+
+[https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/7MwVVTAa](https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/7MwVVTAa)
+
+
 # מועד 2025b-b
 
 
-https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/WdxhQBYA
 
-# מועד 2025b-66
+[https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/WdxhQBYA](https://mega.nz/folder/bZgRnQbJ#fBIkzvx7nLDUFMqGad6jOw/folder/WdxhQBYA)
+
+
+# מועד 2025b-a1
+
+ 2025b-66
 
 ## שאלה 1
 
