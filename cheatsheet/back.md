@@ -30,8 +30,8 @@
 - If $A\leq_{\text{m}}B$ and $B$ is recognizable, then $A$ is rec.
 - If $A\leq_{\text{m}}B$ and $A$ is unrecognizable, then $B$ is unrec.
 - (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
-- If $A$ is recognizable and $A\leq_{\text{m}}\overline{A}$, then $A$ is decidable.
-- $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$
+- $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
+- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{RECOGNIZABLE}$, then $A\in\text{DECIDABLE}$. 
 # (7) Complexity, Polytime Reduction $\leq_{\mathrm{P}}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
