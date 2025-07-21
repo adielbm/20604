@@ -54,6 +54,12 @@
 - If $B\in\text{NP-complete}$ and $C \in \mathrm{NP}$ s.t. $B\leq_{\mathrm{P}} C$, then $C\in\text{NP-complete}$.
 - If $\mathrm{P}=\mathrm{NP}$, then $\forall A\in \mathrm{P}\setminus\{\emptyset,\Sigma^*\},\,A\in \text{NP-complete}$.
 
+
+# Examples: $A\leq_{\mathrm{m}} B$ and $f:A\to B$ s.t. $w\in A \iff f(w)\in B$ and $f$ is computable
+
+- $A_{TM}\leq_{\text{m}} S_{TM}=\{ \langle M \rangle \mid w\in L(M) \iff w^{\mathcal{R}}\in L(M) \},\quad$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, reject; if $x=01$, return $M(x)$; if $x=10$, accept;" 
+- ${A_{TM}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \},\quad$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On x: if $x=w$ return $M(x)$; otherwise, reject;" and $D$ is DFA s.t. $L(D)=\{w\}$. 
+- $A\leq_{\text{m}} HALT_{\textsf{TM}},\quad$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop forever;"  
 # Examples:  $A\leq_{\mathrm{P}} B$ and $f:A\to B$ s.t. $w\in A \iff f(w)\in B$ and $f$ is polytime computable
 
 
