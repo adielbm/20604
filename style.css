@@ -2,6 +2,10 @@ html {
     background: #0046ff08;
 }
 
+table {
+    direction: ltr;
+}
+
 body {
     direction: rtl;
     font-family: sans-serif;

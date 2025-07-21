@@ -721,21 +721,21 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 - א. הוכיחו או הפריכו: יהיו $A$ ו- $B$ שפות הניתנות לזיהוי על ידי מכונת טיורינג. אזי $A \cup B$ גם ניתנת לזיהוי על ידי מ"ט.
 	- **תשובה:** עבור כל שתי שפות $A$ ו-$B$ הניתנות לזיהוי על ידי מ"ט, נסמן את מ"ט המזהות אותן כ-$M_1$ ו-$M_2$. נבנה מ"ט $M'$ שמזהה את האיחוד של $A$ ו-$B$:
-	- "On input $w$:
-		- Run $M_1$ and $M_2$ alternately on $w$ step by step.  
-			- If either accepts, _accept_.  
-			- If both halt and reject, _reject_."
-	- אם אחת מבין $M_1$ או $M_2$ מקבלת את $w$, אז $M'$ תקבל את $w$, כיוון שהמכונה שמקבלת מגיעה למצב מקבל לאחר מספר סופי של צעדים.  
+		- "On input $w$:
+			- Run $M_1$ and $M_2$ alternately on $w$ step by step.  
+				- If either accepts, _accept_.  
+				- If both halt and reject, _reject_."
+		- אם אחת מבין $M_1$ או $M_2$ מקבלת את $w$, אז $M'$ תקבל את $w$, כיוון שהמכונה שמקבלת מגיעה למצב מקבל לאחר מספר סופי של צעדים.  
 - ב. הוכיחו או הפריכו: יהיו $A$ ו- $B$ שפות הניתנות לזיהוי על ידי מכונת טיורינג. אזי $A \cap B$ גם ניתנת לזיהוי על ידי מ"ט.
 	- **תשובה:** עבור כל שתי שפות $A$ ו-$B$ הניתנות לזיהוי על ידי מ"ט, נסמן את מ"ט המזהות אותן כ-$M_1$ ו-$M_2$. נבנה מ"ט $M'$ שמזהה את החיתוך של $A$ ו-$B$:
-	- "On input $w$:
-		1. Run $M_1$ on $w$.  
-			- If it halts and rejects, _reject_.  
-			- If it accepts, go to stage 2.  
-		2. Run $M_2$ on $w$.  
-			- If it halts and rejects, _reject_.  
-			- If it accepts, _accept_."
-	- אם גם $M_1$ וגם $M_2$ מקבלות את $w$, הרי ש-$w \in A \cap B$ ולכן $M'$ תקבל את $w$ לאחר מספר סופי של צעדים.
+		- "On input $w$:
+			1. Run $M_1$ on $w$.  
+				- If it halts and rejects, _reject_.  
+				- If it accepts, go to stage 2.  
+			2. Run $M_2$ on $w$.  
+				- If it halts and rejects, _reject_.  
+				- If it accepts, _accept_."
+		- אם גם $M_1$ וגם $M_2$ מקבלות את $w$, הרי ש-$w \in A \cap B$ ולכן $M'$ תקבל את $w$ לאחר מספר סופי של צעדים.
 - ג. נתונה מ"ט הבאה. רשמו את סדרת הקונפיגורציות שלה על הקלט $0\# 0$, כאשר כל המעברים שאינם מצויירים הולכים למצב דוחה.
 	- $Q=\{q_0,q_1,\ldots, q_8,q_{accept},q_{reject}\}$, $\Sigma=\{0,1,\#\}$, $\Gamma=\{0,1,\#,x,\sqcup\}$ ![](images/img13.png)
 	- **תשובה:** 
