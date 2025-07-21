@@ -850,6 +850,11 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 - א. האם השפה הבאה ניתנת להכרעה? הוכיחו. 
 	- $\small L=\{ \langle M, k \rangle \mid M \text{ is a TM, } k \text{ is a positive number, and there exists an input to M that makes M run for at least k steps} \}$ 
 	- **תשובה:** 
+		- "On input $\langle M, k \rangle$ where $M$ is a TM and $k$ is a positive number:
+			- For all strings $w_i$ where $|w_i|\leq k+1$:
+				- Run $M$ on $w_i$ for $k$ steps.
+					- If $M$ does not terminate within $k$ steps, then _accept_.
+				- If we're finished enumerating and $M$ terminated within $k$ steps every time, then _reject_."
 - ב. האם השפה הבאה ניתנת להכרעה? הוכיחו. $\text{SAT}=\{ \langle \phi \rangle : \phi \text{ is a Boolean formula with satisfying assignment} \}$  
 	- **תשובה:**
 
@@ -916,7 +921,12 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 ## שאלה 4
 
 - א. הוכיחו שאם שפה $A$ ניתנת להכרעה אז קיימת רדוקציית מיפוי כזו: $A\leq_{\text{m}} a^* b^*$.
-	- **תשובה:** תרגיל 5.23 בספר לימוד
+	- **תשובה:** מאחר ש- $A$ ניתנת להכרעה, אז יש מ"ט $M$ שמכריעה את $A$. 
+		- $F=$ "On input $w$: 
+			- Test whether $w \in A$ using $M$.
+			- If $w\in A$, then output $\texttt{01}$
+			- If $w\notin A$, then output $\texttt{10}$."
+		- אם כן $w\in A \iff F(w) \in L( a^* b^*)$.
 - ב. הוכיחו או הפריכו: אם $A\leq_{\text{m}} B$ אז $B\leq_{\text{m}} A$.
 	- הטענה אינה נכונה. דוגמה נגדית:
 		- ניקח את השפה $A=\{ 0 \}$, שהיא כריעה, ו- $B=HALT_{\text{TM}}$ שאינה כריעה. 
@@ -1027,7 +1037,6 @@ ___
 		    * אם $w$ שייכת לאיחוד השפות, אז היא שייכת או ל-$L_1$ או ל-$L_2$ ואז $M_3$ יקבל $w$ כאשר תריץ $M_1$ או $M_2$. $M_1, M_2$ מכריעות ולכן תמיד עוצרות ולכן גם $M_3$ תמיד עוצרת.
 		    * המ"ט $M_3$ מקבלת $w$ אם"ם היא שייכת לאיחוד השפות. 
 		    * סיבוכיות זמן ריצה: $O(n^{k_1}) + O(n^{k_2}) = O(n^{\max(k_1, k_2)})$ - פולינומיאלית.
-
 
 ## נכון / לא נכון
 

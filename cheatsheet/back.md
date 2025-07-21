@@ -2,7 +2,7 @@
 
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{accept}},q_{\text{reject}})$, where $\sqcup\in \Gamma$ (**blank**), $\sqcup\notin \Sigma$, $q_{\text{reject}}\neq q_{\text{accept}}$, and $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
 - (**recognizable**) accepts if $w\in L$, rejects/loops if $w\notin L$. 
-	- $L \text{ is recognizable}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
+	- $L \in\text{RECOGNIZABLE}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
 	- $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
 - Every inf. recognizable lang. has an inf. dec. subset.
 - (**decidable**) accepts if $w\in L$, rejects if $w\notin L$.
