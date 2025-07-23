@@ -18,13 +18,16 @@
 - (**DFA $\rightsquigarrow$ GNFA**) $G=(Q',\Sigma,\delta',s,a),\quad$ $Q'=Q\cup\{s,a\},\quad$ $\delta'(s,\varepsilon)=q_{0},\quad$ For each $q\in F$, $\delta'(q,\varepsilon)=a,\quad$ ((TODO...))
 - Every NFA can be converted to an equivalent one that has a single accept state.
 - (**reg. grammar**) $G=(V,\Sigma,R,S)$. Rules: $A\to aB$, $A\to a$ or $S\to \varepsilon$. ($A,B,S\in V$; $a\in \Sigma$).
-- (**NFA $\rightsquigarrow$ DFA**) ![[nfa-to-dfa.svg]]
+- (**NFA $\rightsquigarrow$ DFA**)
 	- $N=(Q,\Sigma,\delta,q_{0},F)$
 	- $D=(Q'=\mathcal{P}(Q),\Sigma,\delta',q'_{0}=E(\{q_{0}\}),F')$
 	- $F'=\{ q\in Q' \mid \exists p\in F:p\in q \}$
 	- $E(\{q\}):=\{ q \}\cup\{ \text{states reachable from }q\text{ via }\varepsilon \text{-arrows} \}$
 	- $\displaystyle\forall R\,\subseteq Q, \forall a\in\Sigma, \delta'(R, a) = E\left( \bigcup_{r \in R} \delta(r, a) \right)$
 - $L(\varepsilon \cup \texttt{0}\Sigma^*\texttt{0} \cup \texttt{1}\Sigma^*\texttt{1})=\{ w\mid \#_{w}(\texttt{01})=\#_{w}(\texttt{10}) \},$ 
+
+# Regular Expressions 
+
 - $L=\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
 - $L=\{ w\in\Sigma^* : \#_w(\texttt{0})\geq 2 \land \#_w(\texttt{1})\leq 1\}\equiv ((0\cup 1)^* 0 (0\cup 1)^* 0(0\cup 1)^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 
