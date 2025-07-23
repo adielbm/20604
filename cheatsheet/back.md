@@ -35,6 +35,7 @@
 - $A\leq_{\text{m}} HALT_{\textsf{TM}},\quad$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop forever;"  
 - $A_{TM}\leq_{\text{m}} CF_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \},\quad$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, accept; otherwise, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \},\quad$ $f(w)=0w$.
+- $E_{\text{TM}} \leq_{\text{m}} \text{USELESS}_{\text{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{accept}} \rangle$
 
 # Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
 
@@ -63,12 +64,13 @@
 - $\text{HAM-PATH}\leq_{\text{P}}\text{2HAM-PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, where $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
 - $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} }$
 	- $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
+- $\text{UHAMPATH} \leq_{\text{P}} \text{PATH}_{\geq k};\quad$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)| - 1 \rangle$
 - $\text{CLIQUE} \leq_{\mathrm{P}} \text{INDEPENDENT-SET}$     
 - $\text{SET-COVER}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
 - $\text{3SAT} \leq_{\mathrm{P}} \text{SET-SPLITTING}$          
 - $\text{INDEPENDENT-SET}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
 - $\text{VERTEX-COVER}\leq_{\text{p}}\text{CLIQUE}$           
-- $\underset{ \text{length } \geq k }{ \text{SimplePATH} }\leq_{\mathrm{P}}\text{UHAMATH}$
+
 # Counterexamples
 
 - $A\leq_{\text{m}} B$ and $B\in\text{REG}$, but, $A\notin \text{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
