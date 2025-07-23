@@ -12,6 +12,14 @@
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. 
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is countable; $\Sigma^*$ is countable (for every finite $\Sigma$); $\{ \text{all languages} \}$ is uncountable; $\{ \text{all infinite binary sequences} \}$ is uncountable.
 - $\small\textsf{DFA}\equiv\textsf{NFA}\equiv\textsf{GNFA}\equiv\textsf{REG}\,\subset \,\textsf{NPDA}\equiv\textsf{CFG}\,\subset \,\textsf{DTM}\equiv\textsf{NTM}$
+- $f:\Sigma^*\to\Sigma^*$ is **computable** if $\exists M_{\textsf{TM}}:\forall w\in \Sigma^*$, $M$ halts on $w$ and outputs $f(w)$ on its tape.
+- If $A\leq_{\text{m}}B$ and $B$ is decidable, then $A$ is dec.
+- If $A\leq_{\text{m}}B$ and $A$ is undecidable, then $B$ is undec.
+- If $A\leq_{\text{m}}B$ and $B$ is recognizable, then $A$ is rec.
+- If $A\leq_{\text{m}}B$ and $A$ is unrecognizable, then $B$ is unrec.
+- (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
+- $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
+- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{RECOGNIZABLE}$, then $A\in\text{DEC.}$  
 # $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{DECIDABLE}} \subset  {\text{RECOGNIZABLE}}$ 
 
 - (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REGULAR}_{\textsf{TM}}=\{ M \text{ is a TM and }L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ M_1,M_2 \text{ are TMs and }L(M_1)=L(M_2)\}$, $ALL_{\textsf{CFG}}$, $EQ_{\text{CFG}}$
@@ -21,45 +29,36 @@
 - (**CFL but not REGULAR**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$, $L=\{ a^n b^m : n \neq m\}$
 # Mapping Reduction: $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
 
-![[g144.svg|60]]
-- $f:\Sigma^*\to\Sigma^*$ is **computable** if there exists a TM $M$ s.t. for every $w\in \Sigma^*$, $M$ halts on $w$ and outputs $f(w)$ on its tape.
-- If $A\leq_{\text{m}}B$ and $B$ is decidable, then $A$ is dec.
-- If $A\leq_{\text{m}}B$ and $A$ is undecidable, then $B$ is undec.
-- If $A\leq_{\text{m}}B$ and $B$ is recognizable, then $A$ is rec.
-- If $A\leq_{\text{m}}B$ and $A$ is unrecognizable, then $B$ is unrec.
-- (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
-- $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
-- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{RECOGNIZABLE}$, then $A\in\text{DEC.}$  $$\textbf{EXAMPLES}$$ 
-- $A_{TM}\leq_{\text{m}} S_{TM}=\{ \langle M \rangle \mid w\in L(M) \iff w^{\mathcal{R}}\in L(M) \},\quad$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, reject; if $x=01$, return $M(x)$; if $x=10$, accept;" 
-- ${A_{TM}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \},\quad$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On x: if $x=w$ return $M(x)$; otherwise, reject;" and $D$ is DFA s.t. $L(D)=\{w\}$. 
-- $A\leq_{\text{m}} HALT_{\textsf{TM}},\quad$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop forever;"  
-- $A_{TM}\leq_{\text{m}} CF_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \},\quad$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, accept; otherwise, return $M(w)$;" 
-- $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \},\quad$ $f(w)=0w$.
+- $A_{TM}\leq_{\text{m}} S_{TM}=\{ \langle M \rangle \mid w\in L(M) \iff w^{\mathcal{R}}\in L(M) \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, reject; if $x=01$, return $M(x)$; if $x=10$, accept;" 
+- ${A_{TM}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \};$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On $x$: if $x=w$ return $M(x)$; otherwise, reject;" $D$ is DFA s.t. $L(D)=\{w\}.$ 
+- $A\leq_{\text{m}} HALT_{\textsf{TM}};$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop;"  
+- $A_{TM}\leq_{\text{m}} CF_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, accept; otherwise, return $M(w)$;" 
+- $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \};$ $f(w)=0w$.
 - $E_{\text{TM}} \leq_{\text{m}} \text{USELESS}_{\text{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{accept}} \rangle$
-- $A_{\text{TM}} \leq_{\text{m}} EQ_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Accept everything"; $M_2=$"On $x$: return $M(w)$;" 
-- $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Reject everything"; $M_2=$"On $x$: return $M(w)$;"
-- $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, where $L(H)=\Sigma^*.$
-- $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in more than }|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; otherwise, loop"
-# Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
+- $A_{\text{TM}} \leq_{\text{m}} EQ_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Accept all"; $M_2=$"On $x$: return $M(w)$;" 
+- $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Reject all"; $M_2=$"On $x$: return $M(w)$;"
+- $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
+- $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; otherwise, loop"
+
+# $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k).\quad\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}.\quad\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
 - $\mathsf{TIME}(t(n))=\set{L \mid L \text{ is dec. by }O(t(n))\text{ DTM}}$.
 - $\mathsf{NTIME}(t(n))=\set{L \mid L \text{ is dec. by }O(t(n))\text{ NTM}}$.
-- $\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)$
 - (**verifier** for $L$) TM $V$ s.t. $L=\{w\mid \exists c : V(\langle w,c\rangle)=\textsf{accept} \}$.
 	- (**certificate** for $w\in L$) str. $c$ s.t. $V(\langle w,c\rangle)=\textsf{accept}$.
-- $\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)$
-- $\textbf{NP}=\set{L \mid L \text{ is decidable by a PT verifier}}$.
 - $\mathrm{P}\subseteq\mathrm{NP}$.
 - $f:\Sigma^*\to\Sigma^*$ is **PT computable** if there exists a PT TM $M$ s.t. for every $w\in\Sigma^*$, $M$ halts with $f(w)$ on its tape.
 - If $A\leq_{\mathrm{P}} B$ and $B\in\mathrm{P}$, then $A\in\mathrm{P}$.
 - If $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$, then $A$ and $B$ are **PT equivalent**, denoted $A\equiv_P B.\quad$ $\equiv_P$ is an equivalence relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equivalence class of $\equiv_P$.
-- $\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.$
 - $\text{CLIQUE}$, $\text{SUBSET-SUM}$, $\text{SAT}$, $\text{3SAT}$, $\text{VERTEX-COVER}$, $\text{HAMPATH}$, $\text{UHAMATH}$, $3COLOR\in\text{NP-complete}$.
 - $\emptyset,\Sigma^*\notin\text{NP-complete}$. 
 - If $B\in\text{NP-complete}$ and $B\in\mathrm{P}$, then $\mathrm{P}=\mathrm{NP}$.
 - If $B\in\text{NP-complete}$ and $C \in \mathrm{NP}$ s.t. $B\leq_{\mathrm{P}} C$, then $C\in\text{NP-complete}$.
-- If $\mathrm{P}=\mathrm{NP}$, then $\forall A\in \mathrm{P}\setminus\{\emptyset,\Sigma^*\},\,A\in \text{NP-complete}$. $$\textbf{EXAMPLES}$$
+- If $\mathrm{P}=\mathrm{NP}$, then $\forall A\in \mathrm{P}\setminus\{\emptyset,\Sigma^*\},\,A\in \text{NP-complete}$. 
+
+# Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
+
 - $\text{SAT} \leq_{\mathrm{P}} \text{DOUBLE-SAT};\quad$ $f(\phi) = \phi \land (x \lor \neg x)$
 - $\text{SUBSET-SUM} \leq_{\mathrm{P}} \text{SET-PARTITION};\quad$ $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
 - $3COLOR \leq_{\mathrm{P}} 3COLOR_{almost};\quad$ $f(\langle G \rangle) = \langle G' \rangle$, where $G'=G\cup K_4$
