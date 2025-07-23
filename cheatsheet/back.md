@@ -66,13 +66,13 @@
 - $\text{VERTEX-COVER} \leq_{\mathrm{P}} \text{WVC};\quad$ $f(\langle G,k\rangle)= (G,w,k)$, $\forall v\in V(G), w(v)=1$
 - $\text{HAM-PATH}\leq_{\text{P}}\text{2HAM-PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, where $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
 - $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} };\quad$ $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
-- $\text{UHAMPATH} \leq_{\text{P}} \text{PATH}_{\geq k};\quad$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)| \rangle$
+- $\text{UHAMPATH} \leq_{\text{P}} \text{PATH}_{\geq k};\quad$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)|-1 \rangle$
+- $\text{VERTEX-COVER}\leq_{\text{p}}\text{CLIQUE};\quad$ $f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
+- $\text{CLIQUE}_{k} \leq_{\mathrm{P}}\{ \langle G, t\rangle : G \text{ has a }2t\text{-clique} \};\quad$ $f(\langle G, k \rangle) = \langle G', t = k/2 \rangle$
 - $\text{CLIQUE} \leq_{\mathrm{P}} \text{INDEPENDENT-SET}$     
 - $\text{SET-COVER}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
 - $\text{3SAT} \leq_{\mathrm{P}} \text{SET-SPLITTING}$          
 - $\text{INDEPENDENT-SET}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
-- $\text{VERTEX-COVER}\leq_{\text{p}}\text{CLIQUE}$           
-
 # Counterexamples
 
 - $A\leq_{\text{m}} B$ and $B\in\text{REG}$, but, $A\notin \text{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
