@@ -14,8 +14,8 @@
 - $\small\textsf{DFA}\equiv\textsf{NFA}\equiv\textsf{GNFA}\equiv\textsf{REG}\,\subset \,\textsf{NPDA}\equiv\textsf{CFG}\,\subset \,\textsf{DTM}\equiv\textsf{NTM}$
 # $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{DECIDABLE}} \subset  {\text{RECOGNIZABLE}}$ 
 
-- (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REGULAR}_{\textsf{TM}}=\{ M \text{ is a TM and }L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ M_1,M_2 \text{ are TMs and }L(M_1)=L(M_2)\}$
-- (**recognizable but undecidable**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$
+- (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REGULAR}_{\textsf{TM}}=\{ M \text{ is a TM and }L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ M_1,M_2 \text{ are TMs and }L(M_1)=L(M_2)\}$, $ALL_{\textsf{CFG}}$, $EQ_{\text{CFG}}$
+- (**recognizable but undecidable**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M \text{ is a TM halts on } w\}$, $D=\{ p \mid p \text{ is an int. poly. with an int. root} \}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, 
 - (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle M\rangle \mid M \text{ is a }\textsf{DFA}{ },L(A)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid G \text{ is a \textsf{CFG} that generates }\varepsilon\}$, $\mathrm{INFINITE}_{\textsf{DFA}}$, $\mathrm{INFINITE}_{\textsf{PDA}}$
 - (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$, $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
 - (**CFL but not REGULAR**) $\{w\in \{a,b\}^* \mid w=w^\mathcal{R}\},$ $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\},$ $\{a^n b^n \mid n\in \mathbb{N}\},\{w\in \{\texttt{a},\texttt{b}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)\}$, $L=\{ a^n b^m : n \neq m\}$
@@ -29,13 +29,16 @@
 - If $A\leq_{\text{m}}B$ and $A$ is unrecognizable, then $B$ is unrec.
 - (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
 - $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
-- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{RECOGNIZABLE}$, then $A\in\text{DECIDABLE}$.  $$\textbf{EXAMPLES}$$ 
+- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{RECOGNIZABLE}$, then $A\in\text{DEC.}$  $$\textbf{EXAMPLES}$$ 
 - $A_{TM}\leq_{\text{m}} S_{TM}=\{ \langle M \rangle \mid w\in L(M) \iff w^{\mathcal{R}}\in L(M) \},\quad$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, reject; if $x=01$, return $M(x)$; if $x=10$, accept;" 
 - ${A_{TM}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \},\quad$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On x: if $x=w$ return $M(x)$; otherwise, reject;" and $D$ is DFA s.t. $L(D)=\{w\}$. 
 - $A\leq_{\text{m}} HALT_{\textsf{TM}},\quad$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop forever;"  
 - $A_{TM}\leq_{\text{m}} CF_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \},\quad$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, accept; otherwise, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \},\quad$ $f(w)=0w$.
 - $E_{\text{TM}} \leq_{\text{m}} \text{USELESS}_{\text{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{accept}} \rangle$
+- $A_{\text{TM}} \leq_{\text{m}} EQ_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Accept everything"; $M_2=$"On $x$: return $M(w)$;" 
+- $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Reject everything"; $M_2=$"On $x$: return $M(w)$;"
+- $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, where $L(H)=\Sigma^*.$
 
 # Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
 
@@ -62,9 +65,8 @@
 - $3COLOR \leq_{\mathrm{P}} 3COLOR_{almost};\quad$ $f(\langle G \rangle) = \langle G' \rangle$, where $G'=G\cup K_4$
 - $\text{VERTEX-COVER} \leq_{\mathrm{P}} \text{WVC};\quad$ $f(\langle G,k\rangle)= (G,w,k)$, $\forall v\in V(G), w(v)=1$
 - $\text{HAM-PATH}\leq_{\text{P}}\text{2HAM-PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, where $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
-- $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} }$
-	- $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
-- $\text{UHAMPATH} \leq_{\text{P}} \text{PATH}_{\geq k};\quad$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)| - 1 \rangle$
+- $\underset{ \text{undir. }G \text{ has }k\text{-clique} }{ \text{CLIQUE} } \leq_{\mathrm{P}} \underset{ \text{undir. }G\text{ has }\vert{V}\vert/2\text{-clique} }{ \text{HALF-CLIQUE} };\quad$ $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
+- $\text{UHAMPATH} \leq_{\text{P}} \text{PATH}_{\geq k};\quad$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)| \rangle$
 - $\text{CLIQUE} \leq_{\mathrm{P}} \text{INDEPENDENT-SET}$     
 - $\text{SET-COVER}\leq_{\mathrm{P}} \text{VERTEX-COVER}$ 
 - $\text{3SAT} \leq_{\mathrm{P}} \text{SET-SPLITTING}$          

@@ -7,9 +7,9 @@
 | $\overline{L}$     | ✓                       | ✓            | **no**       | ✓                    | **no**               | ✓          | $?$         | $?$          |
 | $L_{1}\cdot L_{2}$ | **no**                  | ✓            | ✓            | ✓                    | ✓                    | ✓          | ✓           | **no**       |
 | $L^*$              | **no**                  | ✓            | ✓            | ✓                    | ✓                    | ✓          | ✓           | **no**       |
-| $L^\mathcal{R}$    |                         | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
-| $L\cap R$          |                         | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
-| $L_1\setminus L_2$ |                         | ✓            | **no**       | ✓                    | **no**               | ✓          | $?$         |              |
+| $L^\mathcal{R}$    | ✓                       | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
+| $L_1\setminus L_2$ | **no**                  | ✓            | **no**       | ✓                    | **no**               | ✓          | $?$         |              |
+| $L\cap R$          | **no**                  | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
 
 - (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q$
 - (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q)$
@@ -25,9 +25,6 @@
 	- $E(\{q\}):=\{ q \}\cup\{ \text{states reachable from }q\text{ via }\varepsilon \text{-arrows} \}$
 	- $\displaystyle\forall R\,\subseteq Q, \forall a\in\Sigma, \delta'(R, a) = E\left( \bigcup_{r \in R} \delta(r, a) \right)$
 - $L(\varepsilon \cup \texttt{0}\Sigma^*\texttt{0} \cup \texttt{1}\Sigma^*\texttt{1})=\{ w\mid \#_{w}(\texttt{01})=\#_{w}(\texttt{10}) \},$ 
-
-# Regular Expressions 
-
 - $L=\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
 - $L=\{ w\in\Sigma^* : \#_w(\texttt{0})\geq 2 \land \#_w(\texttt{1})\leq 1\}\equiv ((0\cup 1)^* 0 (0\cup 1)^* 0(0\cup 1)^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 
