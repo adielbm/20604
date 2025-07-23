@@ -39,7 +39,7 @@
 - $A_{\text{TM}} \leq_{\text{m}} EQ_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Accept everything"; $M_2=$"On $x$: return $M(w)$;" 
 - $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Reject everything"; $M_2=$"On $x$: return $M(w)$;"
 - $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, where $L(H)=\Sigma^*.$
-
+- $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in more than }|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; otherwise, loop"
 # Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).

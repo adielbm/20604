@@ -25,11 +25,9 @@
 	- $E(\{q\}):=\{ q \}\cup\{ \text{states reachable from }q\text{ via }\varepsilon \text{-arrows} \}$
 	- $\displaystyle\forall R\,\subseteq Q, \forall a\in\Sigma, \delta'(R, a) = E\left( \bigcup_{r \in R} \delta(r, a) \right)$
 - $L(\varepsilon \cup \texttt{0}\Sigma^*\texttt{0} \cup \texttt{1}\Sigma^*\texttt{1})=\{ w\mid \#_{w}(\texttt{01})=\#_{w}(\texttt{10}) \},$ 
-
-# Regular Expressions 
-
-- $L=\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
-- $L=\{ w\in\Sigma^* : \#_w(\texttt{0})\geq 2 \land \#_w(\texttt{1})\leq 1\}\equiv ((0\cup 1)^* 0 (0\cup 1)^* 0(0\cup 1)^*) \cup (0^*(\varepsilon \cup 1)0^*)$
+- Regular Expressions Examples: 
+	- $L=\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
+	- $L=\{ w\in\Sigma^* : \#_w(\texttt{0})\geq 2 \land \#_w(\texttt{1})\leq 1\}\equiv$ $((0\cup 1)^* 0 (0\cup 1)^* 0(0\cup 1)^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 
 # PL: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
