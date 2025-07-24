@@ -39,7 +39,7 @@
 - $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"Reject all"; $M_2=$"On $x$: return $M(w)$;"
 - $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
 - $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; otherwise, loop"
-
+- $A_{\text{TM}} \leq_{\text{m}}\{ \langle M \rangle \mid M \text{ is TM, } |L(M)|=1 \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x=x_0$, return $M(w)$; otherwise, reject;" (where $x_0\in \Sigma^*$ is fixed). 
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k).\quad\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}.\quad\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
