@@ -8,7 +8,7 @@ description: מאגר מבחנים
 
 ____
 
-בדף זה יהיו שאלות מהמעט מבחני עבר שהיו בקורס ועוד תרגילים שונים, ותשובות שכתבתי או שמצאתי. כהכנה למבחן שיתקיים ב- 24/07/2025. מוזמנים להעיר או להציע תיקונים והוספות שיעזרו לאחרים ואשתדל לסדר. <a href="https://github.com/adielBm/20604">https://github.com/adielBm/20604</a>  <img style="margin: 0; display: inline;" src="https://img.shields.io/github/last-commit/adielbm/20604" /> 
+בדף זה יהיו שאלות מהמעט מבחני עבר שהיו בקורס ועוד תרגילים שונים, ותשובות שכתבתי או שמצאתי. מוזמנים להעיר או להציע תיקונים והוספות שיעזרו לאחרים ואשתדל לסדר. <a href="https://github.com/adielBm/20604">https://github.com/adielBm/20604</a>  <img style="margin: 0; display: inline;" src="https://img.shields.io/github/last-commit/adielbm/20604" /> 
 
 ____
 
@@ -860,9 +860,8 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 
 
-# מועד 2025b-a1
+# מועד 2025b-66
 
- 2025b-66
 
 ## שאלה 1
 
@@ -959,9 +958,85 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 
 
+# מועד 2025b-81
+
+היה אמור להתקיים ב- 24.06. בסוף התקיים ב- 24.07.
+
+
+## שאלה 1
+
+- א. האם השפה הבאה מעל הא"ב $\{0,1\}$ רגולרית? אם כן הוכיחו בעזרת בניית DFA.
+	- $L=\{ 0^m 1^n \mid m,n\geq 0 \text{ and } m+n \text{ is odd }\}$ 
+	- **תשובה:** השפה רגולרית. נבנה DFA: 
+		- ![](img16.png)
+		- 
+- ב. הפכו את ה- DFA הבא לביטוי רגולרי על ידי שימוש באלגוריתם שלמדנו לפי השלבים הבאים:
+	- הפכו את ה- DFA ל-GNFA.
+	- סלקו את מצב 1.
+	- סלקו את מצב 2.
+	- סלקו את מצב 3.
+	- ![](img15.png)
+	- **תשובה:** 
+- ג. האם השפה הבאה רגולרית? הוכיחו או הפריכו. שפת כל המילים מעל הא"ב $\{0,1\}$ שמתחילות ומסתיימות באותה האות.
+	- **תשובה:** השפה רגולרית. ב"ר: $0\cup 1\cup 0(0\cup 1)^*0  \cup 1(0\cup 1)^*1$.
+
+
+
+## שאלה 2
+
+- א. האם השפה הבאה היא חסרת הקשר? הוכיחו או הפריכו. $L=\{ a^m b^n : m \leq n \leq 3m\}$.
+	- **תשובה:** 
+- ב. מהי השפה של הדקדוק הבא? האם היא רגולרית? תנו הסבר קצר.
+	- $G=(V,\Sigma,R, S)$
+		- $V=\{S,B\}$
+		- $\Sigma=\{a,b\}$
+		- $S$ - start variable 
+		- $S\to aBa$
+		- $B\to BB\mid b \mid \varepsilon$
+	- **תשובה:** 
+- ג. בנו PDA (אוטומט מחסנית) עבור השפה הבאה:
+	- $\Sigma =\{a,b,c,d\}$ 
+	- $L=\{ cw\mid w\in \{a,b\}^*, w=w^{\mathcal{R}} \}\cup \{ dw \mid w\in \{a,b\}^* \}$
+	- **תשובה:** 
+
+
+## שאלה 3
+
+- א. האם השפה 4SAT היא שפה NP-שלמה. הוכיחו או הפריכו. 
+	- נזכיר שב- 4SAT כל מ=פסוק מורכב מפסוקיות שצורתן $(x_1\lor x_2\lor x_3\lor x_4)$, כלומר כל פסוקית היא איחוד של 4 ליטרלים (שיכולים להיות משתנים או שלילתם) ופסוק בשפה הוא גם הקוניונקציה של מספר סופי של פסוקיות כאלה (כלומר, חיבור שלהן באמצעות $\land$, "וגם"). 
+	- **תשובה:** 
+- ב. יהי $G=(V,E)$ גרף לא מכוון. קבוצת קודקודים $S$ נקראת כמעט-קליקה אם אפשר להוסיף לכל היותר צלע אחת בין שני קודקודים של $S$ ובכך להפוך אותה $S$ לקליקה. 
+	- הוכיחו שהשפה הבאה היא NP שלמה. $L=\{ \langle G, t \rangle \mid G \text{ is a graph that has a } t \text{-almost-clique} \}$.
+	- **תשובה:** 
+
+
+## שאלה 4 
+
+- א. הוכיחו שהשפה הבאה כריעה.
+- $L = \{⟨M,k⟩ \mid$ $M$ is a TM, $k$ is a positive integer, and there exists an input to $M$ that makes $M$ run for at least $k$ steps $\}$
+	- **תשובה:** נבנה מ"ט שמכריע את השפה $L$.
+		- "On input $⟨M,k⟩$ where $M$ is a TM and $k$ is a positive integer:
+			- For all strings $w_i$ where $|w_i|\leq k+1$:
+				- Run $M$ on $w_i$ for $k$ steps.
+					- If $M$ does not terminate within $k$ steps, then _accept_.
+				- If we're finished enumerating and $M$ terminated within $k$ steps every time, then _reject_."
+- ב. האם השפה הבאה ניתנת להכרעה? 
+- $\{⟨R⟩\mid R$ is a regular expression describing a language containing at least one string $w$ that has $111$ as a substring $\}$
+	- **תשובה:** (תרגיל 4.16 מהספר).
+		- כן, השפה ניתנת להכרעה. נבנה מ"ט שתכריע אותה.
+			- "On input $⟨R⟩$ where $R$ is a regular expression:
+				- Construct DFA $E$ that accepts $\Sigma^* 111 \Sigma^*$.
+				- Construct DFA $B$ s.t. $L(B)=L(R)\cap L(E)$. 
+				- Run TM $T$ on $\langle B \rangle$, where $T$ decides $E_{\textsf{DFA}}$.
+				- If $T$ accepts, then _reject_. If $T$ rejects, then _accept_."
+
 ___
 
+
+
 # תרגילים 
+
+https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
 
 ## פרק 4
 
