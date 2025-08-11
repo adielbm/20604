@@ -1,57 +1,51 @@
 name: Deploy Pandoc Site
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Install Pandoc
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
-
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-
+          node-version: '18'
+      - name: Install Node.js dependencies
+        run: |
+          npm install
       - name: Generate HTML with Pandoc
         run: |
           pandoc index.md \
             -o index-tmp.html \
             --template=template.html \
-            --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
+            --mathjax \
             --resource-path=.:images
-
-      - name: Run preRenderMath script
-        run: node preRenderMath.js
-
+      - name: Pre-render math
+        run: |
+          node preRenderMath.js
       - name: Collect static assets into public/
         run: |
           mkdir public
-          cp index.html public/   # assuming preRenderMath.js outputs final index.html
+          cp index.html public/
           cp style.css public/
           cp script.js public/
           cp -R cheatsheet public/
           cp -R images public/
-
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public/
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
