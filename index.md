@@ -968,24 +968,24 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 - א. האם השפה הבאה מעל הא"ב $\{0,1\}$ רגולרית? אם כן הוכיחו בעזרת בניית DFA.
 	- $L=\{ 0^m 1^n \mid m,n\geq 0 \text{ and } m+n \text{ is odd }\}$ 
 	- **תשובה:** השפה רגולרית. נבנה DFA: 
-		- ![](img16.png)
+		- ![](images/img16.png)
 		- 
 - ב. הפכו את ה- DFA הבא לביטוי רגולרי על ידי שימוש באלגוריתם שלמדנו לפי השלבים הבאים:
 	- הפכו את ה- DFA ל-GNFA.
 	- סלקו את מצב 1.
 	- סלקו את מצב 2.
 	- סלקו את מצב 3.
-	- ![](img15.png)
-	- **תשובה:** 
+	- ![](images/img15.png)
+	- **תשובה:** (תרגיל 1.21b בספר).
+		- מקור פתרון: <small>https://people.engr.tamu.edu/j-chen3/courses/627/2022/assignment/Solution2.pdf</small> ![](images/img17.png)
 - ג. האם השפה הבאה רגולרית? הוכיחו או הפריכו. שפת כל המילים מעל הא"ב $\{0,1\}$ שמתחילות ומסתיימות באותה האות.
 	- **תשובה:** השפה רגולרית. ב"ר: $0\cup 1\cup 0(0\cup 1)^*0  \cup 1(0\cup 1)^*1$.
-
-
 
 ## שאלה 2
 
 - א. האם השפה הבאה היא חסרת הקשר? הוכיחו או הפריכו. $L=\{ a^m b^n : m \leq n \leq 3m\}$.
-	- **תשובה:** 
+	- **תשובה:** השפה חסרת הקשר. דקדוק חסר הקשר:
+		- $S\to aSb \mid aSbb \mid aSbbb \mid \varepsilon$ 
 - ב. מהי השפה של הדקדוק הבא? האם היא רגולרית? תנו הסבר קצר.
 	- $G=(V,\Sigma,R, S)$
 		- $V=\{S,B\}$
@@ -993,27 +993,36 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 		- $S$ - start variable 
 		- $S\to aBa$
 		- $B\to BB\mid b \mid \varepsilon$
-	- **תשובה:** 
+	- **תשובה:** השפה היא כל המילים מהצורה $a b^n a$, כאשר $n\geq 0$.
+		- השפה רגולרית, בעזרת ב"ר : $a b^* a$. 
 - ג. בנו PDA (אוטומט מחסנית) עבור השפה הבאה:
 	- $\Sigma =\{a,b,c,d\}$ 
 	- $L=\{ cw\mid w\in \{a,b\}^*, w=w^{\mathcal{R}} \}\cup \{ dw \mid w\in \{a,b\}^* \}$
-	- **תשובה:** 
+	- **תשובה:**  ![](images/img18.png)
 
 
 ## שאלה 3
 
 - א. האם השפה 4SAT היא שפה NP-שלמה. הוכיחו או הפריכו. 
-	- נזכיר שב- 4SAT כל מ=פסוק מורכב מפסוקיות שצורתן $(x_1\lor x_2\lor x_3\lor x_4)$, כלומר כל פסוקית היא איחוד של 4 ליטרלים (שיכולים להיות משתנים או שלילתם) ופסוק בשפה הוא גם הקוניונקציה של מספר סופי של פסוקיות כאלה (כלומר, חיבור שלהן באמצעות $\land$, "וגם"). 
+	- נזכיר שב- 4SAT כל פסוק מורכב מפסוקיות שצורתן $(x_1\lor x_2\lor x_3\lor x_4)$, כלומר כל פסוקית היא איחוד של 4 ליטרלים (שיכולים להיות משתנים או שלילתם) ופסוק בשפה הוא גם הקוניונקציה של מספר סופי של פסוקיות כאלה (כלומר, חיבור שלהן באמצעות $\land$, "וגם"). 
 	- **תשובה:** 
 - ב. יהי $G=(V,E)$ גרף לא מכוון. קבוצת קודקודים $S$ נקראת כמעט-קליקה אם אפשר להוסיף לכל היותר צלע אחת בין שני קודקודים של $S$ ובכך להפוך אותה $S$ לקליקה. 
 	- הוכיחו שהשפה הבאה היא NP שלמה. $L=\{ \langle G, t \rangle \mid G \text{ is a graph that has a } t \text{-almost-clique} \}$.
 	- **תשובה:** 
-
-
+		- (1) קודם כל השפה $L$ היא ב- NP. 
+			- בהינתן certificate $C$ שהוא קבוצה של קודקודים, נוכל לבדוק אם $C$ היא כמעט-קליקה בעזרת בדיקת כל זוג קודקודים ב- $C$ האם יש ביניהם צלע, למעט לכל היותר זוג אחד בלי צלע. ניתן לבדוק זאת בזמן פולינומיאלי של $O(|C|^2)$. 
+		- (2) נראה רדוקציה פולי' מ- CLIQUE ל- $L$. כלומר נראה ש- $CLIQUE\leq_{\text{P}} L$
+			- נגדיר פונקציה $f:L\to CLIQUE$ כך: $f(\langle G, t \rangle)=\langle G', t+2\rangle$, כאשר $G'=(V',E')$ הוא הגרף המתקבל מ- $G=(V,E)$ על ידי הוספת שני צמתים חדשים $v_{n+1}$ ו- $v_{n+2}$, והוספת צלעות בין כל צומת ב- $V$ לבין $v_{n+1}$ ו- $v_{n+2}$. (אך לא בין $v_{n+1}$ ל- $v_{n+2}$). 
+			- נראה ש- $f$ היא רדוקציה פולינומית מ- $CLIQUE$ ל- $L$. כלומר שמתקיים $\langle G, t \rangle \in CLIQUE \iff \langle G', t+2 \rangle \in L$.
+			- אם $G$ מכיל קליקה $C$ בגודל $t$, אזי $G'$ מכיל כמעט-קליקה בגודל $t+2$, שהיא $C\cup \{v_{n+1}, v_{n+2}\}$ כי ניתן להוסיף צלע בין שני הצמתים החדשים $v_{n+1}$ ו- $v_{n+2}$.
+			- אם $G'$ מכיל כמעט-קליקה בגודל $t+2$, אז קיימים שני צמתים באותה הכמעט-קליקה שאין ביניהם צלע, אם נסיר אותם מהכמעט-קליקה, נקבל קליקה בגודל $t$ ב- $G$.
+		- (3) כמו כן ידוע ש- CLIQUE היא NP-שלמה.
+		- מסקנה: מ-1, 2 ו- 3, נובע לפי משפט ש-$L$ היא NP-שלמה. 
+		
 ## שאלה 4 
 
 - א. הוכיחו שהשפה הבאה כריעה.
-- $L = \{⟨M,k⟩ \mid$ $M$ is a TM, $k$ is a positive integer, and there exists an input to $M$ that makes $M$ run for at least $k$ steps $\}$
+	- $L = \{⟨M,k⟩ \mid$ $M$ is a TM, $k$ is a positive integer, and there exists an input to $M$ that makes $M$ run for at least $k$ steps $\}$
 	- **תשובה:** נבנה מ"ט שמכריע את השפה $L$.
 		- "On input $⟨M,k⟩$ where $M$ is a TM and $k$ is a positive integer:
 			- For all strings $w_i$ where $|w_i|\leq k+1$:
@@ -1021,7 +1030,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 					- If $M$ does not terminate within $k$ steps, then _accept_.
 				- If we're finished enumerating and $M$ terminated within $k$ steps every time, then _reject_."
 - ב. האם השפה הבאה ניתנת להכרעה? 
-- $\{⟨R⟩\mid R$ is a regular expression describing a language containing at least one string $w$ that has $111$ as a substring $\}$
+	- $\{⟨R⟩\mid R$ is a regular expression describing a language containing at least one string $w$ that has $111$ as a substring $\}$
 	- **תשובה:** (תרגיל 4.16 מהספר).
 		- כן, השפה ניתנת להכרעה. נבנה מ"ט שתכריע אותה.
 			- "On input $⟨R⟩$ where $R$ is a regular expression:
