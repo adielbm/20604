@@ -967,9 +967,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 - א. האם השפה הבאה מעל הא"ב $\{0,1\}$ רגולרית? אם כן הוכיחו בעזרת בניית DFA.
 	- $L=\{ 0^m 1^n \mid m,n\geq 0 \text{ and } m+n \text{ is odd }\}$ 
-	- **תשובה:** השפה רגולרית. נבנה DFA: 
-		- ![](images/img16.png)
-		- 
+	- **תשובה:** השפה רגולרית. נבנה DFA: ![](img19.png)
 - ב. הפכו את ה- DFA הבא לביטוי רגולרי על ידי שימוש באלגוריתם שלמדנו לפי השלבים הבאים:
 	- הפכו את ה- DFA ל-GNFA.
 	- סלקו את מצב 1.
@@ -977,7 +975,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 	- סלקו את מצב 3.
 	- ![](images/img15.png)
 	- **תשובה:** (תרגיל 1.21b בספר).
-		- מקור פתרון: <small>https://people.engr.tamu.edu/j-chen3/courses/627/2022/assignment/Solution2.pdf</small> ![](images/img17.png)
+		- <small>https://people.engr.tamu.edu/j-chen3/courses/627/2022/assignment/Solution2.pdf</small> ![](images/img17.png)
 - ג. האם השפה הבאה רגולרית? הוכיחו או הפריכו. שפת כל המילים מעל הא"ב $\{0,1\}$ שמתחילות ומסתיימות באותה האות.
 	- **תשובה:** השפה רגולרית. ב"ר: $0\cup 1\cup 0(0\cup 1)^*0  \cup 1(0\cup 1)^*1$.
 
