@@ -22,18 +22,26 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
       - name: Generate HTML with Pandoc
         run: |
           pandoc index.md \
-            -o index.html \
-            --standalone \
+            -o index-tmp.html \
+            --template=template.html \
             --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
             --resource-path=.:images
+
+      - name: Run preRenderMath script
+        run: node preRenderMath.js
 
       - name: Collect static assets into public/
         run: |
           mkdir public
-          cp index.html public/
+          cp index.html public/   # assuming preRenderMath.js outputs final index.html
           cp style.css public/
           cp script.js public/
           cp -R cheatsheet public/

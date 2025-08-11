@@ -1,20 +1,3 @@
----
-title: מודלים חישוביים (20604) 
-description: מאגר מבחנים
----
-
-<script src="script.js"></script>
-<link rel="stylesheet" href="style.css" type="text/css" />
-
-____
-
-בדף זה יהיו שאלות מהמעט מבחני עבר שהיו בקורס ועוד תרגילים שונים, ותשובות שכתבתי או שמצאתי. מוזמנים להעיר או להציע תיקונים והוספות שיעזרו לאחרים ואשתדל לסדר. <a href="https://github.com/adielBm/20604">https://github.com/adielBm/20604</a>  <img style="margin: 0; display: inline;" src="https://img.shields.io/github/last-commit/adielbm/20604" /> 
-
-____
-
-<div id="toc"></div>
-
-____
 
 # מבחן לדוגמה 1
 

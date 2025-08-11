@@ -1,6 +1,9 @@
 index.md is made using obsidian.
 
 ```bash
-# index.md to index.html
-pandoc index.md -o index.html --standalone --mathjax --resource-path=.:images
+pandoc index.md -o index-tmp.html --template=template.html --mathjax --resource-path=.:images
+node preRenderMath.js
 ```
+
+
+ 

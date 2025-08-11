@@ -101,7 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 (firstNode.nodeType === Node.ELEMENT_NODE &&
                     firstNode.classList.contains('math') &&
                     firstNode.classList.contains('inline'))
-
+                || // or element name is 'mjx-container',
+                (firstNode.nodeType === Node.ELEMENT_NODE &&
+                    firstNode.tagName.toLowerCase() === 'mjx-container')
                 || // it's text node and its first letter is from english alphabet
                 (firstNode.nodeType === Node.TEXT_NODE &&
                     firstNode.textContent.trim().length > 0 &&
@@ -112,36 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-
-
-    // add header
-    const header = document.createElement('header');
-    document.body.insertBefore(header, document.body.firstChild);
-    header.style.padding = '0.5em 1em';
-
-    // // add dark mode toggle
-    // const toggle = document.createElement('a');
-    // toggle.textContent = 'Light';
-    // toggle.style.cursor = 'pointer';
-    // toggle.addEventListener('click', () => {
-    //     if (document.documentElement.classList.contains('dark')) {
-    //         toggle.textContent = 'Light';
-    //     } else {
-    //         toggle.textContent = 'Dark';
-    //     }
-    //     document.documentElement.classList.toggle('dark');
-    // });
-
-    const link = document.createElement('a');
-    link.href = 'https://github.com/adielBm/20604';
-    link.textContent = link.href;
-
-    // header.appendChild(toggle);
-    // header.appendChild(link);
-
-
-
-
 
 
     document.querySelectorAll('.answer').forEach((answerEl, index) => {
