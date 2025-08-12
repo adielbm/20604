@@ -13,11 +13,8 @@ import {AllPackages} from 'mathjax-full/js/input/tex/AllPackages.js';
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 
-// Configure TeX input with all packages (includes color, cancel, ams, etc.)
 const tex = new TeX({
   packages: AllPackages,
-  // Alternatively, you can specify only the packages you need:
-  // packages: ['base', 'ams', 'color', 'cancel', 'cases']
 });
 
 const svg = new SVG({fontCache: 'none'});
@@ -31,7 +28,6 @@ const html = fs.readFileSync(inputFile, 'utf8');
 const dom = new JSDOM(html);
 const document = dom.window.document;
 
-// Function to convert TeX math to SVG string
 function renderMath(texString, displayMode = false) {
   try {
     // Create a MathJax document for rendering

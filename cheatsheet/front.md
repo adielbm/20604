@@ -13,10 +13,11 @@
 
 - (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
 - (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
-- (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}})$, $\delta:(Q\setminus \{q_{\text{a}}\})\times(Q\setminus \{q_{\text{start}}\}\longrightarrow\mathcal{R}$ (where $\mathcal{R}=\{ \text{all regex over } \Sigma\}$)
-- (**DFA $\rightsquigarrow$ GNFA**) ![[dfa-to-gnfa.svg|300]] ![[GNFA to Regular Expression.svg]]
+- (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}})$, $\delta:(Q\setminus \{q_{\text{a}}\})\times(Q\setminus \{q_{\text{start}}\}\to\mathcal{R}$ (where $\mathcal{R}=\{ \text{Regex over } \Sigma\}$)
+- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|200]] 
+![[GNFA to Regular Expression.svg|200]]
 - GNFA accepts $w\in\Sigma^*$ if $w=w_{1}\cdots w_{k}$, where $w_{i}\in\Sigma^*$ and there exists a sequence of states $q_{0},q_{1},\dots,q_{k}$ s.t. $q_{0}=q_{\text{start}}$, $q_{k}=q_{\text{a}}$ and for each $i$, we have $w_i\in L(R_{i})$, where $R_{i}=\delta(q_{i-1},q_{i})$.
-- Every NFA has an equivalent NFA with a single accept state.
+- Every NFA has an equiv. NFA with a single accept state.
 - (**NFA $\rightsquigarrow$ DFA**)
 	- $N=(Q,\Sigma,\delta,q_{0},F)$
 	- $D=(Q'=\mathcal{P}(Q),\Sigma,\delta',q'_{0}=E(\{q_{0}\}),F')$
@@ -54,15 +55,25 @@
 	- For $i=0,1,\dots,m-1$, we have $(r_i,b)\in\delta(r_{i},w_{i+1},a)$, where $s_i=at$ and $s_{i+1}=bt$ for some $a,b\in \Gamma_\varepsilon$ and $t\in \Gamma^*$.
 	- $r_m\in F$
 - A PDA can be represented by a state diagram, where each transition is labeled by the notation "$a,b\to c$" to denote that the PDA: **Reads** $a$ from the input (or read nothing if $a=\varepsilon$). **Pops** $b$ from the stack (or pops nothing if $b=\varepsilon$). **Pushes** $c$ onto the stack (or pushes nothing if $c=\varepsilon$)
-- $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$.
-- $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa; X\to aX \mid bX \mid \epsilon$.
-- $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX; A\to 0A0\mid 1A1\mid \#X; X\to 0X\mid 1X\mid \varepsilon$.
-- $\{ w : \#_w(a)> \#_w(b) \}; S\to TaT,\quad T\to TT \mid aTb \mid bTa \mid a \mid \varepsilon$.
+
+# CFG examples
+
+- $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$
+- $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX \mid bX \mid \epsilon$
+- $\{ww^\mathcal{R}\mid w\in \{a,b\}^*\}$ 
+- $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX; A\to 0A0\mid 1A1\mid \#X; X\to 0X\mid 1X\mid \varepsilon$
+- $\{ w : \#_w(a)> \#_w(b) \}; S\to TaT; T\to TT \mid aTb \mid bTa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)\geq \#_w(b) \}; S\to SS \mid aSb \mid bSa \mid a \mid \varepsilon$
-- $\overline{\{ a^nb^n \}}; S \to XbXaX \mid A \mid B; A \to aAb \mid Ab \mid b; B \to aBb \mid aB \mid a;  X \to aX \mid bX \mid \varepsilon$.
-- $\{a^nb^m\mid n\neq m \}; S\to aSb \mid A \mid B; A\to aA \mid a; B\to bB \mid b$.
-- $\{ \texttt{a}^i\texttt{b}^j\texttt{c}^k\mid i\leq j\text{ or }j\leq k \};$ $S\to S_{1}C\mid AS_{2};\,S_{1}\to \texttt{a}S_{1}\texttt{b}\mid S_{1}\texttt{b}\mid \varepsilon;S_{2}\to \texttt{b}S_{2}\texttt{c}\mid S_{2}\texttt{c}\mid \varepsilon;A\to A\texttt{a}\mid \varepsilon;C\to C\texttt{c}\mid \varepsilon$
-- $\{ x \mid x \neq ww \};S\to A\mid B\mid AB\mid BA;A\to CAC\mid \texttt{0};B\to CBC\mid \texttt{1};C\to \texttt{0}\mid \texttt{1}$
+- $\{ w : \#_w(a)= \#_w(b) \}$;$S\to aSb \mid bSa \mid SS \mid \varepsilon$ 
+- $\overline{\{ a^nb^n \}}$; $S \to XbXaX \mid A \mid B$; $A \to aAb \mid Ab \mid b$; $B \to aBb \mid aB \mid a$; $X \to aX \mid bX \mid \varepsilon$.
+- $\{a^nb^m\mid n\neq m \}; S\to aSb \mid A \mid B; A\to aA \mid a; B\to bB \mid b$
+- $\{ \texttt{a}^i\texttt{b}^j\texttt{c}^k\mid i\leq j\text{ or }j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$\,S_{1}\to \texttt{a}S_{1}\texttt{b}\mid S_{1}\texttt{b}\mid \varepsilon$;$S_{2}\to \texttt{b}S_{2}\texttt{c}\mid S_{2}\texttt{c}\mid \varepsilon$;$A\to A\texttt{a}\mid \varepsilon;C\to C\texttt{c}\mid \varepsilon$
+- $\{ x \mid x \neq ww \};S\to A\mid B\mid AB\mid BA;A\to CAC\mid \texttt{0}$;$B\to CBC\mid \texttt{1}$;$C\to \texttt{0}\mid \texttt{1}$
+- $\{ a^nb^m \mid m \leq n \leq 3m \};S\to aSb \mid aaSb \mid aaaSb \mid \varepsilon;$ 
+- $\{ a^nb^n \}; S\to aSb \mid \varepsilon$
+- $\{ a^nb^m \mid n>m \}; S\to aSb \mid aS \mid a$
+
+
 # PL: $L \in \text{CFL}\implies\exists p:\forall s\in L,|s|\geq p,\,s=uvxyz,$ (**i**) $\forall i\geq 0,uv^ixy^iz\in L$, (**ii**) $|vxy|\leq p$, and (**iii**) $|vy|>0$.
 
 - $\{w=a^nb^nc^n \};\quad$ $s=a^pb^pb^p=uvxyz.$ $vxy$ can't contain all of $a,b,c$ thus $uv^2xy^2z$ must pump one of them less than the others.
