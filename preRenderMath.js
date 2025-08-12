@@ -85,6 +85,12 @@ displayMathNodes.forEach((node, index) => {
 });
 
 // Write the processed HTML out
+// Add loading="lazy" to all images for performance
+const images = document.querySelectorAll('img');
+images.forEach(img => {
+  if (!img.hasAttribute('loading')) {
+    img.setAttribute('loading', 'lazy');
+  }
+});
+
 fs.writeFileSync(outputFile, dom.serialize(), 'utf8');
-console.log(`Pre-rendered math saved to ${outputFile}`);
-console.log('All LaTeX extensions (color, cancel, cases, etc.) should now be supported!');

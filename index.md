@@ -196,8 +196,10 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
  
 - א. בנו DFA עבור כל אחד מהברי"ם הבאים. תנו הסבר קצר.
 	- $r=(11\cup 10)^*$
+		- **תשובה:** ![](images/img20.excalidraw.svg)
 	- $r=(1 \cup 110)^*0$
-	- **תשובה:**  ![](images/img10.jpg)
+	- **תשובה:**  
+	- ![](images/img21.excalidraw.svg)
 - ב. הפכו את ה NFA הבא ל- DFA שקול.
 	- ![](images/img9.png)
 	- **תשובה:** 
@@ -1048,10 +1050,10 @@ https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
 	- **תשובה:** 
 		- נבנה מ"ט לא-דטרמיניסטית (NTM) $M$ שמזהה את השפה $L_1 \cdot L_2$.
 		- המכונה $M$ תעבור על כל האפשרויות לחלק את הקלט $w$ שאורכו $n$ לשני חלקים. (אפשרי כי היא לא-דטרמיניסטית..), ואז תריץ את $M_1$ על החלק הראשון, ואת $M_2$ על החלק השני.
-	-  $M=\text{``On input }w$
-		1. Split $w$ into two parts $w[1:i]$ and $w[i+1:n]$ for all $i=0,1,\ldots,n$.
-		2. Run $M_1$ on $w[1:i]$. If $M_1$ accepts, then run $M_2$ on $w[i+1:n]$, if $M_2$ accepts, _accept_.
-		3. If all iterations of $i$ ended without accepting, _reject_. $\text{''}$
+		-  $M=\text{``On input }w$
+			1. Split $w$ into two parts $w[1:i]$ and $w[i+1:n]$ for all $i=0,1,\ldots,n$.
+			2. Run $M_1$ on $w[1:i]$. If $M_1$ accepts, then run $M_2$ on $w[i+1:n]$, if $M_2$ accepts, _accept_.
+			3. If all iterations of $i$ ended without accepting, _reject_. $\text{''}$
 - תהי $M_1$ מ"ט **המזהה** את השפה $L_1$. בנו מ"ט $M$ שמזהה את $L_1^*$.
 	- **תשובה:**
 		- באופן דומה לשאלה הקודמת, נבנה מ"ט לא-דטרמיניסטית (NTM) $M$ שמזהה את השפה $L_1^*$. 
@@ -1067,14 +1069,14 @@ https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
 		- נניח בשלילה ש- $S_{TM}$ ניתנת להכרעה.
 		- אזי קיימת מ"ט $S$ שמכריעה את $S_{TM}$.
 		- נראה רדוקציה מ- $\text{A}_{\text{TM}}$ ל- $S_{TM}$.
-- "On input $\langle M,w \rangle$, where $M$ is a TM and $w$ is a string:
-	- Check if $\langle M,w \rangle$ is a valid encoding of a TM and a string. If not _reject_.
-	- Construct the following TM $M_2=$"On input $x$:
-		- If $x\in L(00^*11^*)$, _accept_. 
-		- If $x\in L(11^*00^*)$, then run $M$ on $w$. 
-			- If $M$ accepts $w$, _accept_.
-			- If $M$ rejects $w$, _reject_.
-		- Run $S$ on $\langle M_2 \rangle$. _accept_ if $S$ accepts, _reject_ if $S$ rejects."
+			- On input $\langle M,w \rangle$, where $M$ is a TM and $w$ is a string:
+				- Check if $\langle M,w \rangle$ is a valid encoding of a TM and a string. If not _reject_.
+				- Construct the following TM $M_2=$"On input $x$:
+					- If $x\in L(00^*11^*)$, _accept_. 
+					- If $x\in L(11^*00^*)$, then run $M$ on $w$. 
+						- If $M$ accepts $w$, _accept_.
+						- If $M$ rejects $w$, _reject_.
+					- Run $S$ on $\langle M_2 \rangle$. _accept_ if $S$ accepts, _reject_ if $S$ rejects.
 	- אם כן מצאנו מ"ט המכריעה את $\text{A}_{\text{TM}}$. אבל ידוע ש- $\text{A}_{\text{TM}}$ אינה ניתנת להכרעה. סתירה.
 	- מסקנה: $S_{TM}$ אינה ניתנת להכרעה.
 

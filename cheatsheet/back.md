@@ -41,6 +41,14 @@
 - $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; otherwise, loop"
 - $A_{\text{TM}} \leq_{\text{m}}\{ \langle M \rangle \mid M \text{ is TM, } |L(M)|=1 \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x=x_0$, return $M(w)$; otherwise, reject;" (where $x_0\in \Sigma^*$ is fixed). 
 - $\overline{A_{\text{TM}}} \leq_{\text{m}} E_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$, reject; otherwise, return $M(w)$;" 
+- $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \leq 3\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: accept if $M(w)$ halts" 
+- ${\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \geq 3\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: accept if $M(w)$ halts" 
+- $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : M\text{ accepts all even num.}\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: reject if $M(w)$ halts within $|x|$. otherwise, accept" 
+- $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : L(M)\text{ is finite}\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: accept if $M(w)$ halts"
+- $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : L(M)\text{ is infinite}\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: reject if $M(w)$ halts within $|x|$ steps. otherwise, accept" 
+- ${\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{1},M_{2}\rangle : \varepsilon \in L(M_{1})\cup L(M_{2})\};\quad$ $f(\langle M, w \rangle) = \langle M',M' \rangle$, where $M'=$"On $x$: accept if $M(w)$ halts"
+
+
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k).\quad\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}.\quad\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
