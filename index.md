@@ -236,6 +236,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 ## שאלה 3 
 
 ראו מועד 2024b-94 שאלה 3.
+
 ## שאלה 4 
 
 - א. הוכיחו ששפה הבאה לא כריעה:
@@ -267,11 +268,13 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 		- נגדיר פונקציה:  $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$. (פונקציה זו ניתנת לחישוב כי $A$ חסרת הקשר ולכן גם ניתנת להכרעה), 
 			- כמו כן מתקיים $w\in A \iff f(w)=1 \iff f(w)\in B$, ולכן זו פונקציית רדוקציית מיפוי: $A \leq_{\text{m}} B$.
 
+
 ## שאלה 5
 
 ראו מועד 2024b-94 שאלה 4.
 
 # מועד 2024b-65
+
 
 ## שאלה 1
 
@@ -288,6 +291,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 - ![](images/img1.png)
 	- **תשובה:** 
 	- $b^* (a \cup ba^*) b^*$
+
 
 
 
@@ -315,7 +319,9 @@ $A(B \cup C)$
 		- **תשובה:** לא. המילה לא יכולה להתחיל באות $b$.
 
 
+
 ## שאלה 3
+
 יהיה $G$ גרף לא מכוון. נגדיר את שתי השפות הבאות:
 $\text{SPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path of length at most } k \text{ from } a \text{ to } b\}$
 $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path of length at least } k \text{ from } a \text{ to } b\}$
@@ -338,7 +344,9 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 			- אם $\langle G, a, b \rangle\in \text{UHAMPATH}$, אזי $G$ מכיל מסלול המילטוני באורך $k$, מ- $a$ ל- $b$, אזי $\langle G, a, b, k \rangle\in \text{LPATH}$.
 			- אם $\langle G, a, b, k \rangle\in \text{LPATH}$, אזי $G$ מכיל מסלול פשוט באורך $k$, מ- $a$ ל- $b$, אבל ל-$G$ יש $k$ צמתים, אזי המסלול הוא מסלול המילטוני, כלומר $\langle G, a, b \rangle\in \text{UHAMPATH}$.
 
+
 ## שאלה 4
+
 
 - א. הוכיחו או הפריכו: "נתון שהשפות $L_1$ ו-$L_2$ ניתנות להכרעה. כמו כן ידוע ש- $L_1\subseteq L \subseteq L_2$. אזי $L$ ניתנת להכרעה."
 	- **תשובה:** הטענה אינה נכונה. דוגמה נגדית: $L_1=\emptyset$, $L_2=\Sigma^*$, ו- $L$ שפה בלתי כריעה כלשהיא מעל הא"ב $\Sigma$.  
@@ -357,7 +365,9 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 			- $x yq_3 \sqcup$  
 			- $xyq_{acc}\sqcup$ 
 
+
 # מועד 2024b-94
+
 
 ## שאלה 1
 
