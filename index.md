@@ -196,19 +196,33 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
  
 - א. בנו DFA עבור כל אחד מהברי"ם הבאים. תנו הסבר קצר.
 	- $r=(11\cup 10)^*$
-		- **תשובה:** ![](images/img20.excalidraw.svg)
+		- **תשובה:** 
+			- ![](images/img20.excalidraw.svg)
 	- $r=(1 \cup 110)^*0$
 	- **תשובה:**  
-	- ![](images/img21.excalidraw.svg)
+		- ![](images/img21.excalidraw.svg)
 - ב. הפכו את ה NFA הבא ל- DFA שקול.
 	- ![](images/img9.png)
 	- **תשובה:** 
+		- ![](images/img22.png)
+
+
 - ג. בנו DFA מעל $\{a,b\}$ עבור השפה הבאה: 
 	- $L_1 = \{w \mid w \ne ba, \text{ and } w \text{ does not contain } bab\}$.
+		- **תשובה:** ![](images/img23.svg)
+
+
+
+
+
+
+
+
+
 
 ## שאלה 2
 
-- א. ו- ב. ראו [מועד 2024b-94 שאלה 2](#%D7%9E%D7%95%D7%A2%D7%93-2024b-94-%D7%A9%D7%90%D7%9C%D7%94-2-1)
+- א. ו- ב. ראו מועד 2024b-94 שאלה 2
 - ג. האם השפה הבאה חסרת הקשר? $L = \{ a^i b^j c^k \mid k>j>i \}$.
 	- **תשובה:** 
 		- נניח בשלילה ש- $L$ חסרת הקשר.
@@ -221,9 +235,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 
 ## שאלה 3 
 
-ראו 
-[מועד 2024b-94 שאלה 3](#%D7%9E%D7%95%D7%A2%D7%93-2024b-94-%D7%A9%D7%90%D7%9C%D7%94-3-1)
-
+ראו מועד 2024b-94 שאלה 3.
 ## שאלה 4 
 
 - א. הוכיחו ששפה הבאה לא כריעה:
@@ -257,9 +269,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 
 ## שאלה 5
 
-ראו [מועד 2024b-94 שאלה 4](#%D7%9E%D7%95%D7%A2%D7%93-2024b-94-%D7%A9%D7%90%D7%9C%D7%94-4-1)
-
-
+ראו מועד 2024b-94 שאלה 4.
 
 # מועד 2024b-65
 
@@ -690,7 +700,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 	- רמז: רדוקציה מהשפה $A_{TM}=\{ \langle M,x \rangle : M \text{ is a TM that accepts } x \}$.
 	- **תשובה:** 
 		- $f(\langle M,x \rangle) = \langle M'\rangle$, 
-		- $M'=$ "On input $w$:
+		- $M'=$ $\text{``}$ On input  $w$:
 			- if $w\neq \varepsilon$ then accept. 
 			- if $w=\varepsilon$ then run $M$ on $x$. _accept_ if $M$ accepts, _reject_ if $M$ rejects."
 		- אם $\langle M,x \rangle \in A_{TM}$, אז $M$ מקבל את $x$, ואז $M'$ מקבל את $\varepsilon$, כלומר $\langle M'\rangle \in L$.
@@ -706,14 +716,14 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 - א. הוכיחו או הפריכו: יהיו $A$ ו- $B$ שפות הניתנות לזיהוי על ידי מכונת טיורינג. אזי $A \cup B$ גם ניתנת לזיהוי על ידי מ"ט.
 	- **תשובה:** עבור כל שתי שפות $A$ ו-$B$ הניתנות לזיהוי על ידי מ"ט, נסמן את מ"ט המזהות אותן כ-$M_1$ ו-$M_2$. נבנה מ"ט $M'$ שמזהה את האיחוד של $A$ ו-$B$:
-		- "On input $w$:
+		- $\text{``}$ On input  $w$:
 			- Run $M_1$ and $M_2$ alternately on $w$ step by step.  
 				- If either accepts, _accept_.  
 				- If both halt and reject, _reject_."
 		- אם אחת מבין $M_1$ או $M_2$ מקבלת את $w$, אז $M'$ תקבל את $w$, כיוון שהמכונה שמקבלת מגיעה למצב מקבל לאחר מספר סופי של צעדים.  
 - ב. הוכיחו או הפריכו: יהיו $A$ ו- $B$ שפות הניתנות לזיהוי על ידי מכונת טיורינג. אזי $A \cap B$ גם ניתנת לזיהוי על ידי מ"ט.
 	- **תשובה:** עבור כל שתי שפות $A$ ו-$B$ הניתנות לזיהוי על ידי מ"ט, נסמן את מ"ט המזהות אותן כ-$M_1$ ו-$M_2$. נבנה מ"ט $M'$ שמזהה את החיתוך של $A$ ו-$B$:
-		- "On input $w$:
+		- $\text{``}$ On input  $w$:
 			1. Run $M_1$ on $w$.  
 				- If it halts and rejects, _reject_.  
 				- If it accepts, go to stage 2.  
@@ -835,7 +845,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 - א. האם השפה הבאה ניתנת להכרעה? הוכיחו. 
 	- $\small L=\{ \langle M, k \rangle \mid M \text{ is a TM, } k \text{ is a positive number, and there exists an input to M that makes M run for at least k steps} \}$ 
 	- **תשובה:** 
-		- "On input $\langle M, k \rangle$ where $M$ is a TM and $k$ is a positive number:
+		- $\text{``}$ On input  $\langle M, k \rangle$ where $M$ is a TM and $k$ is a positive number:
 			- For all strings $w_i$ where $|w_i|\leq k+1$:
 				- Run $M$ on $w_i$ for $k$ steps.
 					- If $M$ does not terminate within $k$ steps, then _accept_.
@@ -906,7 +916,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 
 - א. הוכיחו שאם שפה $A$ ניתנת להכרעה אז קיימת רדוקציית מיפוי כזו: $A\leq_{\text{m}} a^* b^*$.
 	- **תשובה:** מאחר ש- $A$ ניתנת להכרעה, אז יש מ"ט $M$ שמכריעה את $A$. 
-		- $F=$ "On input $w$: 
+		- $F=$ $\text{``}$ On input  $w$: 
 			- Test whether $w \in A$ using $M$.
 			- If $w\in A$, then output $\texttt{01}$
 			- If $w\notin A$, then output $\texttt{10}$."
@@ -1007,7 +1017,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 - א. הוכיחו שהשפה הבאה כריעה.
 	- $L = \{⟨M,k⟩ \mid$ $M$ is a TM, $k$ is a positive integer, and there exists an input to $M$ that makes $M$ run for at least $k$ steps $\}$
 	- **תשובה:** נבנה מ"ט שמכריע את השפה $L$.
-		- "On input $⟨M,k⟩$ where $M$ is a TM and $k$ is a positive integer:
+		- $\text{``}$ On input  $⟨M,k⟩$ where $M$ is a TM and $k$ is a positive integer:
 			- For all strings $w_i$ where $|w_i|\leq k+1$:
 				- Run $M$ on $w_i$ for $k$ steps.
 					- If $M$ does not terminate within $k$ steps, then _accept_.
@@ -1016,7 +1026,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 	- $\{⟨R⟩\mid R$ is a regular expression describing a language containing at least one string $w$ that has $111$ as a substring $\}$
 	- **תשובה:** (תרגיל 4.16 מהספר).
 		- כן, השפה ניתנת להכרעה. נבנה מ"ט שתכריע אותה.
-			- "On input $⟨R⟩$ where $R$ is a regular expression:
+			- $\text{``}$ On input  $⟨R⟩$ where $R$ is a regular expression:
 				- Construct DFA $E$ that accepts $\Sigma^* 111 \Sigma^*$.
 				- Construct DFA $B$ s.t. $L(B)=L(R)\cap L(E)$. 
 				- Run TM $T$ on $\langle B \rangle$, where $T$ decides $E_{\textsf{DFA}}$.
@@ -1071,7 +1081,7 @@ https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
 		- נראה רדוקציה מ- $\text{A}_{\text{TM}}$ ל- $S_{TM}$.
 			- On input $\langle M,w \rangle$, where $M$ is a TM and $w$ is a string:
 				- Check if $\langle M,w \rangle$ is a valid encoding of a TM and a string. If not _reject_.
-				- Construct the following TM $M_2=$"On input $x$:
+				- Construct the following TM $M_2=$$\text{``}$ On input  $x$:
 					- If $x\in L(00^*11^*)$, _accept_. 
 					- If $x\in L(11^*00^*)$, then run $M$ on $w$. 
 						- If $M$ accepts $w$, _accept_.
