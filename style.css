@@ -120,3 +120,41 @@ html.dark {
     background: #ff909037;
     color: red;
 }
+
+
+/* for printing */
+@import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap');
+@media print {
+    body {
+        font-family: 'David Libre', serif;
+        max-width: none;
+        background: white !important;
+        padding: 0;
+        font-size: 11px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 5px 0;
+    }
+
+    img {
+        max-width: 250px;
+    }
+
+    .answer {
+        border: 1px solid #c30e59;
+        box-shadow: none;
+        padding: 2px 10px;
+        margin: 5px;
+        background: none;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .answer button {
+        display: none;
+    }
+}
