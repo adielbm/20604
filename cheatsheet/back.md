@@ -2,15 +2,16 @@
 
 - (**unrecognizable**) $\overline{A_{TM}}$, $\overline{EQ_{\textsf{TM}}}$, $EQ_{\textsf{CFG}}$, $\overline{HALT_{\textsf{TM}}}$, $\text{REG}_{\textsf{TM}}=\{ \langle M\rangle :L(M) \text{ is regular}\}$, $E_{\textsf{TM}}$, $EQ_{\textsf{TM}}=\{ \langle M_1,M_2 \rangle:L(M_1)=L(M_2)\}$, $ALL_{\textsf{CFG}}$, $EQ_{\text{CFG}}$
 - (**recognizable but undecidable**) $A_{TM}$, $HALT_{\textsf{TM}}=\{ \langle M,w\rangle\mid M(w) \text{ halts}\}$, $\overline{EQ_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
-- (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle D\rangle \mid L(D)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \leq k \text{ steps})\}$
-- (**Deciders**) 
-- $\mathrm{INFINITE}_{\textsf{DFA}}$: "On $n$-state DFA $\langle A \rangle$: const. DFA $B$ that 🅐 all words of length $\geq n$; const. DFA $C$ s.t. $L(C)=L(A)\cap L(B)$; if $L(C)\neq\emptyset$ (via ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁" 
+- (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $EQ_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $ALL_{\textsf{DFA}}=\{\langle D\rangle \mid L(D)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
+- $\large\textbf{Examples of Deciders:}$ 
+- $\mathrm{INFINITE}_{\textsf{DFA}}$: "On $n$-state DFA $\langle A \rangle$: const. DFA $B$ s.t. $L(B)=\Sigma^{\geq n}$; const. DFA $C$ s.t. $L(C)=L(A)\cap L(B)$; if $L(C)\neq\emptyset$ (via ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁" 
 - $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. DFA $A$ s.t. $L(A)=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. DFA $B$ s.t. $L(B)=L(D)\cap L(A)$; if $L(B)=\emptyset$ (via ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁"
 - $\{ \langle R,S \rangle \mid R,S \text{ are regex},L(R)\subseteq L(S) \}$: "On $\langle R,S \rangle$: const. DFA $D$ s.t. $L(D)=L(R)\cap \overline{L(S)}$; if $L(D)=\emptyset$ (via ${E}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
 - $\{ \langle D_{\textsf{DFA}},R_{\textsf{REX}} \rangle \mid L(D)=L(R) \}$: "On $\langle D,R\rangle$: convert $R$ to DFA $D_R$; if $L(D)=L(D_R)$ (via ${EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
 - $\{ \langle D_{\textsf{DFA}}\rangle \mid L(D)=(L(D))^\mathcal{R} \}$: "On $\langle D\rangle$: const. DFA $D^\mathcal{R}$ s.t. $L(D^\mathcal{R})=(L(D))^\mathcal{R}$; if $L(D)=L(D^\mathcal{R})$ (via ${EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
--  $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \geq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w$ s.t. $|w|\leq k+1$: if $M(w)$ not halt within $k$ steps, 🅐); O/W, 🅁"
-- (**not CFL**) $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{w\in \{\texttt{a},\texttt{b},\texttt{c}\}^* \mid \#_{\texttt{a}}(w)=\#_{\texttt{b}}(w)=\#_{\texttt{c}}(w)\}$, $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
+-  $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \geq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: if $M(w)$ not halt within $k$ steps, 🅐); O/W, 🅁"
+- $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐); O/W, 🅁" 
+- $\{\langle M_{\textsf{DFA}}\rangle \mid L(M) = \Sigma^*\}$: "On $\langle M\rangle$: const. DFA $M^{\complement}=(L(M))^{\complement}$; if $L(M^{\complement}) = \emptyset$ (via $E_{\textsf{DFA}}$) ⇒ 🅐; O/W 🅁."
 # Mapping Reduction: $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
 
 - $A_{TM}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  L(M) = (L(M))^{\mathcal{R}} \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, 🅁; if $x=01$, return $M(x)$; if $x=10$, 🅐;" 
@@ -22,7 +23,6 @@
 - $A_{\text{TM}} \leq_{\text{m}} EQ_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅐 all"; $M_2=$"On $x$: return $M(w)$;" 
 - $A_{\text{TM}} \leq_{\text{m}} \overline{EQ_{\text{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅁 all"; $M_2=$"On $x$: return $M(w)$;"
 - $ALL_{\text{CFG}} \leq_{\text{m}} EQ_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
-- $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
 - $A_{\text{TM}} \leq_{\text{m}}\{ \langle M \rangle \mid M \text{ is TM, } |L(M)|=1 \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x=x_0$, return $M(w)$; O/W, 🅁;" (where $x_0\in \Sigma^*$ is fixed). 
 - $\overline{A_{\text{TM}}} \leq_{\text{m}} E_{\text{TM}};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$, 🅁; O/W, return $M(w)$;" 
 - $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \leq 3\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts" 
@@ -32,8 +32,7 @@
 - $\overline{\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : L(M)\text{ is infinite}\};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅁 if $M(w)$ halts within $|x|$ steps. O/W, 🅐" 
 - ${\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{1},M_{2}\rangle : \varepsilon \in L(M_{1})\cup L(M_{2})\};\quad$ $f(\langle M, w \rangle) = \langle M',M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts"
 - ${\text{HALT}_{\textsf{TM}}} \leq_{\text{m}} \overline{E_{\textsf{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$ 🅁; else, 🅐 if $M(w)$ halts"
-
-
+- $\text{HALT}_{\text{TM}} \leq_{\text{m}} \{\,\langle M_{TM}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
