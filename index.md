@@ -1181,6 +1181,6 @@ https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
 
 # דף נוסחאות
 
-דף שאני מכין לעצמי למבחן, אולי יעזור לאחרים. עדיין חלקי.
+דף שאני מכין לעצמי למבחן. מידי פעם מתעדכן.
 
   <a href="cheatsheet/cheatsheet.pdf">https://adielbm.github.io/20604/cheatsheet/cheatsheet.pdf</a>.
