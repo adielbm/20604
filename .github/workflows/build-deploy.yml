@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - index.md
+      - template.html
+      - preRenderMath.js
+      - style.css
+      - script.js
 permissions:
   contents: read
   pages: write
