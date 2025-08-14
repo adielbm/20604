@@ -82,7 +82,7 @@
 - $\{ww:w\in\{a,b\}^*\};\quad$ 
 - (**more example of not CFL**) 
 - $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
-- $\{w \mid \#_{w}(a)=\#_{w}(b)=\#_{w}(c)\}$: (Prf. since $R\cap L\in \text{CFL}$, but $R\cap L=\{a^nb^nc^n \}\not\in \text{CFL}$)
+- $\{w \mid \#_{w}(a)=\#_{w}(b)=\#_{w}(c)\}$: (Prf. since $\textsf{Regular}\cap \textsf{CFL}\in \text{CFL}$, but $\{ a^*b^*c^* \}\cap L=\{a^nb^nc^n \}\not\in \text{CFL}$)
 # $\small{L\in {\text{DECIDABLE}} \iff \left(L\in {\text{REC.}} \text{ and } L\in{\text{co-REC.}} \right)\iff\exists\,M_{\textsf{TM}}\text{ decides }L}$.
 
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{🅐}},q_{\text{🅁}})$, where $\sqcup\in \Gamma$, $\sqcup\notin \Sigma$, $q_{\text{🅁}}\neq q_{\text{🅐}}$, $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
@@ -93,7 +93,7 @@
 - $L\in {\text{DECIDABLE}} \iff L\leq_{\text{m}}\texttt{0}^*\texttt{1}^*$.
 - $L\in {\text{DECIDABLE}} \iff L^{\mathcal{R}}\in {\text{DECIDABLE}}$.
 - (**decider**) TM that halts on all inputs. 
-- (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. 
+- (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$)
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is count.; $\Sigma^*$ is count. (finite $\Sigma$); $\{ \text{all lang.} \}$ is uncount.; $\{ \text{all infinite bin. seq.} \}$ is uncount.
 - $\small\textsf{DFA}\equiv\textsf{NFA}\equiv\textsf{GNFA}\equiv\textsf{REG}\,\subset \,\textsf{NPDA}\equiv\textsf{CFG}\,\subset \,\textsf{DTM}\equiv\textsf{NTM}$
 - $f:\Sigma^*\to\Sigma^*$ is **computable** if $\exists M_{\textsf{TM}}:\forall w\in \Sigma^*$, $M$ halts on $w$ and outputs $f(w)$ on its tape.
