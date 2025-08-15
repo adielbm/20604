@@ -15,24 +15,18 @@
 
 - (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
 - (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
-- (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}})$, $\delta:(Q\setminus \{q_{\text{a}}\})\times(Q\setminus \{q_{\text{start}}\}\to\mathcal{R}$ (where $\mathcal{R}=\{ \text{Regex over } \Sigma\}$)
-- GNFA accepts $w\in\Sigma^*$ if $w=w_{1}\cdots w_{k}$, where $w_{i}\in\Sigma^*$ and there exists a sequence of states $q_{0},q_{1},\dots,q_{k}$ s.t. $q_{0}=q_{\text{start}}$, $q_{k}=q_{\text{a}}$ and for each $i$, we have $w_i\in L(R_{i})$, where $R_{i}=\delta(q_{i-1},q_{i})$.
-- $n$-state DFA $A$, $m$-state DFA $B$ $\implies$ $\exists$ $nm$-state DFA $C$ s.t. $L(C)=L(A)\Delta L(B)$.
-- $p$-state DFA $C$, if $L(C)\neq\emptyset$ then $\exists$ $s\in L(C)$ s.t. $|s|< p$. 
-- Every NFA has an equiv. NFA with a single accept state.
-- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|200]] 
+- (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}}),\delta:Q\setminus \{q_{\text{a}}\}\times Q\setminus \{q_{0}\}\to\text{Rex}_ \Sigma$
+- (DFAs $D_1,D_{2}$ ) $\exists$ DFA $D$ s.t. $|Q|= |Q_{1}|\cdot|Q_{2}|$, $L(D)=L(D_{1})\Delta L(D_{2})$.
+- (DFA $D$) If $L(D)\neq\emptyset$ then $\exists$ $s\in L(D)$ s.t. $|s|< |Q|$. 
+- $\forall$ NFA $\exists$ an equivalent NFA with 1 accept state.
+- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|250]] 
 ![[GNFA to Regular Expression.svg|200]]
 
 - If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
-- (**NFA $\rightsquigarrow$ DFA**)
-	- $N=(Q,\Sigma,\delta,q_{0},F)$
-	- $D=(Q'=\mathcal{P}(Q),\Sigma,\delta',q'_{0}=E(\{q_{0}\}),F')$
-	- $F'=\{ q\in Q' \mid \exists p\in F:p\in q \}$
-	- $E(\{q\}):=\{ q \}\cup\{ \text{states reachable from }q\text{ via }\varepsilon \text{-arrows} \}$
-	- $\displaystyle\forall R\,\subseteq Q, \forall a\in\Sigma, \delta'(R, a) = E\left( \bigcup_{r \in R} \delta(r, a) \right)$
-- **Regular Expressions Examples**: 
+![[nfa-to-dfa.svg|170]]
+**Regular Expressions**: Examples
 - $\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
-- $\{ w : \#_w(\texttt{0})\geq 2 \lor \#_w(\texttt{1})\leq 1\}\equiv$ $(\Sigma^* 0 \Sigma^* 0\Sigma^*) \cup (0^*(\varepsilon \cup 1)0^*)$
+- $\small\{ w : \#_w(\texttt{0})\geq 2 \lor \#_w(\texttt{1})\leq 1\}\equiv(\Sigma^* 0 \Sigma^* 0\Sigma^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 - $\{ w   : |w| \bmod n = m \}\equiv(a \cup b)^m ((a \cup b)^n)^*$
 - $\{ w  : \#_b(w) \bmod n = m \}\equiv(a^* b a^*)^m \cdot \left( (a^* b a^*)^n \right)^*$
 - $\{ w : |w|\text{ is odd} \}\equiv (a\cup b)^*((a\cup b)(a\cup b)^*)^*$
@@ -40,6 +34,7 @@
 - $\{ w: \#_{ab}({w})=\#_{ba}({w}) \}\equiv \varepsilon\cup a \cup b \cup a\Sigma^*a \cup b\Sigma^*b$
 - $\{ a^m b^n \mid m+n \text{ is odd} \}\equiv  a(aa)^*(bb)^*  \cup (aa)^* b(bb)^*$
 - $\{ aw: aba\not\subseteq w \}\equiv a(a\cup bb\cup bbb)^*(b\cup \varepsilon)$
+
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
 - (the following are **non-reuglar but CFL**)
