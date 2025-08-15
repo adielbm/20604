@@ -21,6 +21,7 @@
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} CFL_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \};$ $f(w)=0w$.
 - $E_{\textsf{TM}} \leq_{\text{m}} \mathit{USELESS}_{\textsf{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{🅐}} \rangle$
+- $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{REGULAR}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M'\rangle$, $M'=$"On $x\in \{ 0,1 \}^*$: if $x=0^n1^n$, 🅐; O/W, return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{EQ}_{\textsf{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅐 all"; $M_2=$"On $x$: return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}} \overline{EQ_{\textsf{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅁 all"; $M_2=$"On $x$: return $M(w)$;"
 - $\mathit{ALL}_{\text{CFG}} \leq_{\text{m}}\mathit{EQ}_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
@@ -35,6 +36,7 @@
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{1},M_{2}\rangle : \varepsilon \in L(M_{1})\cup L(M_{2})\};$ $f(\langle M, w \rangle) = \langle M',M' \rangle$, $M'=$"On $x$: 🅐 if $M(w)$ halts"
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \overline{E_{\textsf{TM}}};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$ 🅁; else, 🅐 if $M(w)$ halts"
 - $\mathit{HALT}_{\textsf{TM}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
+
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 
 - ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
@@ -84,3 +86,4 @@
 - $L^*\in \text{REG}$, but $L\not\in \text{REG}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
 - $A \not\leq_m \overline{A}:\quad$ $A=\mathit{A}_{\textsf{TM}}\in \text{RECOGNIZABLE}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{RECOG.}$
 - $A\notin\text{DEC.},A\leq_\text{m}\overline{A}:\quad$ 
+- $L\in\text{CFL},L\cap L^{\mathcal{R}}\not\in \text{CFL}:$ $L=\{ a^nb^na^m \}$.
