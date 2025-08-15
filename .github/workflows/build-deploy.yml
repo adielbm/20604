@@ -9,6 +9,7 @@ on:
       - preRenderMath.js
       - style.css
       - script.js
+      - cheatsheet/cheatsheet.pdf
 permissions:
   contents: read
   pages: write

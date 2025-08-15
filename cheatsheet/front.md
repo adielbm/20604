@@ -12,13 +12,14 @@
 - (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
 - (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
 - (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}})$, $\delta:(Q\setminus \{q_{\text{a}}\})\times(Q\setminus \{q_{\text{start}}\}\to\mathcal{R}$ (where $\mathcal{R}=\{ \text{Regex over } \Sigma\}$)
-- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|200]] 
-![[GNFA to Regular Expression.svg|200]]
 - GNFA accepts $w\in\Sigma^*$ if $w=w_{1}\cdots w_{k}$, where $w_{i}\in\Sigma^*$ and there exists a sequence of states $q_{0},q_{1},\dots,q_{k}$ s.t. $q_{0}=q_{\text{start}}$, $q_{k}=q_{\text{a}}$ and for each $i$, we have $w_i\in L(R_{i})$, where $R_{i}=\delta(q_{i-1},q_{i})$.
 - $n$-state DFA $A$, $m$-state DFA $B$ $\implies$ $\exists$ $nm$-state DFA $C$ s.t. $L(C)=L(A)\Delta L(B)$.
 - $p$-state DFA $C$, if $L(C)\neq\emptyset$ then $\exists$ $s\in L(C)$ s.t. $|s|< p$. 
 - Every NFA has an equiv. NFA with a single accept state.
-- $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
+- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|200]] 
+![[GNFA to Regular Expression.svg|200]]
+
+- If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
 - (**NFA $\rightsquigarrow$ DFA**)
 	- $N=(Q,\Sigma,\delta,q_{0},F)$
 	- $D=(Q'=\mathcal{P}(Q),\Sigma,\delta',q'_{0}=E(\{q_{0}\}),F')$
@@ -38,8 +39,8 @@
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
 - (the following are **non-reuglar but CFL**)
-- $\{w=w^\mathcal{R}\};\quad$ $s=0^p10^p=xyz.$ then $xy^2z=0^{p+|y|}10^p\notin L$.  
-- $\{ a^nb^n \};\quad$ $s=a^pb^p=xyz$, where $|y|>0$ and $|xy|\leq p$. Then $xy^2z=a^{p+|y|}b^p\notin L$.
+- $\{w=w^\mathcal{R}\};$ $s=0^p10^p=xyz.$ but $xy^2z=0^{p+|y|}10^p\notin L$.  
+- $\{ a^nb^n \};$ $s=a^pb^p=xyz$, $xy^2z=a^{p+|y|}b^p\notin L$.
 - $\{ w : \#_a(w)>\#_b(w) \};$ $s=a^pb^{p+1}$, $|s|=2p+1\geq p$, $xy^2z=a^{p+|y|}b^{p+1}\notin L$. 
 - $\{ w: \#_{a}({w})=\#_{b}({w}) \};$ $s=a^pb^p=xyz$ but $xy^2z=a^{p+|y|}b^p\notin L$.
 - $\{ w : \#_w(a) \neq \#_w(b) \};$ (_pf._ by 'complement-closure', $\overline{L}=\{ w : \#_w(a) = \#_w(b) \}$)
@@ -63,24 +64,24 @@
 
 - (the following are **CFL but non-reuglar**) 
 - $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$
-- $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX \mid bX \mid \epsilon$
+- $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX | bX | \varepsilon$
 - $\{ww^\mathcal{R}\}=\{ w:w=w^\mathcal{R} \land |w|\text{ is even} \}; S\to aSa \mid bSb \mid \varepsilon$
 - $\{ w a^{n} w^{\mathcal{R}}  \};$ $S\to aSa\mid bSb\mid M;M\to aM\mid\varepsilon$
-- $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX; A\to 0A0\mid 1A1\mid \#X; X\to 0X\mid 1X\mid \varepsilon$
-- $\{ w : \#_w(a)> \#_w(b) \}; S\to TaT; T\to TT \mid aTb \mid bTa \mid a \mid \varepsilon$
+- $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX$; $A\to 0A0\mid 1A1\mid \#X$;$X\to 0X\mid 1X\mid \varepsilon$
+- $\{ w : \#_w(a)> \#_w(b) \}; S\to JaJ; J\to J J \mid aJb \mid bJa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)\geq \#_w(b) \}; S\to SS \mid aSb \mid bSa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)= \#_w(b) \}$; $S\to SS\mid aSb  \mid bSa  \mid \varepsilon$ 
-- $\{ w : \#_w(a)\neq \#_w(b) \}=\{ w : \#_w(a)> \#_w(b) \}\cup\{ w : \#_w(a)< \#_w(b) \}$
+- $\small{\{ w : \#_w(a)\neq \#_w(b) \}=\{ \#_w(a)> \#_w(b) \}\cup\{  \#_w(a)< \#_w(b) \}}$
 - $\overline{\{ a^nb^n \}}$; $S \to XbXaX \mid A \mid B$; $A \to aAb \mid Ab \mid b$; $B \to aBb \mid aB \mid a$; $X \to aX \mid bX \mid \varepsilon$.
-- $\{a^nb^m\mid n\neq m \}; S\to aSb \mid A \mid B; A\to aA \mid a; B\to bB \mid b$
-- $\{ {a}^i{b}^j{c}^k\mid i\leq j\text{ or }j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$A\to A{a}\mid \varepsilon;C\to C{c}\mid \varepsilon$
+- $\{a^nb^m\mid n\neq m \}; S\to aSb | A | B; A\to aA | a; B\to bB | b$
+- $\{ {a}^i{b}^j{c}^k\mid i\leq j\lor j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$A\to A{a}\mid \varepsilon$; $\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$C\to C{c}\mid \varepsilon$
 - $\{ x \mid x \neq ww \};S\to A\mid B\mid AB\mid BA;A\to CAC\mid \texttt{0}$;$B\to CBC\mid \texttt{1}$;$C\to {0}\mid {1}$
 - $\{ a^nb^m \mid m \leq n \leq 3m \};S\to aSb \mid aaSb \mid aaaSb \mid \varepsilon;$ 
 - $\{ a^nb^n \}; S\to aSb \mid \varepsilon$
 - $\{ a^nb^m \mid n>m \}; S\to aSb \mid aS \mid a$
 - $\{ a^nb^m \mid n\geq m \geq 0 \};$ $S\to aSb \mid aS \mid a \mid \varepsilon$
 - $\{ a^ib^j c^k \mid i+j=k\};$ $S\to aSc \mid X; X\to bXc \mid \varepsilon$  
-- $\{ xy : |x|=|y|,x\neq y \};$ $\small S\to AB\mid BA;\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb;\, B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
+- $\{ xy : |x|=|y|,x\neq y \};$ $S\to AB\mid BA$;$\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb$;$B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
 - (the following are both **CFL and regular**) 
 - $\{ w:\#_w(a) \geq 3 \};$ $S\to XaXaXaX; X\to aX \mid bX \mid \varepsilon$
 
