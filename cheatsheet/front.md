@@ -50,7 +50,7 @@
 - $\{ www:w\in \Sigma^* \};$ $s=a^pba^pba^p=xyz=a^{|x|+|y|+m}ba^pba^pb$, $m\geq 0$, but $xy^2z=a^{|x|+2|y|+m}ba^pba^pb\notin L$.
 - $\{ a^{2n}b^{3n}a^{n} \};$ $s=a^{2p}b^{3p}a^{p}=xyz=a^{|x|+|y|+m+p}b^{3p}a^{p}$, $m\geq 0$, but $xy^2z=a^{2p+|y|}b^{3p}a^{p}\notin L$.
 
-# (**PDA**) $M=(Q,\underset{ \textsf{input} }{ \Sigma },\underset{ \textsf{stack} }{ \Gamma },\delta,q_0\in Q,\underset{ \textsf{accepts} }{ F }\subseteq Q)$.  $\delta:Q\times \Sigma_\varepsilon\times \Gamma_\varepsilon\longrightarrow \mathcal{P}(Q\times \Gamma_\varepsilon).\quad$  $L\in \textbf{{CFL}}\Leftrightarrow \exists G_{\textsf{CFG }}  : L=L(G)\Leftrightarrow \exists  P_{\textsf{PDA }}  : L=L(P)$ 
+# (**PDA**) $M=(Q,{ \Sigma },{ \Gamma },\delta,q_0\in Q,{ F }\subseteq Q)$.  $\delta:Q\times \Sigma_\varepsilon\times \Gamma_\varepsilon\longrightarrow \mathcal{P}(Q\times \Gamma_\varepsilon).\quad$  $L\in \textbf{{CFL}}\Leftrightarrow \exists G_{\textsf{CFG }}  : L=L(G)\Leftrightarrow \exists  P_{\textsf{PDA }}  : L=L(P)$ 
 - (**CFG $\rightsquigarrow$ CNF**) (**1.**) Add a new start variable $S_0$ and a rule $S_0\to S$. (**2.**) Remove $\varepsilon$-rules of the form $A\to \varepsilon$ (except for $S_0\to \varepsilon$). and remove $A$'s occurrences on the RH of a rule (e.g.: $R\to uAvAw$ becomes $R\to uAvAw \mid uAvw \mid uvAw \mid uvw$. where $u,v,w\in (V\cup \Sigma)^*$). (**3.**) Remove unit rules $A\to B$ then whenever $B\to u$ appears, add $A\to u$, unless this was a unit rule previously removed. ($u\in (V\cup \Sigma)^*$). (**4.**) Replace each rule $A\to u_1u_2\cdots u_k$ where $k\geq 3$ and $u_i\in (V\cup \Sigma)$, with the rules $A\to u_1A_1$, $A_1\to u_2A_2$, ..., $A_{k-2}\to u_{k-1}u_k$, where $A_i$ are new variables. Replace terminals $u_i$ with $U_i\to u_i$.
 - If $G \in \textsf{CNF}$, and $w\in L(G)$, then $|w|\leq 2^{|h|}-1$, where $h$ is the height of the parse tree for $w$.
 - $\forall L\in \textsf{CFL}, \exists G \in \textsf{CNF} : L=L(G)$.
@@ -61,7 +61,7 @@
 
 # (**CFG**) $G=({ V },{ \Sigma },R,S)$, $A\to w$, ($A\in V,w\in (V\cup \Sigma)^*$);  (**CNF**) $A\to BC$, $A\to a$, $S\to \varepsilon$, ($A,B,C\in V$, $a\in \Sigma$, $B,C\neq S$).
 
-- (the following are **CFL but non-reuglar**) 
+the following are **CFL but non-reuglar**:
 - $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$
 - $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX | bX | \varepsilon$
 - $\{ww^\mathcal{R}\}=\{ w:w=w^\mathcal{R} \land |w|\text{ is even} \}; S\to aSa \mid bSb \mid \varepsilon$
@@ -70,19 +70,24 @@
 - $\{ w : \#_w(a)> \#_w(b) \}; S\to JaJ; J\to J J \mid aJb \mid bJa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)\geq \#_w(b) \}; S\to SS \mid aSb \mid bSa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)= \#_w(b) \}$; $S\to SS\mid aSb  \mid bSa  \mid \varepsilon$ 
+- $\{ w : \#_w(a)= 2 \cdot \#_w(b) \}$; $S\to SS|S_{1}bS_{1}|bSaa|aaSb|\varepsilon;S_{1}\to aS|SS_{1}$ 
 - $\small{\{ w : \#_w(a)\neq \#_w(b) \}=\{ \#_w(a)> \#_w(b) \}\cup\{  \#_w(a)< \#_w(b) \}}$
 - $\overline{\{ a^nb^n \}}$; $S \to XbXaX \mid A \mid B$; $A \to aAb \mid Ab \mid b$; $B \to aBb \mid aB \mid a$; $X \to aX \mid bX \mid \varepsilon$.
 - $\{a^nb^m\mid n\neq m \}; S\to aSb | A | B; A\to aA | a; B\to bB | b$
-- $\{ {a}^i{b}^j{c}^k\mid i\leq j\lor j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$A\to A{a}\mid \varepsilon$; $\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$C\to C{c}\mid \varepsilon$
 - $\{ x \mid x \neq ww \};S\to A\mid B\mid AB\mid BA;A\to CAC\mid \texttt{0}$;$B\to CBC\mid \texttt{1}$;$C\to {0}\mid {1}$
 - $\{ a^nb^m \mid m \leq n \leq 3m \};S\to aSb \mid aaSb \mid aaaSb \mid \varepsilon;$ 
 - $\{ a^nb^n \}; S\to aSb \mid \varepsilon$
 - $\{ a^nb^m \mid n>m \}; S\to aSb \mid aS \mid a$
 - $\{ a^nb^m \mid n\geq m \geq 0 \};$ $S\to aSb \mid aS \mid a \mid \varepsilon$
 - $\{ a^ib^j c^k \mid i+j=k\};$ $S\to aSc \mid X; X\to bXc \mid \varepsilon$  
+- $\{ {a}^i{b}^j{c}^k\mid i\leq j\lor j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$A\to A{a}\mid \varepsilon$; $\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$C\to C{c}\mid \varepsilon$
+- $\{ {a}^i{b}^j{c}^k\mid i=j\lor j=k \};$ $S\to  A X_1 | X_2 C; X_1 \to bX_1 c | \varepsilon; X_2 \to aX_2 b | \varepsilon; A \to aA | \varepsilon; C \to cC | \varepsilon$
 - $\{ xy : |x|=|y|,x\neq y \};$ $S\to AB\mid BA$;$\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb$;$B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
-- (the following are both **CFL and regular**) 
+the following are both **CFL and regular**:
 - $\{ w:\#_w(a) \geq 3 \};$ $S\to XaXaXaX; X\to aX \mid bX \mid \varepsilon$
+- $\{ w:|w|\text{ is odd} \}; S\to aaS\mid abS\mid bbS\mid baS\mid a\mid b$ 
+- $\{ w:|w|\text{ is even} \}; S\to aaS\mid abS\mid bbS\mid baS\mid \varepsilon$
+- $\emptyset; S\to S$
 
 # ${ \textbf{Pumping lemma for context-free languages} }$: $L \in \text{CFL}\implies\exists p:\forall s\in L,|s|\geq p,\,s=uvxyz,$ (**i**) $\forall i\geq 0,uv^ixy^iz\in L$, (**ii**) $|vxy|\leq p$, and (**iii**) $|vy|>0$.
 

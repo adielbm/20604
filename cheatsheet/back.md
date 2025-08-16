@@ -3,7 +3,9 @@
 - (**unrecognizable**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**recognizable but undecidable**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
 - (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}=\{\langle D\rangle \mid L(D)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
-- $\large\textbf{Examples of Deciders:}$ 
+**Examples of Recognizers**: 
+- $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"     
+**Examples of Deciders**:
 - $\mathrm{INFINITE}_{\textsf{DFA}}$: "On $n$-state DFA $\langle A \rangle$: const. DFA $B$ s.t. $L(B)=\Sigma^{\geq n}$; const. DFA $C$ s.t. $L(C)=L(A)\cap L(B)$; if $L(C)\neq\emptyset$ (by ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁" 
 - $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. DFA $A$ s.t. $L(A)=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. DFA $B$ s.t. $L(B)=L(D)\cap L(A)$; if $L(B)=\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁"
 - $\{ \langle R,S \rangle \mid R,S \text{ are regex},L(R)\subseteq L(S) \}$: "On $\langle R,S \rangle$: const. DFA $D$ s.t. $L(D)=L(R)\cap \overline{L(S)}$; if $L(D)=\emptyset$ (by ${E}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
@@ -20,14 +22,15 @@
 - $A\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop;"  
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} CFL_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \};$ $f(w)=0w$.
+- $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M',w\rangle$, where $M'=$"On $x$: if $M(x)$ accepts, 🅐. If rejects, loop"
 - $E_{\textsf{TM}} \leq_{\text{m}} \mathit{USELESS}_{\textsf{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{🅐}} \rangle$
+- $E_{\textsf{TM}} \leq_{\text{m}} \mathit{EQ}_{\textsf{TM}};\,$ $f(\langle M \rangle) = \langle M,M'\rangle$, $M'=$"On $x$: 🅁"
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{REGULAR}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M'\rangle$, $M'=$"On $x\in \{ 0,1 \}^*$: if $x=0^n1^n$, 🅐; O/W, return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{EQ}_{\textsf{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅐 all"; $M_2=$"On $x$: return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}} \overline{EQ_{\textsf{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅁 all"; $M_2=$"On $x$: return $M(w)$;"
-- $\mathit{ALL}_{\text{CFG}} \leq_{\text{m}}\mathit{EQ}_{\text{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
+- $\mathit{ALL}_{\textsf{CFG}} \leq_{\text{m}}\mathit{EQ}_{\textsf{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\{ \langle M_{\textsf{TM}} \rangle :  |L(M)|=1 \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x=x_0$, return $M(w)$; O/W, 🅁;" (where $x_0\in \Sigma^*$ is fixed). 
 - $\overline{\mathit{A}_{\textsf{TM}}} \leq_{\text{m}} E_{\textsf{TM}};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$, 🅁; O/W, return $M(w)$;" 
-- $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\{ \langle M_{\textsf{TM}} \rangle :  |L(M)|=1 \};$
 - $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \leq 3\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts" 
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \geq 3\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts" 
 - $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : M\text{ 🅐 all even num.}\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅁 if $M(w)$ halts within $|x|$. O/W, 🅐" 
@@ -38,12 +41,10 @@
 - $\mathit{HALT}_{\textsf{TM}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
 
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
-
-- ((**Running time**) decider $M$ is a **$f(n)$-time TM**.) $f:\mathbb{N} \to \mathbb{N}$, where $f(n)$ is the max. num. of steps that DTM (or NTM) $M$ takes on any $n$-length input (and any branch of any $n$-length input. resp.).
 - (**verifier** for $L$) TM $V$ s.t. $L=\{w\mid \exists c : V(\langle w,c\rangle)=\textsf{🅐} \};$ (**certificate** for $w\in L$) str. $c$ s.t. $V(\langle w,c\rangle)=\textsf{🅐}$.
 - $f:\Sigma^*\to\Sigma^*$ is **PT computable** if there exists a PT TM $M$ s.t. for every $w\in\Sigma^*$, $M$ halts with $f(w)$ on its tape.
 - If $A\leq_{\mathrm{P}} B$ and $B\in\mathrm{P}$, then $A\in\mathrm{P}$.
-- If $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$, then $A$ and $B$ are **PT equivalent**, denoted $A\equiv_P B.\quad$ $\equiv_P$ is an equiv. relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equiv. class of $\equiv_P$.
+- $A\equiv_P B$ if $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$.  $\equiv_P$ is an equiv. relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equiv. class of $\equiv_P$.
 - $\mathit{ALL}_{\textsf{DFA}}$, $\mathit{CONNECTED}$, $\underset{ 3\text{-clique} }{ \mathit{TRIANGLE} }$, $L(G_{\textsf{CFG}})$, $\mathit{RELPRIME}$, $\overset{\mathit{directed}}{ \underset{s\to t}{\mathit{PATH}} }\in\mathrm{P}$
 - $\mathit{CNF}_{2} \in \mathrm{P}$: ($\mathbf{algo.}$ $\forall x \in \phi$: (**1**) If $x$ occurs 1-2 times in same clause $\rightarrow$ remove cl.; (**2**) If $x$ is twice in 2 cl. $\rightarrow$ remove both cl.; (**3**) Similar to (2) for $\overline{x}$; (**4**) Replace any $(x \vee y)$, $(\neg x \vee z)$ with $(y \vee z)$; ($y,z$ may be $\varepsilon$); (**5**) If $(x) \wedge (\neg x)$ found, 🅁. (**6**) If $\phi=\varepsilon$, 🅐;)
 - $\mathit{CLIQUE}$, $\mathit{SUBSET\text{-}SUM}$, $\mathit{SAT}$, $\mathit{3SAT}$, $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}$, $\mathit{HAMPATH}$, $\mathit{UHAMATH}$, $\mathit{3COLOR}\in\text{NP-complete}.\quad$ $\emptyset,\Sigma^*\notin\text{NP-complete}$. 
@@ -63,8 +64,8 @@
 - (undir.) ${ \mathit{CLIQUE}_{k} } \leq_{\mathrm{P}} \underset{ \vert{V}\vert/2\text{-clique} }{ \mathit{HALF\text{-}CLIQUE} };\quad$ $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
 - (dir.) $\underset{s \leadsto t}{\mathit{HAM\text{-}PATH}}\leq_{\text{P}}\mathit{HAM\text{-}CYCLE};$ $f(\langle G,s,t\rangle)=\langle G',s,t\rangle$ where $V'=V\cup \{ x \}$, $E'=E\cup \{ (t,x),(x,s) \}$
 - $\mathit{HAM\text{-}CYCLE}\leq_{\text{P}} \mathit{UHAMCYCLE};$ $f(\langle G\rangle)=\langle G'\rangle$. For each $u,v\in V$: $u$ is replaced by $u_{\textsf{in}},u_{\textsf{mid}},u_{\textsf{out}}$; $(v,u)$ replaced by $\{v_{\textsf{out}},u_{\textsf{in}}\},\{u_{\textsf{in}},u_{\textsf{mid}}\}$; and $(u,v)$ by $\{u_{\textsf{out}},v_{\textsf{in}}\},\{ u_{\textsf{mid}},u_{\textsf{out}} \}$. 
-- $\mathit{UHAMPATH} \leq_{\text{P}} \mathit{PATH}_{\geq k};$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V(G)|-1 \rangle$
-- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k}\leq_{\text{p}}\mathit{CLIQUE}_{k};\quad$ $f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
+- $\mathit{UHAMPATH} \leq_{\text{P}} \mathit{PATH}_{\geq k};$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V|-1 \rangle$
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k}\leq_{\text{p}}\mathit{CLIQUE}_{k};$ $f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\{ \langle G, t\rangle : G \text{ has }2t\text{-clique} \};$ $f(\langle G, k \rangle) = \langle G', t = \lceil k/2 \rceil \rangle$, $G'=G$ if $k$ is even; $G'=G\cup \{v\}$ ($v$ connected to all $G$ nodes) if $k$ is odd.
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\overset{\textsf{almost}}{\mathit{CLIQUE}_{k}};$ $f(\langle G, k \rangle) = \langle G', k+2 \rangle$, $G'=G\cup \{ v_{n+1},v_{n+2} \}$; $v_{n+1},v_{n+2}$ are con. to all $V$
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}}\mathit{DOMINATING\text{-}SET}_{k} ;\quad$ $f(\langle G, k \rangle) = \langle G', k \rangle$, where $V'=\{ \text{non-isolated node in }V \}\cup \{ v_{e}:e\in E \}$, $E'=E\cup \{ (v_{e},u),(v_{e},w): e=(u,w)\in E \}$.
