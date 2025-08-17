@@ -1,4 +1,4 @@
-# $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{DECIDABLE}} \subset  {\text{RECOGNIZABLE}}$ 
+# $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{Turing-Decidable}} \subset  {\text{Turing-Recognizable}}$ 
 
 - (**unrecognizable**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**recognizable but undecidable**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
@@ -60,32 +60,35 @@
 - $\mathit{3SAT} \leq_{\mathrm{P}}\mathit{CNF}_{3};$ $f(\langle\phi\rangle)=\phi'$. If $\#_{\phi}(x)=k>3$, replace $x$ with $x_1,\dots x_{k}$, and add $(\overline{x_{1}}\lor x_{2})\land\cdots\land(\overline{x_{k}}\lor x_{1})$.
 - $\mathit{SUBSET\text{-}SUM} \leq_{\mathrm{P}} \mathit{SET\text{-}PARTITION};\quad$ $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
 - $\mathit{3COLOR} \leq_{\mathrm{P}} \overset{ \textsf{almost} }{ \mathit{3COLOR} };$ $f(\langle G \rangle) = \langle G' \rangle,\,G'=G\cup K_4$
-- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}} \mathit{WVC};f(\langle G,k\rangle)= (G,w,k),\forall v\in V(G), w(v)=1$
-- (dir.) $\mathit{HAM\text{-}PATH}\leq_{\text{P}}\mathit{2HAM\text{-}PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, where $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}} \mathit{WVC};f(\langle G,k\rangle)= (G,w,k),\forall v\in V, w(v)=1$
+- (dir.) $\mathit{HAM\text{-}PATH}\leq_{\text{P}}\mathit{2HAM\text{-}PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
 - (undir.) ${ \mathit{CLIQUE}_{k} } \leq_{\mathrm{P}} \underset{ \vert{V}\vert/2\text{-clique} }{ \mathit{HALF\text{-}CLIQUE} };\quad$ $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
-- (dir.) $\underset{s \leadsto t}{\mathit{HAM\text{-}PATH}}\leq_{\text{P}}\mathit{HAM\text{-}CYCLE};$ $f(\langle G,s,t\rangle)=\langle G',s,t\rangle$ where $V'=V\cup \{ x \}$, $E'=E\cup \{ (t,x),(x,s) \}$
+- $\underset{s \leadsto t}{\mathit{HAM\text{-}PATH}}\leq_{\text{P}}\mathit{HAM\text{-}CYCLE};$ $f(\langle G,s,t\rangle)=\langle G',s,t\rangle$, $V'=V\cup \{ x \}$, $E'=E\cup \{ (t,x),(x,s) \}$
 - $\mathit{HAM\text{-}CYCLE}\leq_{\text{P}} \mathit{UHAMCYCLE};$ $f(\langle G\rangle)=\langle G'\rangle$. For each $u,v\in V$: $u$ is replaced by $u_{\textsf{in}},u_{\textsf{mid}},u_{\textsf{out}}$; $(v,u)$ replaced by $\{v_{\textsf{out}},u_{\textsf{in}}\},\{u_{\textsf{in}},u_{\textsf{mid}}\}$; and $(u,v)$ by $\{u_{\textsf{out}},v_{\textsf{in}}\},\{ u_{\textsf{mid}},u_{\textsf{out}} \}$. 
-- $\mathit{UHAMPATH} \leq_{\text{P}} \mathit{PATH}_{\geq k};$ $f(\langle G, a, b \rangle) = \langle G, a, b, k=|V|-1 \rangle$
-- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k}\leq_{\text{p}}\mathit{CLIQUE}_{k};$ $f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
+- $\small{\mathit{UHAMPATH} \leq_{\text{P}} \mathit{PATH}_{\geq k};f(\langle G, a, b \rangle) = \langle G, a, b, k=|V|-1 \rangle}$
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\text{p}}\mathit{CLIQUE};f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\{ \langle G, t\rangle : G \text{ has }2t\text{-clique} \};$ $f(\langle G, k \rangle) = \langle G', t = \lceil k/2 \rceil \rangle$, $G'=G$ if $k$ is even; $G'=G\cup \{v\}$ ($v$ connected to all $G$ nodes) if $k$ is odd.
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\overset{\textsf{almost}}{\mathit{CLIQUE}_{k}};$ $f(\langle G, k \rangle) = \langle G', k+2 \rangle$, $G'=G\cup \{ v_{n+1},v_{n+2} \}$; $v_{n+1},v_{n+2}$ are con. to all $V$
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}}\mathit{DOMINATING\text{-}SET}_{k} ;\quad$ $f(\langle G, k \rangle) = \langle G', k \rangle$, where $V'=\{ \text{non-isolated node in }V \}\cup \{ v_{e}:e\in E \}$, $E'=E\cup \{ (v_{e},u),(v_{e},w): e=(u,w)\in E \}$.
-- $\mathit{CLIQUE} \leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $\mathit{SET\text{-}COVER}\leq_{\mathrm{P}} \overset{\mathit{VERTEX}}{\small\mathit{COVER}};$ $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{SET\text{-}SPLITTING};$ $\mathit{INDEP\text{-}SET}\leq_{\mathrm{P}} \overset{\mathit{VERTEX}}{\small\mathit{COVER}}$ 
+- $\mathit{CLIQUE} \leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $f(\langle G,k\rangle)=\langle G^{\complement},k\rangle$
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \underset{ \langle \mathcal{U}, \mathcal{S}, k \rangle }{ \overset{\mathit{SET}}{\small\mathit{COVER}} } = \{   \exists \mathcal{C} \subseteq \mathcal{S},\, |\mathcal{C}| \le k,\, \bigcup_{A \in \mathcal{C}} A = \mathcal{U} \};$ $f(\langle G,k\rangle)=\langle \mathcal{U}=E,\mathcal{S}=\{ S_1,\ldots,S_n \},k\rangle$, where $n=|V|$, $S_u=\{\text{edges incident to } u\in V\}$. 
+- $\mathit{INDEP\text{-}SET}\leq_{\mathrm{P}} \overset{\mathit{VERTEX}}{\small\mathit{COVER}};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
 
-# Counterexamples
+# Examples
 
-- $A\leq_{\text{m}} B$ and $B\in\text{REG}$, but, $A\notin \text{REG}$: $\quad A=\{0^n1^n \mid n \ge 0\}$, $B=\{1\}$, $f:A\to B$, $f(w)=\begin{cases} 1 & \text{if } w \in A \\ 0 & \text{if } w \notin A \end{cases}$.
+- $A\leq_{\text{m}} B$, $B\in\text{REGULAR}$, $A\notin \text{REGULAR}$: $A=\{0^n1^n\}$, $B=\{1\}$, $f:A\to B$, $f(w)= 1  \text{ if } w \in A , 0  \text{ if } w \notin A$.
 - $L\in \text{CFL}$ but $\overline{L}\notin {\text{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
 - $L_1,L_2\in \text{CFL}$ but $L_1\cap L_2\notin \text{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
-- $L_1\in \text{CFL}$, $L_2$ is infinite, but $L_1\setminus L_2\notin \text{REG}:\quad$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \mid n \ge 0\}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
-- $L_1,L_2\in \text{REG}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:$ $L_1=\{ {a},{b},{ab} \}$, $L_2=\{ {a},{b},{ba} \}$.
-- $L_1\in \text{REG}$, $L_2\not\in \text{REG}$, $L_1\cap L_2\in \text{REG}$, and $L_1\cup L_2\in \text{REG}:\quad$ $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
-- $L_1,L_2,L_3,\dots\in \text{REG}$, $\bigcup_{i=1}^{\infty} L_i\not\in \text{REG}:\quad$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
-- $L_1\cdot L_2\in \text{REG}$, $L_1\not\in \text{REG}:$ $L_1=\{ {a}^n{b}^n \}$, $L_2=\Sigma^*$.
+- $L_1\in \text{CFL}$, $L_2$ is infinite, but $L_1\setminus L_2\notin \text{REGULAR}:$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \mid n \ge 0\}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
+- $L_1,L_2\in \text{REGULAR}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:$ $L_1=\{ {a},{b},{ab} \}$, $L_2=\{ {a},{b},{ba} \}$.
+- $L_1\in \text{REGULAR}$, $L_2\not\in \text{REGULAR}$, $L_1\cap L_2\in \text{REGULAR}$, and $L_1\cup L_2\in \text{REGULAR}:$ $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1,L_2,\dots\in \text{REGULAR}$, $\bigcup_{i=1}^{\infty} L_i\not\in \text{REGULAR}:$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1\cdot L_2\in \text{REGULAR}$, $L_1\not\in \text{REGULAR}:$ $L_1=\{ {a}^n{b}^n \}$, $L_2=\Sigma^*$.
 - $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
-- $L_1,L_2\in\text{DECIDABLE}$, and $L_1\subseteq L \subseteq L_2$, but $L\in \text{UNDECIDABLE}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
-- $L_1\in \text{REG}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
-- $L^*\in \text{REG}$, but $L\not\in \text{REG}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
-- $A \not\leq_m \overline{A}:$ $A=\mathit{A}_{\textsf{TM}}\in \text{RECOGNIZABLE}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{RECOG.}$
+- $L_1,L_2\in\text{TD}$, and $L_1\subseteq L \subseteq L_2$, but $L\not\in \text{TD}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
+- $L_1\in \text{REGULAR}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
+- $L^*\in \text{REGULAR}$, but $L\not\in \text{REGULAR}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
+- $A \not\leq_m \overline{A}:$ $A=\mathit{A}_{\textsf{TM}}\in \text{TR}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{TR}$
 - $A\notin\text{DEC.},A\leq_\text{m}\overline{A}:$ $f(0x)=1x,f(1y)=0y$,  $A=\{ w\mid  \exists x \in \mathit{A}_{\textsf{TM}}: w=0x \lor\exists y \in \overline{\mathit{A}_{\textsf{TM}}}: w=1y  \}$
 - $L\in\text{CFL},L\cap L^{\mathcal{R}}\not\in \text{CFL}:$ $L=\{ a^nb^na^m \}$.
