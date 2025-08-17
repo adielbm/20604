@@ -2,7 +2,7 @@
 
 - (**unrecognizable**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**recognizable but undecidable**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
-- (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}=\{\langle D\rangle \mid L(D)=\Sigma^*\}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
+- (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
 **Examples of Recognizers**: 
 - $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"     
 **Examples of Deciders**:
@@ -69,7 +69,7 @@
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\text{p}}\mathit{CLIQUE};f(\langle G, k \rangle) = \langle G^{\complement}=(V, E^{\complement}), |V| - k \rangle$
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\{ \langle G, t\rangle : G \text{ has }2t\text{-clique} \};$ $f(\langle G, k \rangle) = \langle G', t = \lceil k/2 \rceil \rangle$, $G'=G$ if $k$ is even; $G'=G\cup \{v\}$ ($v$ connected to all $G$ nodes) if $k$ is odd.
 - $\mathit{CLIQUE}_{k} \leq_{\mathrm{P}}\overset{\textsf{almost}}{\mathit{CLIQUE}_{k}};$ $f(\langle G, k \rangle) = \langle G', k+2 \rangle$, $G'=G\cup \{ v_{n+1},v_{n+2} \}$; $v_{n+1},v_{n+2}$ are con. to all $V$
-- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}}\mathit{DOMINATING\text{-}SET}_{k} ;\quad$ $f(\langle G, k \rangle) = \langle G', k \rangle$, where $V'=\{ \text{non-isolated node in }V \}\cup \{ v_{e}:e\in E \}$, $E'=E\cup \{ (v_{e},u),(v_{e},w): e=(u,w)\in E \}$.
+- $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}}\mathit{DOMINATING\text{-}SET}_{k} ;\quad$ $f(\langle G, k \rangle) = \langle G', k \rangle$, where $V'=\{ \text{non-isolated nodes in }V \}\cup \{ v_{e}:e\in E \}$, $E'=E\cup \{ (v_{e},u),(v_{e},w): e=(u,w)\in E \}$.
 - $\mathit{CLIQUE} \leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $f(\langle G,k\rangle)=\langle G^{\complement},k\rangle$
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \underset{ \langle \mathcal{U}, \mathcal{S}, k \rangle }{ \overset{\mathit{SET}}{\small\mathit{COVER}} } = \{   \exists \mathcal{C} \subseteq \mathcal{S},\, |\mathcal{C}| \le k,\, \bigcup_{A \in \mathcal{C}} A = \mathcal{U} \};$ $f(\langle G,k\rangle)=\langle \mathcal{U}=E,\mathcal{S}=\{ S_1,\ldots,S_n \},k\rangle$, where $n=|V|$, $S_u=\{\text{edges incident to } u\in V\}$. 
 - $\mathit{INDEP\text{-}SET}\leq_{\mathrm{P}} \overset{\mathit{VERTEX}}{\small\mathit{COVER}};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
@@ -78,13 +78,14 @@
 # Examples
 
 - $A\leq_{\text{m}} B$, $B\in\text{REGULAR}$, $A\notin \text{REGULAR}$: $A=\{0^n1^n\}$, $B=\{1\}$, $f:A\to B$, $f(w)= 1  \text{ if } w \in A , 0  \text{ if } w \notin A$.
-- $L\in \text{CFL}$ but $\overline{L}\notin {\text{CFL}}$: $\quad L=\{x\mid \forall w\in \Sigma^*, x\neq ww \}$, $\overline{L}=\{ww \mid w\in \Sigma^* \}$.
-- $L_1,L_2\in \text{CFL}$ but $L_1\cap L_2\notin \text{CFL}$: $\quad L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
-- $L_1\in \text{CFL}$, $L_2$ is infinite, but $L_1\setminus L_2\notin \text{REGULAR}:$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \mid n \ge 0\}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
+- $L\in \text{CFL},\overline{L}\notin {\text{CFL}}$: $L=\{x\mid x\neq ww \}$, $\overline{L}=\{ww  \}$.
+- $L_1,L_2\in \text{CFL},L_1\cap L_2\notin \text{CFL}$: $L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
+- $L_1,L_2\notin \text{CFL}$, $L_1\cap L_2\in \text{CFL}$: $L_{1}=\{ a^nb^nc^n \},L_{2}=\{ c^nb^na^n \},L_{1}\cap L_{2}=\{ \varepsilon \}$
+- $L_1\in \text{CFL}$, $L_2$ is infinite, $L_1\setminus L_2\notin \text{REGULAR}:$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
 - $L_1,L_2\in \text{REGULAR}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:$ $L_1=\{ {a},{b},{ab} \}$, $L_2=\{ {a},{b},{ba} \}$.
-- $L_1\in \text{REGULAR}$, $L_2\not\in \text{REGULAR}$, $L_1\cap L_2\in \text{REGULAR}$, and $L_1\cup L_2\in \text{REGULAR}:$ $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1,L_1\cup L_2\in \text{REGULAR}$, $L_2,L_1\cap L_2\not\in \text{REGULAR}$, $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
 - $L_1,L_2,\dots\in \text{REGULAR}$, $\bigcup_{i=1}^{\infty} L_i\not\in \text{REGULAR}:$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
-- $L_1\cdot L_2\in \text{REGULAR}$, $L_1\not\in \text{REGULAR}:$ $L_1=\{ {a}^n{b}^n \}$, $L_2=\Sigma^*$.
+- $L_1\cdot L_2\in \text{REGULAR},L_1\not\in \text{Reg.}:L_1=\{ {a}^n{b}^n \},L_2=\Sigma^*$
 - $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
 - $L_1,L_2\in\text{TD}$, and $L_1\subseteq L \subseteq L_2$, but $L\not\in \text{TD}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
 - $L_1\in \text{REGULAR}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
@@ -92,3 +93,4 @@
 - $A \not\leq_m \overline{A}:$ $A=\mathit{A}_{\textsf{TM}}\in \text{TR}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{TR}$
 - $A\notin\text{DEC.},A\leq_\text{m}\overline{A}:$ $f(0x)=1x,f(1y)=0y$,  $A=\{ w\mid  \exists x \in \mathit{A}_{\textsf{TM}}: w=0x \lor\exists y \in \overline{\mathit{A}_{\textsf{TM}}}: w=1y  \}$
 - $L\in\text{CFL},L\cap L^{\mathcal{R}}\not\in \text{CFL}:$ $L=\{ a^nb^na^m \}$.
+- $A \leq_m {B},B \not\leq_m {A}:$ $A=\{ a \},B=\mathit{HALT}_{\textsf{TM}}$, $f(w)=\langle M\rangle$, $M=$"On $x$, if $w\in A$, 🅐; O/W, loop"
