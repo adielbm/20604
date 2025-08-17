@@ -34,7 +34,7 @@
 - $\{ w: \#_{ab}({w})=\#_{ba}({w}) \}\equiv \varepsilon\cup a \cup b \cup a\Sigma^*a \cup b\Sigma^*b$
 - $\{ a^m b^n \mid m+n \text{ is odd} \}\equiv  a(aa)^*(bb)^*  \cup (aa)^* b(bb)^*$
 - $\{ aw: aba\not\subseteq w \}\equiv a(a\cup bb\cup bbb)^*(b\cup \varepsilon)$
-
+- $\{ w: bb\not\subseteq w \}\equiv (a\cup ba)^*(\varepsilon \cup b)$
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
 - (the following are **non-reuglar but CFL**)

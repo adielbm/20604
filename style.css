@@ -63,7 +63,7 @@ html.dark {
     background: rgba(195, 14, 89, 0.073);
     margin: 2em;
     padding: 0.5em;
-    border-radius: 0.5em;
+    border-radius: 0.25em;
     list-style: none;
 }
 
@@ -126,12 +126,21 @@ html.dark {
 
 /* for printing */
 @media print {
+
+    html {
+        background: white;
+    }
+
+    * {
+        color: black !important;
+    }
+
     body {
         font-family: 'David Libre', serif;
         max-width: none;
         background: white !important;
         padding: 0;
-        font-size: 11px;
+        font-size: 12px;
     }
 
     h1,
@@ -139,6 +148,7 @@ html.dark {
     h3,
     h4 {
         margin: 5px 0;
+        color: black;
     }
 
     img {
@@ -146,7 +156,8 @@ html.dark {
     }
 
     .answer {
-        border: 1px solid #c30e59;
+        border: .2pt solid black;
+        color: black;
         box-shadow: none;
         padding: 2px 10px;
         margin: 5px;
@@ -158,4 +169,53 @@ html.dark {
     .answer button {
         display: none;
     }
+
+    @page {
+        size: A4 portrait;
+        margin: 1cm;
+    }
+
+    body {
+        column-count: 2;
+        column-rule: 0.2pt solid black;
+        column-fill: balance;
+    }
+
+    h1 {
+        border-top: 0.2pt solid black;
+    }
+
+    h1,
+    h2,
+    h3,
+    figure,
+    pre,
+    code,
+    table,
+    blockquote {
+        break-inside: avoid;
+        /* avoid column/page splits inside */
+        page-break-inside: avoid;
+        /* legacy alias for some UAs */
+    }
+
+    h1,
+    h2,
+    h3 {
+        break-after: avoid;
+    }
+
+    .break-col {
+        break-before: column;
+    }
+
+    /* start next column here */
+    .avoid-col {
+        break-inside: avoid-column;
+    }
+
+    .span-all {
+        column-span: all;
+    }
+
 }

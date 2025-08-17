@@ -15,7 +15,7 @@
 - $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐); O/W, 🅁" 
 - $\{\langle M_{\textsf{DFA}}\rangle \mid L(M) = \Sigma^*\}$: "On $\langle M\rangle$: const. DFA $M^{\complement}=(L(M))^{\complement}$; if $L(M^{\complement}) = \emptyset$ (by $E_{\textsf{DFA}}$), 🅐; O/W 🅁."
 - $\{\langle R_{\textsf{REX}}\rangle \mid \exists s,t \in\Sigma^*:w=s 111t \in L(R)\}:$ "On $\langle R\rangle$: const. DFA $D$ s.t. $L(D)=\Sigma^*111\Sigma^*;$ const. DFA $C$ s.t. $L(C)=L(R)\cap L(D)$; if $L(C)\neq\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁" 
-# Mapping Reduction: $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
+# Mapping Reduction (from $A$ to $B$): $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
 
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  L(M) = (L(M))^{\mathcal{R}} \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, 🅁; if $x=01$, return $M(x)$; if $x=10$, 🅐;" 
 - ${\mathit{A}_{\textsf{TM}}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \};$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On $x$: if $x=w$ return $M(x)$; O/W, 🅁;" $D$ is DFA s.t. $L(D)=\{w\}.$ 
@@ -23,6 +23,7 @@
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} CFL_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \};$ $f(w)=0w$.
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M',w\rangle$, where $M'=$"On $x$: if $M(x)$ accepts, 🅐. If rejects, loop"
+- $\mathit{HALT}_{\textsf{TM}}\leq_{\text{m}} \mathit{A}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M',\langle M,w\rangle\rangle$, where $M'=$"On $\langle X,x\rangle$: if $X(x)$ halts, 🅐;" 
 - $E_{\textsf{TM}} \leq_{\text{m}} \mathit{USELESS}_{\textsf{TM}};\,$ $f(\langle M \rangle) = \langle M, q_{\text{🅐}} \rangle$
 - $E_{\textsf{TM}} \leq_{\text{m}} \mathit{EQ}_{\textsf{TM}};\,$ $f(\langle M \rangle) = \langle M,M'\rangle$, $M'=$"On $x$: 🅁"
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{REGULAR}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M'\rangle$, $M'=$"On $x\in \{ 0,1 \}^*$: if $x=0^n1^n$, 🅐; O/W, return $M(w)$;" 
