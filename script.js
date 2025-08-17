@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
     tocContainer.appendChild(list);
 
 
+
+
+
+
     // // go through all stuff like "<p>ראו [[#מועד 2024b-94]] שאלה 4.</p>" and make them links.
     // // Replace spaces in the id with "-"
     // document.querySelectorAll('p').forEach(p => {
@@ -168,3 +172,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 })
+
+
+document.querySelectorAll('h1').forEach(h1 => {
+    const parent = h1.parentNode;
+
+    // IMPORTANT: capture the first node to move BEFORE relocating <h1>
+    let cursor = h1.nextSibling; // includes text nodes; use nextElementSibling if you want to skip whitespace
+
+    // create section and move this <h1> into it
+    const section = document.createElement('section');
+    parent.insertBefore(section, h1);
+    section.appendChild(h1);
+
+    // move everything until the next <h1>
+    while (cursor && !(cursor.nodeType === 1 && cursor.tagName === 'H1')) {
+        const next = cursor.nextSibling; // save next before moving
+        section.appendChild(cursor);
+        cursor = next;
+    }
+});
