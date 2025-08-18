@@ -445,7 +445,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 		- נראה מ"ט שמזהה את השפה $L$: 
 		- $P=\text{``On input }\langle M \rangle$:
 			- Extract the input alphabet $\Sigma$ of $M$.
-			- Enumerate all strings over $\Sigma$ in lexicographic order: $w_1, w_2, \ldots$.
+			- Enumerate all palindromes over $\Sigma$ in lexicographic order: $w_1, w_2, \ldots$.
 			- For each $i\in \mathbb{N}$: 
 				- Simulate $M$ for at most $i$ steps on each input $w_1, w_2, \ldots, w_i$. If $M$ accepts any of these strings, _accept_.
 		- אם $M$ אכן מקבל פלינדרום, אז $P$ יקבל בסופו של דבר, שהרי $P$ רץ מספר סופי של צעדים לפני שיגיע לאותו פלינדרום.
