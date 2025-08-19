@@ -43,10 +43,9 @@
 
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 - (**verifier** for $L$) TM $V$ s.t. $L=\{w\mid \exists c : V(\langle w,c\rangle)=\textsf{🅐} \};$ (**certificate** for $w\in L$) str. $c$ s.t. $V(\langle w,c\rangle)=\textsf{🅐}$.
-- $f:\Sigma^*\to\Sigma^*$ is **PT computable** if there exists a PT TM $M$ s.t. for every $w\in\Sigma^*$, $M$ halts with $f(w)$ on its tape.
 - If $A\leq_{\mathrm{P}} B$ and $B\in\mathrm{P}$, then $A\in\mathrm{P}$.
 - $A\equiv_P B$ if $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$.  $\equiv_P$ is an equiv. relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equiv. class of $\equiv_P$.
-- $\mathit{ALL}_{\textsf{DFA}}$, $\mathit{CONNECTED}$, $\underset{ 3\text{-clique} }{ \mathit{TRIANGLE} }$, $L(G_{\textsf{CFG}})$, $\mathit{RELPRIME}$, $\overset{\mathit{directed}}{ \underset{s\to t}{\mathit{PATH}} }\in\mathrm{P}$
+- $\mathit{ALL}_{\textsf{DFA}},{\tiny\mathit{CONNECTED}},\underset{ 3\text{-clique} }{ \mathit{TRIANGLE} },L(G_{\textsf{CFG}}),\overset{\mathit{directed}}{ \underset{s\to t}{\mathit{PATH}} }\in\mathrm{P}$
 - $\mathit{CNF}_{2} \in \mathrm{P}$: ($\mathbf{algo.}$ $\forall x \in \phi$: (**1**) If $x$ occurs 1-2 times in same clause $\rightarrow$ remove cl.; (**2**) If $x$ is twice in 2 cl. $\rightarrow$ remove both cl.; (**3**) Similar to (2) for $\overline{x}$; (**4**) Replace any $(x \vee y)$, $(\neg x \vee z)$ with $(y \vee z)$; ($y,z$ may be $\varepsilon$); (**5**) If $(x) \wedge (\neg x)$ found, 🅁. (**6**) If $\phi=\varepsilon$, 🅐;)
 - $\mathit{CLIQUE}$, $\mathit{SUBSET\text{-}SUM}$, $\mathit{SAT}$, $\mathit{3SAT}$, $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}$, $\mathit{HAMPATH}$, $\mathit{UHAMATH}$, $\mathit{3COLOR}\in\text{NP-complete}.\quad$ $\emptyset,\Sigma^*\notin\text{NP-complete}$. 
 - If $B\in\text{NP-complete}$ and $B\in\mathrm{P}$, then $\mathrm{P}=\mathrm{NP}$.
@@ -56,8 +55,9 @@
 # Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
 
 - $\mathit{SAT} \leq_{\mathrm{P}} \mathit{DOUBLE\text{-}SAT};\quad$ $f(\phi) = \phi \land (x \lor \neg x)$
-- $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{4SAT};\quad$ $f(\phi) = \phi'$, where $\phi'$ is obtained from the CNF $\phi$ by adding a new var. $x$ to each clause, and adding a new clause $(\neg x \lor \neg x \lor \neg x \lor \neg  x)$. 
+- $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{4SAT};\quad$ $f(\phi) = \phi'$, where $\phi'$ is obtained from the 3cnf $\phi$ by adding a new var. $x$ to each clause, and adding a new clause $(\neg x \lor \neg x \lor \neg x \lor \neg  x)$. 
 - $\mathit{3SAT} \leq_{\mathrm{P}}\mathit{CNF}_{3};$ $f(\langle\phi\rangle)=\phi'$. If $\#_{\phi}(x)=k>3$, replace $x$ with $x_1,\dots x_{k}$, and add $(\overline{x_{1}}\lor x_{2})\land\cdots\land(\overline{x_{k}}\lor x_{1})$.
+- $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{CLIQUE};$ $f(\phi) = \langle G,k\rangle$. where $\phi$ is 3cnf with $k$ clauses. Nodes represent literals. Edges connect all pairs except those 'from the same clause' or 'contradictory literals'.
 - $\mathit{SUBSET\text{-}SUM} \leq_{\mathrm{P}} \mathit{SET\text{-}PARTITION};\quad$ $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
 - $\mathit{3COLOR} \leq_{\mathrm{P}} \overset{ \textsf{almost} }{ \mathit{3COLOR} };$ $f(\langle G \rangle) = \langle G' \rangle,\,G'=G\cup K_4$
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}} \mathit{WVC};f(\langle G,k\rangle)= (G,w,k),\forall v\in V, w(v)=1$
