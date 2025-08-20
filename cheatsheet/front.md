@@ -1,4 +1,4 @@
-# $\quad\quad\quad\quad\Large{\text{{\LARGE{C}}HEAT {\LARGE{S}}HEET:} \text{{\LARGE{ C}}OMPUTATIONAL {\LARGE{M}}ODELS }\texttt{(20604)}}\quad$ https://github.com/adielbm/20604
+## $\quad\quad\quad\quad\Large{\text{{\LARGE{C}}HEAT {\LARGE{S}}HEET:} \text{{\LARGE{ C}}OMPUTATIONAL {\LARGE{M}}ODELS }\texttt{(20604)}}\quad$ https://github.com/adielbm/20604
 
 
 
@@ -12,7 +12,6 @@
 | $L^\mathcal{R}$    | ✓                       | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
 | $L_1\setminus L_2$ | **no**                  | ✓            | **no**       | ✓                    | **no**               | ✓          | $?$         |              |
 | $L\cap R$          | **no**                  | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
-
 - (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
 - (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
 - (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}}),\delta:Q\setminus \{q_{\text{a}}\}\times Q\setminus \{q_{0}\}\to\text{Rex}_ \Sigma$
@@ -21,9 +20,10 @@
 - $\forall$ NFA $\exists$ an equivalent NFA with 1 accept state.
 - (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|250]] 
 ![[GNFA to Regular Expression.svg|200]]
-
+___
 - If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
 ![[nfa-to-dfa.svg|170]]
+___
 **Regular Expressions**: Examples
 - $\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
 - $\small\{ w : \#_w(\texttt{0})\geq 2 \lor \#_w(\texttt{1})\leq 1\}\equiv(\Sigma^* 0 \Sigma^* 0\Sigma^*) \cup (0^*(\varepsilon \cup 1)0^*)$
@@ -37,14 +37,15 @@
 - $\{ w: bb\not\subseteq w \}\equiv (a\cup ba)^*(\varepsilon \cup b)$
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
-- (the following are **non-reuglar but CFL**)
+the following are **non-reuglar but CFL**
 - $\{w=w^\mathcal{R}\};$ $s=0^p10^p=xyz.$ but $xy^2z=0^{p+|y|}10^p\notin L$.  
 - $\{ a^nb^n \};$ $s=a^pb^p=xyz$, $xy^2z=a^{p+|y|}b^p\notin L$.
 - $\{ w : \#_a(w)>\#_b(w) \};$ $s=a^pb^{p+1}$, $|s|=2p+1\geq p$, $xy^2z=a^{p+|y|}b^{p+1}\notin L$. 
 - $\{ w: \#_{a}({w})=\#_{b}({w}) \};$ $s=a^pb^p=xyz$ but $xy^2z=a^{p+|y|}b^p\notin L$.
 - $\{ w : \#_w(a) \neq \#_w(b) \};$ (_pf._ by 'complement-closure', $\overline{L}=\{ w : \#_w(a) = \#_w(b) \}$)
 - $\{ a^ib^jc^k: i < j\lor i>k \};$ $s=a^pb^{p+1}c^{2p}=xyz$, but $xy^2z=a^{p+|y|}b^{p+1}c^{2p}$, $p+|y|\geq p+1$, $p+|y|\leq 2p$.
-- (the following are both **non-CFL and non-reuglar**) 
+___
+the following are both **non-CFL and non-reuglar**
 - $\{w=a^{2^k}\};\quad$ $k=\lfloor\log_2 |w|\rfloor,s=a^{2^k}=xyz.$ $2^k=|xyz|<|xy^2z|\leq |xyz|+|xy|\leq 2^k+p<2^{k+1}$.
 - $\{ a^p:p \text{ is prime} \};\quad$ $s=a^t=xyz$ for prime $t\geq p.$ $r:=|y|>0$
 - $\{ www:w\in \Sigma^* \};$ $s=a^pba^pba^p=xyz=a^{|x|+|y|+m}ba^pba^pb$, $m\geq 0$, but $xy^2z=a^{|x|+2|y|+m}ba^pba^pb\notin L$.
@@ -83,6 +84,7 @@ the following are **CFL but non-reuglar**:
 - $\{ {a}^i{b}^j{c}^k\mid i\leq j\lor j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$A\to A{a}\mid \varepsilon$; $\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$C\to C{c}\mid \varepsilon$
 - $\{ {a}^i{b}^j{c}^k\mid i=j\lor j=k \};$ $S\to  A X_1 | X_2 C; X_1 \to bX_1 c | \varepsilon; X_2 \to aX_2 b | \varepsilon; A \to aA | \varepsilon; C \to cC | \varepsilon$
 - $\{ xy : |x|=|y|,x\neq y \};$ $S\to AB\mid BA$;$\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb$;$B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
+___
 the following are both **CFL and regular**:
 - $\{ w:\#_w(a) \geq 3 \};$ $S\to XaXaXaX; X\to aX \mid bX \mid \varepsilon$
 - $\{ w:|w|\text{ is odd} \}; S\to aaS\mid abS\mid bbS\mid baS\mid a\mid b$ 
