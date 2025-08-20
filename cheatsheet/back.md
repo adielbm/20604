@@ -1,7 +1,7 @@
-# $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{Turing-Decidable}} \subset  {\text{Turing-Recognizable}}$ 
-- (**unrecognizable**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
-- (**recognizable but undecidable**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
-- (**decidable**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
+# $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset {\text{\textbf{T}uring-\textbf{D}ecidable}} \subset {\text{\textbf{T}uring-\textbf{R}ecognizable}}$ 
+- (**not TR**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
+- (**TR, but not TD**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
+- (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
 ___
 **Examples of Recognizers**: 
 - $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"     
@@ -21,7 +21,7 @@ ___
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  L(M) = (L(M))^{\mathcal{R}} \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, 🅁; if $x=01$, return $M(x)$; if $x=10$, 🅐;" 
 - ${\mathit{A}_{\textsf{TM}}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \};$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On $x$: if $x=w$ return $M(x)$; O/W, 🅁;" $D$ is DFA s.t. $L(D)=\{w\}.$ 
 - $A\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop;"  
-- $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} CFL_{\textsf{TM}}=\{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 
+- $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 
 - $A\leq_{\text{m}} B=\{ 0w:w\in A \}\cup \{ 1w:w\notin A \};$ $f(w)=0w$.
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M',w\rangle$, where $M'=$"On $x$: if $M(x)$ accepts, 🅐. If rejects, loop"
 - $\mathit{HALT}_{\textsf{TM}}\leq_{\text{m}} \mathit{A}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M',\langle M,w\rangle\rangle$, where $M'=$"On $\langle X,x\rangle$: if $X(x)$ halts, 🅐;" 
@@ -30,12 +30,13 @@ ___
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{REGULAR}_{\textsf{TM}};$ $f(\langle M,w\rangle)=\langle M'\rangle$, $M'=$"On $x\in \{ 0,1 \}^*$: if $x=0^n1^n$, 🅐; O/W, return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\mathit{EQ}_{\textsf{TM}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅐 all"; $M_2=$"On $x$: return $M(w)$;" 
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}} \overline{EQ_{\textsf{TM}}};\quad$ $f(\langle M, w \rangle) = \langle M_1, M_2 \rangle$, where $M_1=$"🅁 all"; $M_2=$"On $x$: return $M(w)$;"
+- $\mathit{A}_{\textsf{TM}} \leq_{\text{m}} \{ \langle M\rangle : M\text{ halts on }\langle M\rangle \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ accepts, 🅐; if rejects, loop;" 
 - $\mathit{ALL}_{\textsf{CFG}} \leq_{\text{m}}\mathit{EQ}_{\textsf{CFG}};$ $f(\langle G \rangle) = \langle G, H \rangle$, s.t. $L(H)=\Sigma^*.$
 - $\mathit{A}_{\textsf{TM}} \leq_{\text{m}}\{ \langle M_{\textsf{TM}} \rangle :  |L(M)|=1 \};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x=x_0$, return $M(w)$; O/W, 🅁;" (where $x_0\in \Sigma^*$ is fixed). 
 - $\overline{\mathit{A}_{\textsf{TM}}} \leq_{\text{m}} E_{\textsf{TM}};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$, 🅁; O/W, return $M(w)$;" 
 - $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \leq 3\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts" 
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : |L(M)| \geq 3\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts" 
-- $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : M\text{ 🅐 all even num.}\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅁 if $M(w)$ halts within $|x|$. O/W, 🅐" 
+- $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M\rangle : M\text{ 🅐 even num.}\};f(\langle M, w \rangle) = \langle M' \rangle$, $M'=$"On $x$: 🅁 if $M(w)$ halts within $|x|$. O/W, 🅐" 
 - $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : L(M)\text{ is finite}\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅐 if $M(w)$ halts"
 - $\overline{\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle : L(M)\text{ is infinite}\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: 🅁 if $M(w)$ halts within $|x|$ steps. O/W, 🅐" 
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{1},M_{2}\rangle : \varepsilon \in L(M_{1})\cup L(M_{2})\};$ $f(\langle M, w \rangle) = \langle M',M' \rangle$, $M'=$"On $x$: 🅐 if $M(w)$ halts"
@@ -43,7 +44,6 @@ ___
 - $\mathit{HALT}_{\textsf{TM}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
 
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
-- (**verifier** for $L$) TM $V$ s.t. $L=\{w\mid \exists c : V(\langle w,c\rangle)=\textsf{🅐} \};$ (**certificate** for $w\in L$) str. $c$ s.t. $V(\langle w,c\rangle)=\textsf{🅐}$.
 - If $A\leq_{\mathrm{P}} B$ and $B\in\mathrm{P}$, then $A\in\mathrm{P}$.
 - $A\equiv_P B$ if $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$.  $\equiv_P$ is an equiv. relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equiv. class of $\equiv_P$.
 - $\mathit{ALL}_{\textsf{DFA}},{\tiny\mathit{CONNECTED}},\underset{ 3\text{-clique} }{ \mathit{TRIANGLE} },L(G_{\textsf{CFG}}),\overset{\mathit{directed}}{ \underset{s\to t}{\mathit{PATH}} }\in\mathrm{P}$
@@ -75,6 +75,8 @@ ___
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \underset{ \langle \mathcal{U}, \mathcal{S}, k \rangle }{ \overset{\mathit{SET}}{\small\mathit{COVER}} } = \{   \exists \mathcal{C} \subseteq \mathcal{S},\, |\mathcal{C}| \le k,\, \bigcup_{A \in \mathcal{C}} A = \mathcal{U} \};$ $f(\langle G,k\rangle)=\langle \mathcal{U}=E,\mathcal{S}=\{ S_1,\ldots,S_n \},k\rangle$, where $n=|V|$, $S_u=\{\text{edges incident to } u\in V\}$. 
 - $\mathit{INDEP\text{-}SET}\leq_{\mathrm{P}} \overset{\mathit{VERTEX}}{\small\mathit{COVER}};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
+- $\mathit{HAM\text{-}CYCLE}\leq_{\mathrm{P}} \{\langle G,w,k\rangle: \exists\text{ hamcycle of weight}\leq k \};$ $f(\langle G\rangle)=\langle G',w,0\rangle$, where $G'=(V,E')$, $E'=\{ (u,v)\in E:u\neq v\}$, $w(u,v)=1$ if $(u,v)\in E$, $w(u,v)=0$ if $(u,v)\notin E$.
+
 
 # Examples
 
@@ -82,6 +84,8 @@ ___
 - $L\in \text{CFL},\overline{L}\notin {\text{CFL}}$: $L=\{x\mid x\neq ww \}$, $\overline{L}=\{ww  \}$.
 - $L_1,L_2\in \text{CFL},L_1\cap L_2\notin \text{CFL}$: $L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
 - $L_1,L_2\notin \text{CFL}$, $L_1\cap L_2\in \text{CFL}$: $L_{1}=\{ a^nb^nc^n \},L_{2}=\{ c^nb^na^n \},L_{1}\cap L_{2}=\{ \varepsilon \}$
+- $L_1\in \text{CFL}$, $L_2,L_1\cap L_2\notin \text{CFL}$: $L_1=\Sigma^*$, $L_2=\{ a^{i^2} \}$.
+- $L_1\in \text{REGULAR}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
 - $L_1\in \text{CFL}$, $L_2$ is infinite, $L_1\setminus L_2\notin \text{REGULAR}:$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
 - $L_1,L_2\in \text{REGULAR}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:$ $L_1=\{ {a},{b},{ab} \}$, $L_2=\{ {a},{b},{ba} \}$.
 - $L_1,L_1\cup L_2\in \text{REGULAR}$, $L_2,L_1\cap L_2\not\in \text{REGULAR}$, $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
@@ -89,7 +93,6 @@ ___
 - $L_1\cdot L_2\in \text{REGULAR},L_1\not\in \text{Reg.}:L_1=\{ {a}^n{b}^n \},L_2=\Sigma^*$
 - $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
 - $L_1,L_2\in\text{TD}$, and $L_1\subseteq L \subseteq L_2$, but $L\not\in \text{TD}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
-- $L_1\in \text{REGULAR}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
 - $L^*\in \text{REGULAR}$, but $L\not\in \text{REGULAR}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
 - $A \not\leq_m \overline{A}:$ $A=\mathit{A}_{\textsf{TM}}\in \text{TR}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{TR}$
 - $A\notin\text{DEC.},A\leq_\text{m}\overline{A}:$ $f(0x)=1x,f(1y)=0y$,  $A=\{ w\mid  \exists x \in \mathit{A}_{\textsf{TM}}: w=0x \lor\exists y \in \overline{\mathit{A}_{\textsf{TM}}}: w=1y  \}$

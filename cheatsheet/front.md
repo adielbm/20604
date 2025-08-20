@@ -1,4 +1,4 @@
-## $\quad\quad\quad\quad\Large{\text{{\LARGE{C}}HEAT {\LARGE{S}}HEET:} \text{{\LARGE{ C}}OMPUTATIONAL {\LARGE{M}}ODELS }\texttt{(20604)}}\quad$ https://github.com/adielbm/20604
+## $\quad\quad\quad\quad\large{\text{{\Large{C}}HEAT {\Large{S}}HEET:} \text{{\Large{ C}}OMPUTATIONAL {\Large{M}}ODELS }\texttt{(20604)}}\quad$ https://github.com/adielbm/20604
 
 
 
@@ -18,13 +18,9 @@
 - (DFAs $D_1,D_{2}$ ) $\exists$ DFA $D$ s.t. $|Q|= |Q_{1}|\cdot|Q_{2}|$, $L(D)=L(D_{1})\Delta L(D_{2})$.
 - (DFA $D$) If $L(D)\neq\emptyset$ then $\exists$ $s\in L(D)$ s.t. $|s|< |Q|$. 
 - $\forall$ NFA $\exists$ an equivalent NFA with 1 accept state.
-- (**DFA $\rightsquigarrow$ GNFA $\rightsquigarrow$ Regex**) ![[dfa-to-gnfa.svg|250]] 
-![[GNFA to Regular Expression.svg|200]]
-___
 - If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
-![[nfa-to-dfa.svg|170]]
 ___
-**Regular Expressions**: Examples
+**Regular Expressions: Examples**
 - $\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
 - $\small\{ w : \#_w(\texttt{0})\geq 2 \lor \#_w(\texttt{1})\leq 1\}\equiv(\Sigma^* 0 \Sigma^* 0\Sigma^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 - $\{ w   : |w| \bmod n = m \}\equiv(a \cup b)^m ((a \cup b)^n)^*$
@@ -35,6 +31,14 @@ ___
 - $\{ a^m b^n \mid m+n \text{ is odd} \}\equiv  a(aa)^*(bb)^*  \cup (aa)^* b(bb)^*$
 - $\{ aw: aba\not\subseteq w \}\equiv a(a\cup bb\cup bbb)^*(b\cup \varepsilon)$
 - $\{ w: bb\not\subseteq w \}\equiv (a\cup ba)^*(\varepsilon \cup b)$
+- $\{ w:\#_{w}(a) ,\#_{w}(b)\text{ are even} \}\equiv(aa \cup\ bb \cup (ab \cup ba)^2)^*$
+- $\{ w : |w|\bmod n \neq m\} \equiv \bigcup_{{r=0 , r\neq m}}^{n-1} (\Sigma^n)^* \Sigma^r$
+![[nfa-to-dfa.svg|160]]
+___
+![[dfa-to-gnfa.svg|260]]
+____
+![[GNFA to Regular Expression.svg|200]]
+
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
 the following are **non-reuglar but CFL**
@@ -66,6 +70,7 @@ the following are **CFL but non-reuglar**:
 - $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$
 - $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX | bX | \varepsilon$
 - $\{ww^\mathcal{R}\}=\{ w:w=w^\mathcal{R} \land |w|\text{ is even} \}; S\to aSa \mid bSb \mid \varepsilon$
+- $\overline{\{ ww^\mathcal{R} \}};$ $S\to aSa \mid bSb\mid aXb \mid bXa\mid a \mid b;X\to aXa\mid bX b\mid bX a\mid aX b\mid a\mid b \mid \varepsilon$
 - $\{ w a^{n} w^{\mathcal{R}}  \};$ $S\to aSa\mid bSb\mid M;M\to aM\mid\varepsilon$
 - $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX$; $A\to 0A0\mid 1A1\mid \#X$;$X\to 0X\mid 1X\mid \varepsilon$
 - $\{ w : \#_w(a)> \#_w(b) \}; S\to JaJ; J\to J J \mid aJb \mid bJa \mid a \mid \varepsilon$
@@ -84,6 +89,7 @@ the following are **CFL but non-reuglar**:
 - $\{ {a}^i{b}^j{c}^k\mid i\leq j\lor j\leq k \};$ $S\to S_{1}C\mid AS_{2}$;$A\to A{a}\mid \varepsilon$; $\,S_{1}\to {a}S_{1}{b}\mid S_{1}{b}\mid \varepsilon$;$S_{2}\to {b}S_{2}{c}\mid S_{2}{c}\mid \varepsilon$;$C\to C{c}\mid \varepsilon$
 - $\{ {a}^i{b}^j{c}^k\mid i=j\lor j=k \};$ $S\to  A X_1 | X_2 C; X_1 \to bX_1 c | \varepsilon; X_2 \to aX_2 b | \varepsilon; A \to aA | \varepsilon; C \to cC | \varepsilon$
 - $\{ xy : |x|=|y|,x\neq y \};$ $S\to AB\mid BA$;$\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb$;$B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
+- $\{ a^i b^j : i,j \geq 1, \; i \neq j, \; i < 2j \};$ $S\to aSb|X|aaYb;Y\to aaYb|ab;X\to bX|abb$
 ___
 the following are both **CFL and regular**:
 - $\{ w:\#_w(a) \geq 3 \};$ $S\to XaXaXaX; X\to aX \mid bX \mid \varepsilon$
@@ -98,7 +104,7 @@ the following are both **CFL and regular**:
 - (**more example of not CFL**) 
 - $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
 - $\{w \mid \#_{w}(a)=\#_{w}(b)=\#_{w}(c)\}$: (_pf_: since $\textsf{Regular}\cap \textsf{CFL}\in \text{CFL}$, but $\{ a^*b^*c^* \}\cap L=\{a^nb^nc^n \}\not\in \text{CFL}$)
-# $\small{L\in {\text{Turing-Decidable}} \iff \left(L\in {\text{Turing-Recognizable}} \text{ and } \overline{L}\in{\text{Turing-Recognizable}} \right)\iff\exists\,M_{\textsf{TM}}\text{ decides }L}$.
+# $\small{L\in {\text{Turing-Decidable}} \iff (L\in {\text{Turing-Recognizable}} \text{ and } \overline{L}\in{\text{Turing-Recognizable}} )\iff\exists\,M_{\textsf{TM}}\text{ decides }L}$.
 
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{🅐}},q_{\text{🅁}})$, where $\sqcup\in \Gamma$, $\sqcup\notin \Sigma$, $q_{\text{🅁}}\neq q_{\text{🅐}}$, $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
 - (**Turing-Recognizable** $(\mathbf{TR})$) 🅐 if $w\in L$, 🅁/loops if $w\notin L$; $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
