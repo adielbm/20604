@@ -104,22 +104,27 @@ the following are both **CFL and regular**:
 - (**more example of not CFL**) 
 - $\{a^i b^j c^k \mid 0\leq i \leq j \leq k\},$ $\{a^n b^n c^n \mid n \in \mathbb{N}\},$ $\{ww \mid w \in \{a,b\}^*\},$ $\{\texttt{a}^{n^{2}}\mid n\geq 0 \},$ $\{a^p \mid p \text{ is prime}\}$, $L=\{ ww^{\mathcal{R}} w : w\in \{a,b\}^* \}$
 - $\{w \mid \#_{w}(a)=\#_{w}(b)=\#_{w}(c)\}$: (_pf_: since $\textsf{Regular}\cap \textsf{CFL}\in \text{CFL}$, but $\{ a^*b^*c^* \}\cap L=\{a^nb^nc^n \}\not\in \text{CFL}$)
-# $\small{L\in {\text{Turing-Decidable}} \iff (L\in {\text{Turing-Recognizable}} \text{ and } \overline{L}\in{\text{Turing-Recognizable}} )\iff\exists\,M_{\textsf{TM}}\text{ decides }L}$.
 
-- (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{🅐}},q_{\text{🅁}})$, where $\sqcup\in \Gamma$, $\sqcup\notin \Sigma$, $q_{\text{🅁}}\neq q_{\text{🅐}}$, $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
-- (**Turing-Recognizable** $(\mathbf{TR})$) 🅐 if $w\in L$, 🅁/loops if $w\notin L$; $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
-- $L \in\text{TR}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
-- Every inf. recognizable lang. has an inf. dec. subset.
-- (**Turing-Decidable** $(\mathbf{TD})$) 🅐 if $w\in L$, 🅁 if $w\notin L$.
-- $L\in {\text{TD}} \iff L^{\mathcal{R}}\in {\text{TD}}$.
-- (**decider**) TM that halts on all inputs. 
-- (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
-- $\{ \text{all }\textsf{TM}\text{s} \}$ is count.; $\Sigma^*$ is count. (finite $\Sigma$); $\{ \text{all lang.} \}$ is uncount.; $\{ \text{all infinite bin. seq.} \}$ is uncount.
-- $f:\Sigma^*\to\Sigma^*$ is **computable** if $\exists M_{\textsf{TM}}:\forall w\in \Sigma^*$, $M$ halts on $w$ and outputs $f(w)$ on its tape.
-- If $A\leq_{\text{m}}B$ and $B\in \text{TD}$, then $A\in \text{TD}$.
-- If $A\leq_{\text{m}}B$ and $A\notin \text{TD}$, then $B\not\in \text{TD}$.
-- If $A\leq_{\text{m}}B$ and $B\in \text{TR}$, then $A\in \text{TR}$.
-- If $A\leq_{\text{m}}B$ and $A\not\in \text{TR}$, then $B\not\in \text{TR}$.
-- (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
-- $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
-- If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{TR}$, then $A\in\text{TD}$ 
+
+# Examples
+
+- $A\leq_{\text{m}} B$, $B\in\text{REGULAR}$, $A\notin \text{REGULAR}$: $A=\{0^n1^n\}$, $B=\{1\}$, $f:A\to B$, $f(w)= 1  \text{ if } w \in A , 0  \text{ if } w \notin A$.
+- $L\in \text{CFL},\overline{L}\notin {\text{CFL}}$: $L=\{x\mid x\neq ww \}$, $\overline{L}=\{ww  \}$.
+- $L_1,L_2\in \text{CFL},L_1\cap L_2\notin \text{CFL}$: $L_1 = \{ a^nb^nc^m  \}$, $L_2 = \{ a^mb^nc^n  \}$, $L_1\cap L_2 = \{ a^nb^nc^n  \}$.
+- $L_1,L_2\notin \text{CFL}$, $L_1\cap L_2\in \text{CFL}$: $L_{1}=\{ a^nb^nc^n \},L_{2}=\{ c^nb^na^n \},L_{1}\cap L_{2}=\{ \varepsilon \}$
+- $L_1\in \text{CFL}$, $L_2,L_1\cap L_2\notin \text{CFL}$: $L_1=\Sigma^*$, $L_2=\{ a^{i^2} \}$.
+- $L_1\in \text{REGULAR}$, $L_2\not\in \text{CFL}$, but $L_1\cap L_2\in \text{CFL}:\quad$ $L_1=\{ \varepsilon \}$, $L_2=\{ a^n b^n c^n \mid n\geq 0 \}$.
+- $L_1\in \text{CFL}$, $L_2$ is infinite, $L_1\setminus L_2\notin \text{REGULAR}:$ $L_1=\Sigma^*$, $L_2=\{a^n b^n \}$, $L_1\setminus L_2=\{a^m b^n \mid m\neq n\}$.
+- $L_1,L_2\in \text{REGULAR}$, $L_1\not\subset L_2$, $L_2\not\subset L_1$, but, $(L_1\cup L_2)^*=L_{1}^*\cup L_{2}^*:$ $L_1=\{ {a},{b},{ab} \}$, $L_2=\{ {a},{b},{ba} \}$.
+- $L_1,L_1\cup L_2\in \text{REGULAR}$, $L_2,L_1\cap L_2\not\in \text{REGULAR}$, $L_1=L(\texttt{a}^*\texttt{b}^*)$, $L_2=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1,L_2,\dots\in \text{REGULAR}$, $\bigcup_{i=1}^{\infty} L_i\not\in \text{REGULAR}:$ $L_i=\{ \texttt{a}^i\texttt{b}^i\}$, $\bigcup_{i=1}^{\infty} L_i=\{ \texttt{a}^n\texttt{b}^n\mid n\geq 0 \}$.
+- $L_1\cdot L_2\in \text{REGULAR},L_1\not\in \text{Reg.}:L_1=\{ {a}^n{b}^n \},L_2=\Sigma^*$
+- $L_2\in\text{CFL}$, and $L_1\subseteq L_2$, but $L_1\not\in \text{CFL}:\quad$ $\Sigma=\{a,b,c\}$, $L_1=\{a^n b^n c^n \mid n\geq 0 \}$, $L_2=\Sigma^*$.
+- $L_1,L_2\in\text{TD}$, and $L_1\subseteq L \subseteq L_2$, but $L\not\in \text{TD}:\quad$ $L_1=\emptyset$, $L_2=\Sigma^*$, $L$ is some undecidable language over $\Sigma$.
+- $L^*\in \text{REGULAR}$, but $L\not\in \text{REGULAR}:\quad$ $L=\{ a^p \mid p \text{ is prime} \}$, $L^*=\Sigma^*\setminus \{ a \}$.
+- $A \not\leq_m \overline{A}:$ $A=\mathit{A}_{\textsf{TM}}\in \text{TR}$, $\overline{A}=\overline{\mathit{A}_{\textsf{TM}}}\not\in \text{TR}$
+- $A\notin\text{DEC.},A\leq_\text{m}\overline{A}:$ $f(0x)=1x,f(1y)=0y$,  $A=\{ w\mid  \exists x \in \mathit{A}_{\textsf{TM}}: w=0x \lor\exists y \in \overline{\mathit{A}_{\textsf{TM}}}: w=1y  \}$
+- $L\in\text{CFL},L\cap L^{\mathcal{R}}\not\in \text{CFL}:$ $L=\{ a^nb^na^m \}$.
+- $A \leq_m {B},B \not\leq_m {A}:$ $A=\{ a \},B=\mathit{HALT}_{\textsf{TM}}$, $f(w)=\langle M\rangle$, $M=$"On $x$, if $w\in A$, 🅐; O/W, loop"
+
+
