@@ -10,7 +10,6 @@
 - (**decider**) TM that halts on all inputs. 
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is count.; $\Sigma^*$ is count. (finite $\Sigma$); $\{ \text{all lang.} \}$ is uncount.; $\{ \text{all infinite bin. seq.} \}$ is uncount.
-- $f:\Sigma^*\to\Sigma^*$ is **computable** if $\exists M_{\textsf{TM}}:\forall w\in \Sigma^*$, $M$ halts on $w$ and outputs $f(w)$ on its tape.
 - If $A\leq_{\text{m}}B$ and $B\in \text{TD}$, then $A\in \text{TD}$.
 - If $A\leq_{\text{m}}B$ and $A\notin \text{TD}$, then $B\not\in \text{TD}$.
 - If $A\leq_{\text{m}}B$ and $B\in \text{TR}$, then $A\in \text{TR}$.
@@ -33,6 +32,7 @@ ___
 - $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐); O/W, 🅁" 
 - $\{\langle M_{\textsf{DFA}}\rangle \mid L(M) = \Sigma^*\}$: "On $\langle M\rangle$: const. DFA $M^{\complement}=(L(M))^{\complement}$; if $L(M^{\complement}) = \emptyset$ (by $E_{\textsf{DFA}}$), 🅐; O/W 🅁."
 - $\{\langle R_{\textsf{REX}}\rangle \mid \exists s,t \in\Sigma^*:w=s 111t \in L(R)\}:$ "On $\langle R\rangle$: const. DFA $D$ s.t. $L(D)=\Sigma^*111\Sigma^*;$ const. DFA $C$ s.t. $L(C)=L(R)\cap L(D)$; if $L(C)\neq\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁" 
+- $\{\langle G,k\rangle : |L(G)|=k \in \mathbb{N}\cup \{ \infty \}\}$: “On $\langle G,k\rangle$: run ; if $\langle G \rangle \in\mathrm{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅐; O/W, 🅁). if $\langle G \rangle \not\in\mathrm{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅁; O/W, $m$ counts each $w\in\Sigma^{\le p}$ s.t. $w\in L(G)$, where $p$ is the pump. len.; if $m=k$, 🅐, O/W, 🅁)
 ___
 **Recognizers**: Examples
 - $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"
@@ -74,7 +74,7 @@ ___
 - If $B\in\text{NPC}$ and $C \in \mathrm{NP}$ s.t. $B\leq_{\mathrm{P}} C$, then $C\in\text{NPC}$.
 - If $\mathrm{P}=\mathrm{NP}$, then $\forall A\in \mathrm{P}\setminus\{\emptyset,\Sigma^*\},\,A\in \text{NP-complete}$. 
 
-# Polytime Reduction:  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
+# Polytime Reduction (from $A$ to $B$):  $A\leq_{\text{P}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is polytime computable. 
 
 - $\mathit{SAT} \leq_{\mathrm{P}} \mathit{DOUBLE\text{-}SAT};\quad$ $f(\phi) = \phi \land (x \lor \neg x)$
 - $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{4SAT};\quad$ $f(\phi) = \phi'$, where $\phi'$ is obtained from the 3cnf $\phi$ by adding a new var. $x$ to each clause, and adding a new clause $(\neg x \lor \neg x \lor \neg x \lor \neg  x)$. 

@@ -39,7 +39,7 @@ ___
 ____
 ![[GNFA to Regular Expression.svg|200]]
 
-# ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
+# ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REGULAR}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
 **non-regular but CFL**: Examples 
 - $\{w=w^\mathcal{R}\};$ $s=0^p10^p=xyz.$ but $xy^2z=0^{p+|y|}10^p\notin L$.  
@@ -61,7 +61,7 @@ ___
 - $\forall L\in \textsf{CFL}, \exists G \in \textsf{CNF} : L=L(G)$.
 - (**derivation**) $S\Rightarrow u_1\Rightarrow u_2\Rightarrow \dots \Rightarrow u_n = w$, where each $u_i$ is in $(V\cup \Sigma)^*$. (in this case, $G$ **generates** $w$ (or $S$ **derives** $w$), $S\overset{*}\Rightarrow w$)
 - $M$ **accepts** $w\in \Sigma^*$ if there is a seq. $r_0,r_1,\dots,r_m\in Q$ and $s_0,,s_1,\dots,s_m\in \Gamma^*$ s.t.: (1.) $r_0=q_0$ and $s_0=\varepsilon$; (2.) For $i=0,1,\dots,m-1$, we have $(r_i,b)\in\delta(r_{i},w_{i+1},a)$, where $s_i=at$ and $s_{i+1}=bt$ for some $a,b\in \Gamma_\varepsilon$ and $t\in \Gamma^*$; (3.) $r_m\in F$.
-- $R\in \text{REG}\land C\in \text{CFL}\implies R\cap C\in \text{CFL}$. (_pf._ construct PDA $P'=P_{C}\times D_{R}$.)
+- $R\in \text{REGULAR}\land C\in \text{CFL}\implies R\cap C\in \text{CFL}$. (_pf._ construct PDA $P'=P_{C}\times D_{R}$.)
 # (**CFG**) $G=({ V },{ \Sigma },R,S)$, $A\to w$, ($A\in V,w\in (V\cup \Sigma)^*$);  (**CNF**) $A\to BC$, $A\to a$, $S\to \varepsilon$, ($A,B,C\in V$, $a\in \Sigma$, $B,C\neq S$).
 (**CFG $\rightsquigarrow$ CNF**) (**1.**) Add a new start variable $S_0$ and a rule $S_0\to S$. (**2.**) Remove $\varepsilon$-rules of the form $A\to \varepsilon$ (except for $S_0\to \varepsilon$). and remove $A$'s occurrences on the RH of a rule (e.g. $R\to uAvAw$ becomes $R\to uAvAw | uAvw | uvAw | uvw$. where $u,v,w\in (V\cup \Sigma)^*$). (**3.**) Remove unit rules $A\to B$ then whenever $B\to u$ appears, add $A\to u$, unless this was a unit rule previously removed. ($u\in (V\cup \Sigma)^*$). (**4.**) Replace each rule $A\to u_1u_2\cdots u_k$ where $k\geq 3$ and $u_i\in (V\cup \Sigma)$, with the rules $A\to u_1A_1$, $A_1\to u_2A_2$, ..., $A_{k-2}\to u_{k-1}u_k$, where $A_i$ are new variables. Replace terminals $u_i$ with $U_i\to u_i$.
 
