@@ -20,7 +20,7 @@
 - $\forall$ NFA $\exists$ an equivalent NFA with 1 accept state.
 - If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 
 ___
-**Regular Expressions: Examples**
+**Regular Expressions:** Examples
 - $\{ a^nwb^n :w\in \Sigma^* \}\equiv a(a\cup b)^*b$
 - $\small\{ w : \#_w(\texttt{0})\geq 2 \lor \#_w(\texttt{1})\leq 1\}\equiv(\Sigma^* 0 \Sigma^* 0\Sigma^*) \cup (0^*(\varepsilon \cup 1)0^*)$
 - $\{ w   : |w| \bmod n = m \}\equiv(a \cup b)^m ((a \cup b)^n)^*$
@@ -41,7 +41,7 @@ ____
 
 # ${ \textbf{Pumping lemma for regular languages} }$: $\displaystyle A \in \text{REG}\implies \exists p:\forall s\in A$, $|s|\geq p$, $s=xyz$, (**i**) $\forall i\geq 0, xy^iz\in A$, (**ii**) $|y|>0$ and (**iii**) $|xy|\leq p$.
 
-the following are **non-reuglar but CFL**
+**non-regular but CFL**: Examples 
 - $\{w=w^\mathcal{R}\};$ $s=0^p10^p=xyz.$ but $xy^2z=0^{p+|y|}10^p\notin L$.  
 - $\{ a^nb^n \};$ $s=a^pb^p=xyz$, $xy^2z=a^{p+|y|}b^p\notin L$.
 - $\{ w : \#_a(w)>\#_b(w) \};$ $s=a^pb^{p+1}$, $|s|=2p+1\geq p$, $xy^2z=a^{p+|y|}b^{p+1}\notin L$. 
@@ -49,31 +49,32 @@ the following are **non-reuglar but CFL**
 - $\{ w : \#_w(a) \neq \#_w(b) \};$ (_pf._ by 'complement-closure', $\overline{L}=\{ w : \#_w(a) = \#_w(b) \}$)
 - $\{ a^ib^jc^k: i < j\lor i>k \};$ $s=a^pb^{p+1}c^{2p}=xyz$, but $xy^2z=a^{p+|y|}b^{p+1}c^{2p}$, $p+|y|\geq p+1$, $p+|y|\leq 2p$.
 ___
-the following are both **non-CFL and non-reuglar**
+**non-CFL and non-regular**: Examples
 - $\{w=a^{2^k}\};\quad$ $k=\lfloor\log_2 |w|\rfloor,s=a^{2^k}=xyz.$ $2^k=|xyz|<|xy^2z|\leq |xyz|+|xy|\leq 2^k+p<2^{k+1}$.
 - $\{ a^p:p \text{ is prime} \};\quad$ $s=a^t=xyz$ for prime $t\geq p.$ $r:=|y|>0$
 - $\{ www:w\in \Sigma^* \};$ $s=a^pba^pba^p=xyz=a^{|x|+|y|+m}ba^pba^pb$, $m\geq 0$, but $xy^2z=a^{|x|+2|y|+m}ba^pba^pb\notin L$.
 - $\{ a^{2n}b^{3n}a^{n} \};$ $s=a^{2p}b^{3p}a^{p}=xyz=a^{|x|+|y|+m+p}b^{3p}a^{p}$, $m\geq 0$, but $xy^2z=a^{2p+|y|}b^{3p}a^{p}\notin L$.
 
 # (**PDA**) $M=(Q,{ \Sigma },{ \Gamma },\delta,q_0\in Q,{ F }\subseteq Q)$.  $\delta:Q\times \Sigma_\varepsilon\times \Gamma_\varepsilon\longrightarrow \mathcal{P}(Q\times \Gamma_\varepsilon).\quad$  $L\in \textbf{{CFL}}\Leftrightarrow \exists G_{\textsf{CFG }}  : L=L(G)\Leftrightarrow \exists  P_{\textsf{PDA }}  : L=L(P)$ 
-- (**CFG $\rightsquigarrow$ CNF**) (**1.**) Add a new start variable $S_0$ and a rule $S_0\to S$. (**2.**) Remove $\varepsilon$-rules of the form $A\to \varepsilon$ (except for $S_0\to \varepsilon$). and remove $A$'s occurrences on the RH of a rule (e.g.: $R\to uAvAw$ becomes $R\to uAvAw \mid uAvw \mid uvAw \mid uvw$. where $u,v,w\in (V\cup \Sigma)^*$). (**3.**) Remove unit rules $A\to B$ then whenever $B\to u$ appears, add $A\to u$, unless this was a unit rule previously removed. ($u\in (V\cup \Sigma)^*$). (**4.**) Replace each rule $A\to u_1u_2\cdots u_k$ where $k\geq 3$ and $u_i\in (V\cup \Sigma)$, with the rules $A\to u_1A_1$, $A_1\to u_2A_2$, ..., $A_{k-2}\to u_{k-1}u_k$, where $A_i$ are new variables. Replace terminals $u_i$ with $U_i\to u_i$.
+- "$a,b\to c$": **reads** $a$ from the input (or read nothing if $a=\varepsilon$). **pops** $b$ from the stack (or pops nothing if $b=\varepsilon$). **pushes** $c$ onto the stack (or pushes nothing if $c=\varepsilon$)
 - If $G \in \textsf{CNF}$, and $w\in L(G)$, then $|w|\leq 2^{|h|}-1$, where $h$ is the height of the parse tree for $w$.
 - $\forall L\in \textsf{CFL}, \exists G \in \textsf{CNF} : L=L(G)$.
 - (**derivation**) $S\Rightarrow u_1\Rightarrow u_2\Rightarrow \dots \Rightarrow u_n = w$, where each $u_i$ is in $(V\cup \Sigma)^*$. (in this case, $G$ **generates** $w$ (or $S$ **derives** $w$), $S\overset{*}\Rightarrow w$)
 - $M$ **accepts** $w\in \Sigma^*$ if there is a seq. $r_0,r_1,\dots,r_m\in Q$ and $s_0,,s_1,\dots,s_m\in \Gamma^*$ s.t.: (1.) $r_0=q_0$ and $s_0=\varepsilon$; (2.) For $i=0,1,\dots,m-1$, we have $(r_i,b)\in\delta(r_{i},w_{i+1},a)$, where $s_i=at$ and $s_{i+1}=bt$ for some $a,b\in \Gamma_\varepsilon$ and $t\in \Gamma^*$; (3.) $r_m\in F$.
-- (**PDA transition**) "$a,b\to c$": **reads** $a$ from the input (or read nothing if $a=\varepsilon$). **pops** $b$ from the stack (or pops nothing if $b=\varepsilon$). **pushes** $c$ onto the stack (or pushes nothing if $c=\varepsilon$)
 - $R\in \text{REG}\land C\in \text{CFL}\implies R\cap C\in \text{CFL}$. (_pf._ construct PDA $P'=P_{C}\times D_{R}$.)
-
 # (**CFG**) $G=({ V },{ \Sigma },R,S)$, $A\to w$, ($A\in V,w\in (V\cup \Sigma)^*$);  (**CNF**) $A\to BC$, $A\to a$, $S\to \varepsilon$, ($A,B,C\in V$, $a\in \Sigma$, $B,C\neq S$).
+(**CFG $\rightsquigarrow$ CNF**) (**1.**) Add a new start variable $S_0$ and a rule $S_0\to S$. (**2.**) Remove $\varepsilon$-rules of the form $A\to \varepsilon$ (except for $S_0\to \varepsilon$). and remove $A$'s occurrences on the RH of a rule (e.g. $R\to uAvAw$ becomes $R\to uAvAw | uAvw | uvAw | uvw$. where $u,v,w\in (V\cup \Sigma)^*$). (**3.**) Remove unit rules $A\to B$ then whenever $B\to u$ appears, add $A\to u$, unless this was a unit rule previously removed. ($u\in (V\cup \Sigma)^*$). (**4.**) Replace each rule $A\to u_1u_2\cdots u_k$ where $k\geq 3$ and $u_i\in (V\cup \Sigma)$, with the rules $A\to u_1A_1$, $A_1\to u_2A_2$, ..., $A_{k-2}\to u_{k-1}u_k$, where $A_i$ are new variables. Replace terminals $u_i$ with $U_i\to u_i$.
 
-the following are **CFL but non-reuglar**:
+---
+
+**CFL but non-regular**: Examples 
 - $\{ w : w=w^\mathcal{R} \}; S\to aSa \mid bSb \mid a \mid b \mid \varepsilon$
 - $\{ w : w\neq w^\mathcal{R} \}; S\to aSa \mid bSb \mid aXb \mid bXa$;$X\to aX | bX | \varepsilon$
 - $\{ww^\mathcal{R}\}=\{ w:w=w^\mathcal{R} \land |w|\text{ is even} \}; S\to aSa \mid bSb \mid \varepsilon$
-- $\overline{\{ ww^\mathcal{R} \}};$ $S\to aSa \mid bSb\mid aXb \mid bXa\mid a \mid b;X\to aXa\mid bX b\mid bX a\mid aX b\mid a\mid b \mid \varepsilon$
+- $\overline{\{ ww^\mathcal{R} \}};$ $S\to aSa \mid bSb\mid aXb \mid bXa\mid a \mid b$;$X\to aXa\mid bX b\mid bX a\mid aX b\mid a\mid b \mid \varepsilon$
 - $\{ w a^{n} w^{\mathcal{R}}  \};$ $S\to aSa\mid bSb\mid M;M\to aM\mid\varepsilon$
 - $\{ w\#x : w^\mathcal{R}\subseteq x \}; S\to AX$; $A\to 0A0\mid 1A1\mid \#X$;$X\to 0X\mid 1X\mid \varepsilon$
-- $\{ w : \#_w(a)> \#_w(b) \}; S\to JaJ; J\to J J \mid aJb \mid bJa \mid a \mid \varepsilon$
+- $\{ w : \#_w(a)> \#_w(b) \}; S\to IaI; I\to I I \mid a I b \mid b I a \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)\geq \#_w(b) \}; S\to SS \mid aSb \mid bSa \mid a \mid \varepsilon$
 - $\{ w : \#_w(a)= \#_w(b) \}$; $S\to SS\mid aSb  \mid bSa  \mid \varepsilon$ 
 - $\{ w : \#_w(a)= 2 \cdot \#_w(b) \}$; $S\to SS|S_{1}bS_{1}|bSaa|aaSb|\varepsilon;S_{1}\to aS|SS_{1}$ 
@@ -91,7 +92,7 @@ the following are **CFL but non-reuglar**:
 - $\{ xy : |x|=|y|,x\neq y \};$ $S\to AB\mid BA$;$\,A\to a\mid aAa\mid aAb\mid bAa\mid bAb$;$B\to b\mid aBa\mid aBb\mid bBa\mid bBb;$
 - $\{ a^i b^j : i,j \geq 1, \; i \neq j, \; i < 2j \};$ $S\to aSb|X|aaYb;Y\to aaYb|ab;X\to bX|abb$
 ___
-the following are both **CFL and regular**:
+**CFL and regular**: Examples 
 - $\{ w:\#_w(a) \geq 3 \};$ $S\to XaXaXaX; X\to aX \mid bX \mid \varepsilon$
 - $\{ w:|w|\text{ is odd} \}; S\to aaS\mid abS\mid bbS\mid baS\mid a\mid b$ 
 - $\{ w:|w|\text{ is even} \}; S\to aaS\mid abS\mid bbS\mid baS\mid \varepsilon$

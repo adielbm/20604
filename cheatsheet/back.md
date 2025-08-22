@@ -3,9 +3,9 @@
 
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{🅐}},q_{\text{🅁}})$, where $\sqcup\in \Gamma$, $\sqcup\notin \Sigma$, $q_{\text{🅁}}\neq q_{\text{🅐}}$, $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
 - (**Turing-Recognizable** $(\mathbf{TR})$) 🅐 if $w\in L$, 🅁/loops if $w\notin L$; $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
-- $L \in\text{TR}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
-- Every inf. recognizable lang. has an inf. dec. subset.
 - (**Turing-Decidable** $(\mathbf{TD})$) 🅐 if $w\in L$, 🅁 if $w\notin L$.
+- $L \in\text{TR}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
+- $(A\in\text{TR}\land |A|=\infty)\Rightarrow \exists B\in \text{TD}:(B\subseteq L \land |B|=\infty)$ 
 - $L\in {\text{TD}} \iff L^{\mathcal{R}}\in {\text{TD}}$.
 - (**decider**) TM that halts on all inputs. 
 - (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
@@ -18,16 +18,12 @@
 - (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
 - $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
 - If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{TR}$, then $A\in\text{TD}$ 
-
 # $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset \text{\textbf{T}uring-\textbf{D}ecidable} \subset \text{\textbf{T}uring-\textbf{R}ecognizable}$ 
 - (**not TR**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**TR, but not TD**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
 - (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
 ___
-**Examples of Recognizers**: 
-- $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"     
-___
-**Examples of Deciders**:
+**Deciders**: Examples
 - $\mathrm{INFINITE}_{\textsf{DFA}}$: "On $n$-state DFA $\langle A \rangle$: const. DFA $B$ s.t. $L(B)=\Sigma^{\geq n}$; const. DFA $C$ s.t. $L(C)=L(A)\cap L(B)$; if $L(C)\neq\emptyset$ (by ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁" 
 - $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. DFA $A$ s.t. $L(A)=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. DFA $B$ s.t. $L(B)=L(D)\cap L(A)$; if $L(B)=\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁"
 - $\{ \langle R,S \rangle \mid R,S \text{ are regex},L(R)\subseteq L(S) \}$: "On $\langle R,S \rangle$: const. DFA $D$ s.t. $L(D)=L(R)\cap \overline{L(S)}$; if $L(D)=\emptyset$ (by ${E}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
@@ -37,9 +33,13 @@ ___
 - $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐); O/W, 🅁" 
 - $\{\langle M_{\textsf{DFA}}\rangle \mid L(M) = \Sigma^*\}$: "On $\langle M\rangle$: const. DFA $M^{\complement}=(L(M))^{\complement}$; if $L(M^{\complement}) = \emptyset$ (by $E_{\textsf{DFA}}$), 🅐; O/W 🅁."
 - $\{\langle R_{\textsf{REX}}\rangle \mid \exists s,t \in\Sigma^*:w=s 111t \in L(R)\}:$ "On $\langle R\rangle$: const. DFA $D$ s.t. $L(D)=\Sigma^*111\Sigma^*;$ const. DFA $C$ s.t. $L(C)=L(R)\cap L(D)$; if $L(C)\neq\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁" 
+___
+**Recognizers**: Examples
+- $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"
 # Mapping Reduction (from $A$ to $B$): $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
 
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  L(M) = (L(M))^{\mathcal{R}} \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, 🅁; if $x=01$, return $M(x)$; if $x=10$, 🅐;" 
+- $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  \varepsilon \in L(M) \};$ $f(\langle M,w\rangle) = \langle M' \rangle$ where $M'=$"On $x$, if $x\neq \varepsilon$, 🅐; O/W return $M(w)$"
 - ${\mathit{A}_{\textsf{TM}}} \leq_{\mathrm{m}} L=\{ \langle \underset{ \textsf{TM} }{ M },\underset{ \textsf{DFA} }{ D }\rangle \mid L(M)=L(D) \};$ $f(\langle M,w\rangle)=\langle M',D\rangle$, where $M'=$"On $x$: if $x=w$ return $M(x)$; O/W, 🅁;" $D$ is DFA s.t. $L(D)=\{w\}.$ 
 - $A\leq_{\text{m}} \mathit{HALT}_{\textsf{TM}};$ $f(w)=\langle M,\varepsilon\rangle$, where $M=$"On $x$: if $w\in A$, halt; if $w\notin A$, loop;"  
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M \rangle \mid L(M) \text{ is CFL} \};$ $f(\langle M,w\rangle)=\langle N \rangle$, where $N=$"On $x$: if $x=a^n b^nc^n$, 🅐; O/W, return $M(w)$;" 

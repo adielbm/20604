@@ -5,8 +5,8 @@
    version="1.1"
    id="svg1"
    width="499.83615"
-   height="177.45103"
-   viewBox="0 0 499.83615 177.45104"
+   height="162.43192"
+   viewBox="0 0 499.83615 162.43192"
    sodipodi:docname="dfa-to-gnfa.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -865,10 +865,10 @@
      inkscape:deskcolor="#d1d1d1">
     <inkscape:page
        x="0"
-       y="0"
+       y="-1.2052124e-14"
        width="499.83615"
-       height="177.45103"
-       id="page1"
+       height="162.43193"
+       id="page2"
        margin="0"
        bleed="0" />
   </sodipodi:namedview>
@@ -876,7 +876,7 @@
      id="g1"
      inkscape:groupmode="layer"
      inkscape:label="99"
-     transform="translate(-66.50576,-391.41772)">
+     transform="translate(-66.50576,-406.43683)">
     <g
        id="g253"
        clip-path="url(#clipPath254)"
@@ -1574,25 +1574,35 @@
        clip-path="url(#clipPath496)" />
     <text
        xml:space="preserve"
-       transform="translate(-44.034909,393.14663)"
+       transform="translate(-47.038729,405.76269)"
        id="text1"
-       style="font-style:italic;font-size:29.3333px;line-height:0.3;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text Italic';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#000000"><tspan
-         x="122.31206"
-         y="17.895032"
-         id="tspan9"><tspan
+       style="font-style:italic;font-size:18.6667px;line-height:0.3;font-family:'STIX Two Text';-inkscape-font-specification:'STIX Two Text Italic';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#000000"><tspan
+         x="126.22056"
+         y="13.35368"
+         id="tspan10"><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
-           id="tspan2">DFA </tspan><tspan
+           id="tspan2">DFA      </tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
            id="tspan3">→</tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
-           id="tspan4">  4-GNFA </tspan><tspan
+           id="tspan4">         4-GNFA         </tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
            id="tspan5">→</tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
-           id="tspan6">  3-GNFA </tspan><tspan
+           id="tspan6">           3-GNFA        </tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
            id="tspan7">→</tspan><tspan
            style="font-weight:bold;-inkscape-font-specification:'STIX Two Text Bold Italic'"
-           id="tspan8">RegEx</tspan></tspan></text>
+           id="tspan8">    RegEx</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:18.6667px;line-height:0.3;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ff4c4c;stroke-width:1.333"
+       x="190.86403"
+       y="406.43683"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="193.45714"
+         y="406.43683">  </tspan></text>
   </g>
 </svg>
