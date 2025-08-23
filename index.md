@@ -1027,7 +1027,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 - ג. בנו PDA (אוטומט מחסנית) עבור השפה הבאה:
 	- $\Sigma =\{a,b,c,d\}$ 
 	- $L=\{ cw\mid w\in \{a,b\}^*, w=w^{\mathcal{R}} \}\cup \{ dw \mid w\in \{a,b\}^* \}$
-	- **תשובה:**  ![](images/img18.png)
+	- **תשובה:**  ![](images/img18.excalidraw.svg)
 
 
 ## שאלה 3
