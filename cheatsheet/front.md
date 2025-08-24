@@ -12,10 +12,10 @@
 | $L^\mathcal{R}$    | ✓                       | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
 | $L_1\setminus L_2$ | **no**                  | ✓            | **no**       | ✓                    | **no**               | ✓          | $?$         |              |
 | $L\cap R$          | **no**                  | ✓            | ✓            | ✓                    | ✓                    | ✓          |             |              |
-- (**DFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
-- (**NFA**) $M=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
-- (**GNFA**) $(Q,\Sigma,\delta,q_{0},q_{\text{a}}),\delta:Q\setminus \{q_{\text{a}}\}\times Q\setminus \{q_{0}\}\to\text{Rex}_ \Sigma$
-- (DFAs $D_1,D_{2}$ ) $\exists$ DFA $D$ s.t. $|Q|= |Q_{1}|\cdot|Q_{2}|$, $L(D)=L(D_{1})\Delta L(D_{2})$.
+- **DFA:** $D=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times\Sigma\to Q.$ 
+- **NFA:** $N=(Q,\Sigma,\delta,q_0,F)$, $\delta:Q\times \Sigma_\varepsilon \to \mathcal{P}(Q).$ 
+- **GNFA:** $(Q,\Sigma,\delta,q_{0},q_{\text{a}}),\delta:Q\setminus \{q_{\text{a}}\}\times Q\setminus \{q_{0}\}\to\text{Reg}(\Sigma)$
+- $\forall D_1,D_{2},\exists D:|Q|= |Q_{1}|\cdot|Q_{2}|$, $L(D)=L(D_{1})\Delta L(D_{2})$.
 - (DFA $D$) If $L(D)\neq\emptyset$ then $\exists$ $s\in L(D)$ s.t. $|s|< |Q|$. 
 - $\forall$ NFA $\exists$ an equivalent NFA with 1 accept state.
 - If $A=L(N_{\textsf{NFA}}),B=(L(M_{\textsf{DFA}}))^\complement$ then $A\cdot B\in\text{REG}$. 

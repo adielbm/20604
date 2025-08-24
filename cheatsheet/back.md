@@ -8,7 +8,7 @@
 - $(A\in\text{TR}\land |A|=\infty)\Rightarrow \exists B\in \text{TD}:(B\subseteq L \land |B|=\infty)$ 
 - $L\in {\text{TD}} \iff L^{\mathcal{R}}\in {\text{TD}}$.
 - (**decider**) TM that halts on all inputs. 
-- (**Rice**) Let $P$ be a lang. of TM descriptions, s.t. (**i**) $P$ is nontrivial (not empty and not all TM desc.) and (**ii**) for each two TM $M_1$ and $M_2$, we have $L(M_1)=L(M_2)\implies(\langle M_1\rangle\in P\iff \langle M_2\rangle\in P)$. Then $P$ is undecidable. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
+- (**Rice**) If $P=\{ \langle M \rangle:L(M) \text{ has property }\mathcal{P}\}$ s.t. (**1**) $\forall M_1,M_2:L(M_1)=L(M_2)\Rightarrow(\langle M_1\rangle\in P\Leftrightarrow \langle M_2\rangle\in P)$. (**2**) $P$ is nontrivial. Then $P \notin \mathrm{TD}$. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is count.; $\Sigma^*$ is count. (finite $\Sigma$); $\{ \text{all lang.} \}$ is uncount.; $\{ \text{all infinite bin. seq.} \}$ is uncount.
 - If $A\leq_{\text{m}}B$ and $B\in \text{TD}$, then $A\in \text{TD}$.
 - If $A\leq_{\text{m}}B$ and $A\notin \text{TD}$, then $B\not\in \text{TD}$.
@@ -20,22 +20,25 @@
 # $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset \text{\textbf{T}uring-\textbf{D}ecidable} \subset \text{\textbf{T}uring-\textbf{R}ecognizable}$ 
 - (**not TR**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**TR, but not TD**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
-- (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$, $\mathit{ALL}_{\textsf{DFA}}$, $A\varepsilon_{\textsf{CFG}}=\{\langle G\rangle \mid \varepsilon \in L(G)\}$
+- (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$
 ___
 **Deciders**: Examples
-- $\mathrm{INFINITE}_{\textsf{DFA}}$: "On $n$-state DFA $\langle A \rangle$: const. DFA $B$ s.t. $L(B)=\Sigma^{\geq n}$; const. DFA $C$ s.t. $L(C)=L(A)\cap L(B)$; if $L(C)\neq\emptyset$ (by ${E}_{\textsf{DFA}}$) 🅐; O/W, 🅁" 
-- $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. DFA $A$ s.t. $L(A)=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. DFA $B$ s.t. $L(B)=L(D)\cap L(A)$; if $L(B)=\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁"
-- $\{ \langle R,S \rangle \mid R,S \text{ are regex},L(R)\subseteq L(S) \}$: "On $\langle R,S \rangle$: const. DFA $D$ s.t. $L(D)=L(R)\cap \overline{L(S)}$; if $L(D)=\emptyset$ (by ${E}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
-- $\{ \langle D_{\textsf{DFA}},R_{\textsf{REX}} \rangle \mid L(D)=L(R) \}$: "On $\langle D,R\rangle$: convert $R$ to DFA $D_R$; if $L(D)=L(D_R)$ (by ${EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
-- $\{ \langle D_{\textsf{DFA}}\rangle \mid L(D)=(L(D))^\mathcal{R} \}$: "On $\langle D\rangle$: const. DFA $D^\mathcal{R}$ s.t. $L(D^\mathcal{R})=(L(D))^\mathcal{R}$; if $L(D)=L(D^\mathcal{R})$ (by ${EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
--  $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \geq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: if $M(w)$ not halt within $k$ steps, 🅐); O/W, 🅁"
-- $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: (foreach $w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐); O/W, 🅁" 
-- $\{\langle M_{\textsf{DFA}}\rangle \mid L(M) = \Sigma^*\}$: "On $\langle M\rangle$: const. DFA $M^{\complement}=(L(M))^{\complement}$; if $L(M^{\complement}) = \emptyset$ (by $E_{\textsf{DFA}}$), 🅐; O/W 🅁."
-- $\{\langle R_{\textsf{REX}}\rangle \mid \exists s,t \in\Sigma^*:w=s 111t \in L(R)\}:$ "On $\langle R\rangle$: const. DFA $D$ s.t. $L(D)=\Sigma^*111\Sigma^*;$ const. DFA $C$ s.t. $L(C)=L(R)\cap L(D)$; if $L(C)\neq\emptyset$ (${E}_{\textsf{DFA}}$) 🅐; O/W 🅁" 
-- $\{\langle G,k\rangle : |L(G)|=k \in \mathbb{N}\cup \{ \infty \}\}$: “On $\langle G,k\rangle$: run ; if $\langle G \rangle \in\mathrm{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅐; O/W, 🅁). if $\langle G \rangle \not\in\mathrm{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅁; O/W, $m$ counts each $w\in\Sigma^{\le p}$ s.t. $w\in L(G)$, where $p$ is the pump. len.; if $m=k$, 🅐, O/W, 🅁)
+- $\mathit{INFINITE}_{\textsf{DFA}}$: "On $\langle D \rangle$: $n:=|Q_{D}|$; const. $D_{1}$ s.t. $L(D_{1})=\Sigma^{\geq n}$; const. $D_{2}$ s.t. $L(D_{2})=L(D)\cap L(D_{1})$; if $\langle D_{2}\rangle \not\in{E}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
+- $\mathit{ALL}_{\textsf{DFA}}$: "On $\langle D\rangle$: const. $D^\complement$ s.t. $L(D^\complement)=L(D)^\complement$ (swap accept and non-accept); if $D^\complement \in E_{\textsf{DFA}}$, 🅐; O/W 🅁" 
+- $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. $D_{1}$ s.t. $L(D_{1})=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. $D_{2}$ s.t. $L(D_{2})=L(D)\cap L(D_{1})$; if $\langle D_{2}\rangle \in {E}_{\textsf{DFA}}$ 🅐; O/W 🅁"
+- $\{ \langle r,s \rangle \mid r,s \in \text{Reg}(\Sigma),L(r)\subseteq L(s) \}$: "On $\langle r,s \rangle$: const. $D$ s.t. $L(D)=L(r)\cap \overline{L(s)}$; if $\langle D\rangle \in {E}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
+- $\{ \langle D,r \rangle \mid L(D)=L(r) \}$: "On $\langle D,r\rangle$: convert $r$ to DFA $D_r$; if $\langle D,D_r\rangle \in {EQ}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
+- $\{ \langle D_{\textsf{DFA}}\rangle \mid L(D)=(L(D))^\mathcal{R} \}$: "On $\langle D\rangle$: const. $D^\mathcal{R}$ s.t. $L(D^\mathcal{R})=(L(D))^\mathcal{R}$; if $\langle D,D^\mathcal{R}\rangle \in {EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
+- $\{\langle r\rangle \mid \exists x,y \in\Sigma^*:w=x 111y \in L(r)\}:$ "On $\langle r\rangle$: const. $D$ s.t. $L(D)\equiv\Sigma^*111\Sigma^*;$ const. $D_{1}$ s.t. $L(D_{1})=L(r)\cap L(D)$; if $L(D_{1})\not\in{E}_{\textsf{DFA}}$, 🅐; O/W 🅁"
+- $\{\langle G,k\rangle : |L(G)|=k \in \mathbb{N}\cup \{ \infty \}\}$: “On $\langle G,k\rangle$: run ; if $\langle G \rangle \in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅐; O/W, 🅁). if $\langle G \rangle \not\in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅁; O/W, $m$ counts each $w\in\Sigma^{\le p}$ s.t. $w\in L(G)$, where $p$ is the pump. len.; if $m=k$, 🅐, O/W, 🅁)
+- $A\varepsilon_{\textsf{CFG}}$: "On $\langle G\rangle$: If $\langle G,\varepsilon\rangle \in A_{\textsf{CFG}}$, 🅐; O/W, 🅁"
+- $\mathit{INFINITE}_{\textsf{PDA}}$: "On $\langle P \rangle$: conv. $P$ to $G$; $p:=$ p.l. of $G$; set $G'\equiv L(G')=L(G)\cap \Sigma^{>p}$; If $\langle G' \rangle\notin E_{\textsf{CFG}}$, 🅐; O/W 🅁"
+-  $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \geq k \text{ steps})\}$: "On $\langle M,k\rangle$: $(\forall w\in\Sigma^{\leq k+1}:$ if $M(w)$ not halt within $k$ steps, 🅐$)$; 🅁"
+- $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: $(\forall w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐$)$; 🅁" 
 ___
 **Recognizers**: Examples
-- $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: for each $w\in \Sigma^*$ (lexico.): Test (by $A_{\textsf{CFG}}$) whether $w\in L(G_1)$ and $w\notin L(G_2)$ (vice versa), if so 🅐; O/W, continue"
+- $\overline{\mathit{EQ}_{\textsf{CFG}}}$: "On $\langle G_1,G_2\rangle$: (for each $w\in \Sigma^*$ (lexico.): If $\langle  G_1,w \rangle \in A_{\textsf{CFG}}$ and $\langle G_2,w\rangle \notin A_{\textsf{CFG}}$ (vice versa), 🅐);"
+- $\overline{\mathit{E}_{\textsf{TM}}}$: "On $\langle M \rangle$: $\Sigma^*=\{ s_{1},s_{2},\dots \}$; $\forall i \in \mathbb{N}$: $\forall j\leq i$: Run $M(s_j)$ for $i$ steps, if accepts, 🅐;"
 # Mapping Reduction (from $A$ to $B$): $A\leq_{\text{m}}B$ if $\exists f :\Sigma^*\to\Sigma^*:\forall w\in \Sigma^*,\,w\in A\iff f(w)\in B$ and $f$ is computable.
 
 - $\mathit{A}_{\textsf{TM}}\leq_{\text{m}} \{ \langle M_{\textsf{TM}} \rangle \mid  L(M) = (L(M))^{\mathcal{R}} \};$ $f(\langle M,w\rangle)=\langle M'\rangle$, where $M'=$"On x, if $x\notin\{ 01,10 \}$, 🅁; if $x=01$, return $M(x)$; if $x=10$, 🅐;" 
