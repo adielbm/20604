@@ -17,7 +17,8 @@
 - (transitivity) If $A\leq_{\text{m}}B$ and $B\leq_{\text{m}}C$, then $A\leq_{\text{m}}C$.  
 - $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
 - If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{TR}$, then $A\in\text{TD}$ 
-# $\small\text{FINITE}\subset\text{REGULAR}\subset \text{CFL} \subset \text{CSL} \subset \text{\textbf{T}uring-\textbf{D}ecidable} \subset \text{\textbf{T}uring-\textbf{R}ecognizable}$ 
+---
+- $\small\text{REGULAR}\subset \text{CFL}  \subset \text{\textbf{T}uring-\textbf{D}ecidable} \subset \text{\textbf{T}uring-\textbf{R}ecognizable}$ 
 - (**not TR**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**TR, but not TD**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
 - (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$
@@ -33,6 +34,7 @@ ___
 - $\{\langle G,k\rangle : |L(G)|=k \in \mathbb{N}\cup \{ \infty \}\}$: “On $\langle G,k\rangle$: run ; if $\langle G \rangle \in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅐; O/W, 🅁). if $\langle G \rangle \not\in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅁; O/W, $m$ counts each $w\in\Sigma^{\le p}$ s.t. $w\in L(G)$, where $p$ is the pump. len.; if $m=k$, 🅐, O/W, 🅁)
 - $A\varepsilon_{\textsf{CFG}}$: "On $\langle G\rangle$: If $\langle G,\varepsilon\rangle \in A_{\textsf{CFG}}$, 🅐; O/W, 🅁"
 - $\mathit{INFINITE}_{\textsf{PDA}}$: "On $\langle P \rangle$: conv. $P$ to $G$; $p:=$ p.l. of $G$; set $G'\equiv L(G')=L(G)\cap \Sigma^{>p}$; If $\langle G' \rangle\notin E_{\textsf{CFG}}$, 🅐; O/W 🅁"
+- $\{ \langle G\rangle :1^*\cap L(G)\neq \emptyset  \}$; "On $\langle G\rangle$: const. $G'$ s.t. $L(G')=1^* \cap L(G)$. (since $\mathrm{REGULAR}\cap \mathrm{CFL}\subseteq \mathrm{CFL}$); If $\langle G'\rangle \not\in E_{\textsf{CFG}}$, 🅐; O/W, 🅁"
 -  $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ runs for} \geq k \text{ steps})\}$: "On $\langle M,k\rangle$: $(\forall w\in\Sigma^{\leq k+1}:$ if $M(w)$ not halt within $k$ steps, 🅐$)$; 🅁"
 - $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in} \leq k \text{ steps})\}$: "On $\langle M,k\rangle$: $(\forall w\in\Sigma^{\leq k+1}$: run $M(w)$ for $\leq k$ steps, if halts, 🅐$)$; 🅁" 
 ___
