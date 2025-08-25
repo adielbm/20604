@@ -806,7 +806,7 @@ $M_2 = (\Sigma, Q, \delta, q_{start}, F)$, $\Sigma = \{a,b,c\}$, $Q = \{q_1, q_2
 	- $A\to BAB$
 	- $B\to 00$
 	- **תשובה:**
-		- $S\to A$
+		- $S\to BC$
 		- $A\to B C$
 		- $C\to AB$
 		- $B\to XX$
