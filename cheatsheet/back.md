@@ -1,13 +1,11 @@
 
-# $\small{L\in {\text{\textbf{T}uring-\textbf{D}ecidable}} \iff (L\in {\text{\textbf{T}uring-\textbf{R}ecognizable}} \textbf{ and  } \overline{L}\in{\text{\textbf{T}uring-\textbf{R}ecognizable}} )\iff\exists\,M_{\textsf{TM}}\text{ decides }L}$.
+# $\small{L\in {\text{\textbf{T}uring-\textbf{D}ecidable}} \iff (L\in {\text{\textbf{T}uring-\textbf{R}ecognizable}} \textbf{ and  } \overline{L}\in{\text{\textbf{T}uring-\textbf{R}ecognizable}} )\iff\exists\,M_{\textsf{TM}}\text{ decides }L}.\quad\quad\quad\quad\text{REGULAR}\subset \text{CFL}  \subset \text{{TD}} \subset \text{{TR}}$.
 
 - (**TM**) $M=(Q,\underset{ \textsf{input} }{ \Sigma }\subseteq \Gamma,\underset{ \textsf{tape} }{ \Gamma },\delta,q_0,q_{\text{🅐}},q_{\text{🅁}})$, where $\sqcup\in \Gamma$, $\sqcup\notin \Sigma$, $q_{\text{🅁}}\neq q_{\text{🅐}}$, $\delta:Q\times \Gamma\longrightarrow Q\times \Gamma\times \{\text{L},\text{R}\}$
 - (**Turing-Recognizable** $(\mathbf{TR})$) 🅐 if $w\in L$, 🅁/loops if $w\notin L$; $A$ is **co-recognizable** if $\overline{A}$ is recognizable.
 - (**Turing-Decidable** $(\mathbf{TD})$) 🅐 if $w\in L$, 🅁 if $w\notin L$.
 - $L \in\text{TR}\iff L\leq_{\text{m}}A_{\textsf{TM}}$. 
 - $(A\in\text{TR}\land |A|=\infty)\Rightarrow \exists B\in \text{TD}:(B\subseteq L \land |B|=\infty)$ 
-- $L\in {\text{TD}} \iff L^{\mathcal{R}}\in {\text{TD}}$.
-- (**decider**) TM that halts on all inputs. 
 - (**Rice**) If $P=\{ \langle M \rangle:L(M) \text{ has property }\mathcal{P}\}$ s.t. (**1**) $\forall M_1,M_2:L(M_1)=L(M_2)\Rightarrow(\langle M_1\rangle\in P\Leftrightarrow \langle M_2\rangle\in P)$. (**2**) $P$ is nontrivial. Then $P \notin \mathrm{TD}$. (_e.g._ $\mathit{INFINITE}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{TM}}$, $\mathit{E}_{\textsf{TM}}$, $\{ \langle M_{\textsf{TM}}\rangle: 1\in L(M) \}$)
 - $\{ \text{all }\textsf{TM}\text{s} \}$ is count.; $\Sigma^*$ is count. (finite $\Sigma$); $\{ \text{all lang.} \}$ is uncount.; $\{ \text{all infinite bin. seq.} \}$ is uncount.
 - If $A\leq_{\text{m}}B$ and $B\in \text{TD}$, then $A\in \text{TD}$.
@@ -18,19 +16,20 @@
 - $A \leq_{\mathrm{m}} B \iff \overline{A} \leq_{\mathrm{m}} \overline{B}$ (esp. $A\leq_{\text{m}}\overline{A}\iff \overline{A}\leq_{\text{m}}A$)
 - If $A\leq_{\text{m}}\overline{A}$ and $A\in\text{TR}$, then $A\in\text{TD}$ 
 ---
-- $\small\text{REGULAR}\subset \text{CFL}  \subset \text{\textbf{T}uring-\textbf{D}ecidable} \subset \text{\textbf{T}uring-\textbf{R}ecognizable}$ 
 - (**not TR**) $\overline{\mathit{A}_{\textsf{TM}}}$, $\overline{\mathit{EQ}_{\textsf{TM}}}$, $\mathit{EQ}_{\textsf{CFG}}$, $\overline{\mathit{HALT}_{\textsf{TM}}}$, $\mathit{REG}_{\textsf{TM}}$, $E_{\textsf{TM}}$, $\mathit{EQ}_{\textsf{TM}}$, $\mathit{ALL}_{\textsf{CFG}}$, $\mathit{EQ}_{\text{CFG}}$
 - (**TR, but not TD**) $\mathit{A}_{\textsf{TM}}$, $\mathit{HALT}_{\textsf{TM}}$, $\overline{\mathit{EQ}_{\textsf{CFG}}}$, $\overline{E_{\textsf{TM}}}$, $\{\langle M,k \rangle \mid \exists x \ (M(x) \text{ halts in } \geq k \text{ steps})\}$
 - (**TD**) $A_{\textsf{DFA}}$, $A_{\textsf{NFA}}$, $A_{\textsf{REX}}$, $E_{\textsf{DFA}}$, $\mathit{EQ}_{\textsf{DFA}}$, $A_{\textsf{CFG}}$, $E_{\textsf{CFG}}$, $A_{\textsf{LBA}}$
 ___
-**Deciders**: Examples
+**Deciders** (TM that halts on all inputs): Examples
 - $\mathit{INFINITE}_{\textsf{DFA}}$: "On $\langle D \rangle$: $n:=|Q_{D}|$; const. $D_{1}$ s.t. $L(D_{1})=\Sigma^{\geq n}$; const. $D_{2}$ s.t. $L(D_{2})=L(D)\cap L(D_{1})$; if $\langle D_{2}\rangle \not\in{E}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
+- $EQ_{\textsf{DFA}}$: "On $\langle D_{1},D_{2}\rangle$: const. $D$ s.t. $L(D)=(L(D_1)\cap\overline{L(D_2)})\cup(\overline{L(D_1)}\cap{L(D_2)})$; if $\langle D \rangle \in E_{\textsf{DFA}}$, 🅐; O/W, 🅁"
 - $\mathit{ALL}_{\textsf{DFA}}$: "On $\langle D\rangle$: const. $D^\complement$ s.t. $L(D^\complement)=L(D)^\complement$ (swap accept and non-accept); if $D^\complement \in E_{\textsf{DFA}}$, 🅐; O/W 🅁" 
 - $\{ \langle D\rangle \mid \not\exists w\in L(D):\#_{1}(w)\text{ is odd}  \}$: "On $\langle D\rangle$: const. $D_{1}$ s.t. $L(D_{1})=\{ w\mid \#_{1}(w)\text{ is odd} \}$; const. $D_{2}$ s.t. $L(D_{2})=L(D)\cap L(D_{1})$; if $\langle D_{2}\rangle \in {E}_{\textsf{DFA}}$ 🅐; O/W 🅁"
 - $\{ \langle r,s \rangle \mid r,s \in \text{Reg}(\Sigma),L(r)\subseteq L(s) \}$: "On $\langle r,s \rangle$: const. $D$ s.t. $L(D)=L(r)\cap \overline{L(s)}$; if $\langle D\rangle \in {E}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
 - $\{ \langle D,r \rangle \mid L(D)=L(r) \}$: "On $\langle D,r\rangle$: convert $r$ to DFA $D_r$; if $\langle D,D_r\rangle \in {EQ}_{\textsf{DFA}}$, 🅐; O/W, 🅁"
 - $\{ \langle D_{\textsf{DFA}}\rangle \mid L(D)=(L(D))^\mathcal{R} \}$: "On $\langle D\rangle$: const. $D^\mathcal{R}$ s.t. $L(D^\mathcal{R})=(L(D))^\mathcal{R}$; if $\langle D,D^\mathcal{R}\rangle \in {EQ}_{\textsf{DFA}}$), 🅐; O/W, 🅁"
 - $\{\langle r\rangle \mid \exists x,y \in\Sigma^*:w=x 111y \in L(r)\}:$ "On $\langle r\rangle$: const. $D$ s.t. $L(D)\equiv\Sigma^*111\Sigma^*;$ const. $D_{1}$ s.t. $L(D_{1})=L(r)\cap L(D)$; if $L(D_{1})\not\in{E}_{\textsf{DFA}}$, 🅐; O/W 🅁"
+- $\{ \langle G,x\rangle \mid \exists y \in L(G) : x \subseteq y  \}$: "On $\langle G,x\rangle$: set $P$ s.t. $L(P)$$=$$L(G)$; set $P_{x}(y):=P(xy)$; If $\langle P_{x} \rangle\notin E_{\textsf{PDA}}$, 🅐; O/W 🅁"
 - $\{\langle G,k\rangle : |L(G)|=k \in \mathbb{N}\cup \{ \infty \}\}$: “On $\langle G,k\rangle$: run ; if $\langle G \rangle \in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅐; O/W, 🅁). if $\langle G \rangle \not\in\mathit{INFINITE}_{\textsf{CFG}}$: (if $k=\infty$, 🅁; O/W, $m$ counts each $w\in\Sigma^{\le p}$ s.t. $w\in L(G)$, where $p$ is the pump. len.; if $m=k$, 🅐, O/W, 🅁)
 - $A\varepsilon_{\textsf{CFG}}$: "On $\langle G\rangle$: If $\langle G,\varepsilon\rangle \in A_{\textsf{CFG}}$, 🅐; O/W, 🅁"
 - $\mathit{INFINITE}_{\textsf{PDA}}$: "On $\langle P \rangle$: conv. $P$ to $G$; $p:=$ p.l. of $G$; set $G'\equiv L(G')=L(G)\cap \Sigma^{>p}$; If $\langle G' \rangle\notin E_{\textsf{CFG}}$, 🅐; O/W 🅁"
@@ -68,7 +67,6 @@ ___
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \{\,\langle M_{1},M_{2}\rangle : \varepsilon \in L(M_{1})\cup L(M_{2})\};$ $f(\langle M, w \rangle) = \langle M',M' \rangle$, $M'=$"On $x$: 🅐 if $M(w)$ halts"
 - ${\mathit{HALT}_{\textsf{TM}}} \leq_{\text{m}} \overline{E_{\textsf{TM}}};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $x\neq w$ 🅁; else, 🅐 if $M(w)$ halts"
 - $\mathit{HALT}_{\textsf{TM}} \leq_{\text{m}} \{\,\langle M_{\textsf{TM}}\rangle \mid  \exists\,x\ :M(x)\text{ halts in }>|\langle M\rangle|\text{ steps})\};$ $f(\langle M, w \rangle) = \langle M' \rangle$, where $M'=$"On $x$: if $M(w)$ halts, make $|\langle M \rangle|+1$ steps and then halt; O/W, loop"
-
 # $\small{\textbf{P}=\bigcup_{k \in \mathbb{N}}\mathsf{TIME}(n^k)\subseteq\,\textbf{NP}=\bigcup_{k \in \mathbb{N}}\mathsf{NTIME}(n^k)=\set{L \mid L \text{ is decidable by a PT verifier}}\supseteq\textbf{NP-complete}=\{B\mid B\in\mathrm{NP} , \forall A\in\mathrm{NP},A\leq_{\mathrm{P}} B\}.}$
 - If $A\leq_{\mathrm{P}} B$ and $B\in\mathrm{P}$, then $A\in\mathrm{P}$.
 - $A\equiv_P B$ if $A\leq_{\mathrm{P}} B$ and $B\leq_{\mathrm{P}} A$.  $\equiv_P$ is an equiv. relation on $\mathrm{NP}.\quad$ $\mathrm{P}\setminus \{ \emptyset, \Sigma^* \}$ is an equiv. class of $\equiv_P$.
@@ -87,7 +85,7 @@ ___
 - $\mathit{3SAT} \leq_{\mathrm{P}} \mathit{CLIQUE};$ $f(\phi) = \langle G,k\rangle$. where $\phi$ is 3cnf with $k$ clauses. Nodes represent literals. Edges connect all pairs except those 'from the same clause' or 'contradictory literals'.
 - $\mathit{SUBSET\text{-}SUM} \leq_{\mathrm{P}} \mathit{SET\text{-}PARTITION};\quad$ $f(\langle x_1, \dots, x_m, t \rangle) = \langle x_1, \dots, x_m, S-2t\rangle$, where $S$ sum of $x_1, \dots, x_m$, and $t$ is the target subset-sum.
 - $\mathit{3SAT} \leq_{\mathrm{P}} \overset{ \textsf{almost} }{ \mathit{3SAT} };f( \phi) = \phi'=\phi \land(x\lor x\lor x)\land(\overline{x}\lor\overline{x}\lor\overline{x})$
-- $\mathit{3COLOR} \leq_{\mathrm{P}} \overset{ \textsf{almost} }{ \mathit{3COLOR} };$ $f(\langle G \rangle) = \langle G' \rangle,\,G'=G\cup K_4$
+- $\mathit{3COLOR} \leq_{\mathrm{P}} \overset{ \textsf{almost} }{ \mathit{3COLOR} };$ $f(\langle G \rangle) = \langle G'=G\sqcup G \rangle$ 
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}_{k} \leq_{\mathrm{P}} \mathit{WVC};f(\langle G,k\rangle)= (G,w,k),\forall v\in V, w(v)=1$
 - (dir.) $\mathit{HAM\text{-}PATH}\leq_{\text{P}}\mathit{2HAM\text{-}PATH};\quad$ $f(\langle G,s,t\rangle)=\langle G',s',t'\rangle$, $V'=V\cup \{s',t',a,b,c,d\},$ ${E' =E\cup {\{(s',a),\,(a,b),\,(b,s)\} \cup \{(s',b),\,(b,a),\,(a,s)\}}}$   $\cup\, {\{(t,c),\,(c,d),\,(d,t')\} \cup \{(t,d),\,(d,c),\,(c,t')\}}.$
 - (undir.) ${ \mathit{CLIQUE}_{k} } \leq_{\mathrm{P}} \underset{ \vert{V}\vert/2\text{-clique} }{ \mathit{HALF\text{-}CLIQUE} };\quad$ $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, if $k=\frac{\mid V\mid}{2}$, $E=E'$, $V'=V$. if $k> \frac{\mid V\mid}{2}$, $V'=V\cup \{ j=2k-{\vert V \vert} \text{ new nodes} \}$. if $k< \frac{\vert V \vert}{2}$, $V'=V\cup \{ j=\vert V\vert-2k \text{ new nodes} \}$ and $E'=E\cup \{ \text{edges for new nodes} \}$
@@ -104,4 +102,3 @@ ___
 - $\overset{\mathit{VERTEX}}{\small\mathit{COVER}}\leq_{\mathrm{P}} \mathit{INDEP\text{-}SET};$ $f(\langle G,k\rangle)=\langle G,|V|-k\rangle$
 - $\mathit{HAM\text{-}CYCLE}\leq_{\mathrm{P}} \{\langle G,w,k\rangle: \exists\text{ hamcycle of weight}\leq k \};$ $f(\langle G\rangle)=\langle G',w,0\rangle$, where $G'=(V,E')$, $E'=\{ (u,v)\in E:u\neq v\}$, $w(u,v)=1$ if $(u,v)\in E$, $w(u,v)=0$ if $(u,v)\notin E$.
 - ${\small{\mathit{3COLOR}\leq_{\mathrm{P}} \mathit{SCHEDULE}}};f(\langle G\rangle)=\langle F=V,S=E,h=3\rangle$
-

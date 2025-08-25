@@ -125,7 +125,7 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 	- בצעד הבא רוצים לסלק מעבר אפסילון $A\to \varepsilon$. רשמו דקדוק שיתקבל לאחר צעד זה.
 	- **תשובה:**
 		- $S_0 \to S$
-		- $S \to 1S A 0 A \mid 0A S1 S \mid  \mathbf{ 1SA0B } \mid \mathbf{1S0A}\mid \mathbf{1S0}\mid \mathbf{0S1 S}\mid \varepsilon$
+		- $S \to 1S A 0 A \mid 0A S1 S \mid  \mathbf{ 1SA0A } \mid \mathbf{1S0A}\mid \mathbf{1S0}\mid \mathbf{0S1 S}\mid \varepsilon$
 		- $A \to 10S1\mid\cancel{ {\color{red}\varepsilon} }$
 - ג. בנו PDA עבור השפה הבאה: $L = \{b^ia^j \mid i \ge j \ge 0\}$. הסבירו את הפתרון.
 	- **תשובה:**
@@ -248,13 +248,13 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 			- נשים לב שעבור מ"ט $M$ עם מצב מקבל $q_\text{accept}$, מתקיים ש- $q_\text{accept}$ הוא useless state אםם $L(M)=\emptyset$.
 			- נבנה מ"ט $S$ כך: "עבור כל קלט $\langle M \rangle$, כאשר $M$ היא מ"ט:
 				- נריץ את $R$ על $\langle M, q_\text{accept} \rangle$.
-				- אם $R$ מקבל, אז _נדחה_. אחרת, _נקבל_."
+				- אם $R$ מקבל, אז _נקבל_. אחרת, _נדחה_."
 			- מ"ט זו מכריעה את $\text{E}_{\text{TM}}$, כי אם $L(M)=\emptyset$ אז $q_\text{accept}$ הוא useless state, ואם $L(M)\ne\emptyset$ אז $q_\text{accept}$ אינו useless state.
 			- אבל $\text{E}_{\text{TM}}$ אינה ניתנת להכרעה לפי משפט 5.2. סתירה.
 		- מסקנה: $\text{USELESS}_{\text{TM}}$ אינה ניתנת להכרעה.
 - ב. הוכיחו שלא קיימת רדוקציית מיפוי מ- $A_{\text{TM}}$ ל- $E_{\text{TM}}$. (תרגיל 5.5 בספר)
 	- רמז: הוכחה בדרך השלילה ותכונות ידועות של $A_{\text{TM}}$ ו- $E_{\text{TM}}$.
-	- **תשובה:** 
+	- **תשובה:**
 		- נניח בשלילה ש- $A_{\text{TM}} \leq_{\text{m}} E_{\text{TM}}$ בעזרת רדוקציית מיפוי $f$.
 		- אזי $w\in A_{\text{TM}} \iff f(w) \in E_{\text{TM}}$.
 		- באופן שקול: $w\notin A_{\text{TM}} \iff f(w) \notin E_{\text{TM}}$.
